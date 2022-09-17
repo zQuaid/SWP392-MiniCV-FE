@@ -5,7 +5,9 @@
 package DAO;
 
 import Context.DBContext;
+import Model.Account;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 /**
  *
@@ -32,5 +34,26 @@ public class AccountDAO extends DBContext{
         } catch (SQLException e) {
 
         }
+    }
+    public Account getAccount(String username) {
+        String sql = "select * from Account where username = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, username);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                Account p = new Account();
+                p.setUsername(rs.getString("username"));
+                p.setPassword(rs.getString("password"));
+                p.setFullname(rs.getString("fullname"));
+                p.setPhone(rs.getString("phone"));
+                p.setGender(rs.getBoolean("gender"));
+                p.setEmail(rs.getString("email"));
+                p.setRoleId(rs.getInt("roleId"));
+                return p;
+            }
+        } catch (SQLException e) {
+        }
+        return null;
     }
 }
