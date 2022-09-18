@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/nbproject/build-impl.xml</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/web/admindashboard.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/DAO/RevenueDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Model/Revenue.java</file>
             <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/AdmindashboardServlet.java</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/web/META-INF/context.xml</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/web/styles/css/admindashboard.css</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/DAO/OrderDAO.java</file>
         </group>
     </open-files>
 </project-private>
