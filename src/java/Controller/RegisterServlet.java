@@ -4,7 +4,7 @@
  */
 package controller;
 
-import jakarta.servlet.RequestDispatcher;
+import DAO.RegisterDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,14 +13,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
+import Model.Account;
 
 /**
  *
  * @author trung
  */
-@WebServlet("/logout")
-public class LogoutServlet extends HttpServlet {
+@WebServlet(name = "RegisterServlet", urlPatterns = {"/register"})
+public class RegisterServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -38,10 +38,10 @@ public class LogoutServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LogoutServlet</title>");
+            out.println("<title>Servlet RegisterServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LogoutServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet RegisterServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,9 +59,7 @@ public class LogoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(false);
-        session.invalidate();
-        response.sendRedirect("login");
+        request.getRequestDispatcher("register.jsp").forward(request, response);
     }
 
     /**
@@ -74,8 +72,32 @@ public class LogoutServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+    throws ServletException, IOException {
+        String username = request.getParameter("user");
+        String password = request.getParameter("pass");
+        String cfpassword = request.getParameter("cfpass");
+        String firstname = request.getParameter("fname");
+        String lastname = request.getParameter("lname");
+        String phone = request.getParameter("phone");
+        boolean sex = Boolean.parseBoolean(request.getParameter("sex"));
+        String email = request.getParameter("mail");
+        RegisterDAO rd = new RegisterDAO();
+        HttpSession session = request.getSession();
+        if (!password.equals(cfpassword)) {
+            session.setAttribute("mess", "The entered Password must be the same!");
+            response.sendRedirect("register");
+        } else {
+            Account a = rd.checkAccountExist(username);
+            if (a == null) {
+                //tiếp tục cho register
+                rd.create(username, password, firstname, lastname, phone, sex, email);
+                response.sendRedirect("login");
+            }else{
+                //đẩy về trang register
+                session.setAttribute("mess", "The Username already exist!!");
+                response.sendRedirect("register");
+            }
+        }
     }
 
     /**

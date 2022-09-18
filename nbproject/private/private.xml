@@ -3,27 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Context/DBContext.java</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/DAO/RevenueDAO.java</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/SummaryServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/ValidateOtpServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/ChangePasswordServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Model/Account.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/LogoutServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/RegisterServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/DAO/AccountDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/LoginServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/DAO/AdminDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/FogotPassWordServlet.java</file>
             <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/DAO/OrderDAO.java</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/web/summarypage.jsp</file>
-=======
-            <file>file:/C:/Users/citih/OneDrive/Máy%20tính/SWP391/SWP392-MiniCV-FE/src/java/Controller/NewPassWordServlet.java</file>
-            <file>file:/C:/Users/citih/OneDrive/Máy%20tính/SWP391/SWP392-MiniCV-FE/src/java/DAO/AccountDAO.java</file>
->>>>>>> origin/Hieu-Huu
-=======
-            <file>file:/C:/Users/ADMIN/OneDrive/Tài%20liệu/SWP391_F/SWP392-MiniCV-FE/src/java/model/Account.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Tài%20liệu/SWP391_F/SWP392-MiniCV-FE/src/java/controller/AdLogoutServlet.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Tài%20liệu/SWP391_F/SWP392-MiniCV-FE/src/java/configs/Captcha.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Tài%20liệu/SWP391_F/SWP392-MiniCV-FE/src/java/DAO/AdminDAO.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Tài%20liệu/SWP391_F/SWP392-MiniCV-FE/src/java/controller/LogoutServlet.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Tài%20liệu/SWP391_F/SWP392-MiniCV-FE/src/java/controller/RegisterServlet.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Tài%20liệu/SWP391_F/SWP392-MiniCV-FE/src/java/DAO/RegisterDAO.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Tài%20liệu/SWP391_F/SWP392-MiniCV-FE/src/java/controller/LoginServlet.java</file>
->>>>>>> origin/Tien-Vinh
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/DAO/RegisterDAO.java</file>
         </group>
     </open-files>
 </project-private>

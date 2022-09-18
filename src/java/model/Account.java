@@ -2,30 +2,28 @@ package Model;
 
 import java.util.Date;
 
-
-
 /**
  *
  * @author Admin
  */
 public class Account {
-        private int id;
-        private String username;
-        private String password;
-        private String firstName;
-        private String lastName;
-        private String email;
-        private int phone;
-        private String address;
-        private boolean gender;
-        private Date dob;
-        private String roleID;
-        private int bonusPoint;
-        private String trust;
-        private String salary;
-        private int citizenID;
-        private String workingShift;
-        private String accImage;
+    private int id;
+    private String username;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private int phone;
+    private String address;
+    private boolean gender;
+    private Date dob;
+    private String roleID;
+    private int bonusPoint;
+    private String trust;
+    private String salary;
+    private int citizenID;
+    private String workingShift;
+    private String accImage;
 
     public Account() {
     }
@@ -49,8 +47,8 @@ public class Account {
         this.workingShift = workingShift;
         this.accImage = accImage;
     }
-    
-    public Account(String username, String password, String firstName, String lastName, int phone, boolean gender, String email, String roleID ){
+
+    public Account(String username, String password, String firstName, String lastName, int phone, boolean gender, String email, String roleID) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -196,8 +194,5 @@ public class Account {
     public void setAccImage(String accImage) {
         this.accImage = accImage;
     }
-        
-    
 
-    
 }

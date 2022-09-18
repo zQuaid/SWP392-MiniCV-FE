@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Model;
 
 import java.util.Date;
@@ -11,29 +7,26 @@ import java.util.Date;
  * @author Admin
  */
 public class Account {
-        private int id;
-        private String username;
-        private String password;
-        private String firstName;
-        private String lastName;
-        private String email;
-        private int phone;
-        private String address;
-        private boolean gender;
-        private Date dob;
-        private String roleID;
-        private int bonusPoint;
-        private String trust;
-        private String salary;
-        private int citizenID;
-        private String workingShift;
-        private String accImage;
-
-    
+    private int id;
+    private String username;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private int phone;
+    private String address;
+    private boolean gender;
+    private Date dob;
+    private String roleID;
+    private int bonusPoint;
+    private String trust;
+    private String salary;
+    private int citizenID;
+    private String workingShift;
+    private String accImage;
 
     public Account() {
     }
-
 
     public Account(int id, String username, String password, String firstName, String lastName, String email, int phone, String address, boolean gender, Date dob, String roleID, int bonusPoint, String trust, String salary, int citizenID, String workingShift, String accImage) {
         this.id = id;
@@ -53,6 +46,17 @@ public class Account {
         this.citizenID = citizenID;
         this.workingShift = workingShift;
         this.accImage = accImage;
+    }
+
+    public Account(String username, String password, String firstName, String lastName, int phone, boolean gender, String email, String roleID) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.gender = gender;
+        this.email = email;
+        this.roleID = roleID;
     }
 
     public int getId() {
@@ -119,7 +123,6 @@ public class Account {
         this.address = address;
     }
 
-
     public boolean isGender() {
         return gender;
     }
@@ -127,7 +130,6 @@ public class Account {
     public void setGender(boolean gender) {
         this.gender = gender;
     }
-
 
     public Date getDob() {
         return dob;
@@ -192,4 +194,5 @@ public class Account {
     public void setAccImage(String accImage) {
         this.accImage = accImage;
     }
+
 }

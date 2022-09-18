@@ -60,4 +60,17 @@ public class AccountDAO extends DBContext {
         }
         return null;
     }
+
+    public void update(Account p) {
+        String sql = "UPDATE [dbo].[Product]\n"
+                + "   SET [password] = ?\n"
+                + " WHERE username = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, p.getPassword());
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
 }
