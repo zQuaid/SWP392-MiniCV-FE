@@ -2,21 +2,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
+package Controller;
 
+import DAO.AccountDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Account;
 
 /**
  *
- * @author Admin
+ * @author PC
  */
-@WebServlet(urlPatterns = {"/AdmindashboardServlet"})
-public class AdmindashboardServlet extends HttpServlet {
+@WebServlet(name = "ChangePassword", urlPatterns = {"/changepass"})
+public class ChangePasswordServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,15 +35,15 @@ public class AdmindashboardServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AdmindashboardServlet</title>");            
+            out.println("<title>Servlet ChangePassword</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AdmindashboardServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ChangePassword at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -56,7 +61,38 @@ public class AdmindashboardServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/admindashboard.jsp").forward(request, response);
+        request.getRequestDispatcher("change.jsp").forward(request, response);
+        String userName = request.getParameter("userName");
+        String oldPassWord = request.getParameter("oldPassWord");
+        String newPassWord = request.getParameter("newPassWord");
+        String reNewPassWord = request.getParameter("reNewPassWord");
+
+        try {
+            AccountDAO account = new AccountDAO();
+
+            String pass = account.getAccount(userName, oldPassWord);
+            HttpSession session = request.getSession();
+            if (oldPassWord.equals(null) && newPassWord.equals(null) && reNewPassWord.equals(null)) {
+                request.setAttribute("error", "Password not empty!!");
+                request.getRequestDispatcher("changepassword.jsp").forward(request, response);
+            } else if (!newPassWord.equals(reNewPassWord)) {
+                request.setAttribute("error", "Password does not match!!");
+                request.getRequestDispatcher("changepassword.jsp").forward(request, response);
+            } else if (!newPassWord.equals(pass)) {
+                request.setAttribute("error", "OldPassword incorrect!!");
+                request.getRequestDispatcher("changepassword.jsp").forward(request, response);
+            } else {
+                Account a = new Account();
+                a.setPassword(newPassWord);
+                account.update(a);
+                request.setAttribute("success", "Password updateSucces!!");
+                request.getRequestDispatcher("homepage.jsp").forward(request, response);
+            }
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        response.sendRedirect("homepage");
+        request.getRequestDispatcher("homepage.jsp").forward(request, response);
     }
 
     /**
@@ -70,7 +106,7 @@ public class AdmindashboardServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        doGet(request, response);
     }
 
     /**

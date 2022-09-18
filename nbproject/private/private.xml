@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Context/DBContext.java</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/web/admindashboard.jsp</file>
+            <file>file:/C:/Users/PC/Desktop/SWP391/SWP392-MiniCV-FE/web/images/AdminProfileImage.jpg</file>
+            <file>file:/C:/Users/PC/Desktop/SWP391/SWP392-MiniCV-FE/src/java/Controller/ChangePasswordServlet.java</file>
+            <file>file:/C:/Users/PC/Desktop/SWP391/SWP392-MiniCV-FE/src/java/model/Account.java</file>
+            <file>file:/C:/Users/PC/Desktop/SWP391/SWP392-MiniCV-FE/src/java/DAO/AccountDAO.java</file>
+            <file>file:/C:/Users/PC/Desktop/SWP391/SWP392-MiniCV-FE/src/java/AdmindashboardServlet.java</file>
+            <file>file:/C:/Users/PC/Desktop/SWP391/SWP392-MiniCV-FE/src/java/Context/DBContext.java</file>
+            <file>file:/C:/Users/PC/Desktop/SWP391/SWP392-MiniCV-FE/web/images/cafelogo.png</file>
         </group>
     </open-files>
 </project-private>
