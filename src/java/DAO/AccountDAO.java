@@ -9,11 +9,13 @@ import Model.Account;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 /**
  *
  * @author citih
  */
-public class AccountDAO extends DBContext{
+public class AccountDAO extends DBContext {
+
     public void newPassword(String newPassword, String email) {
 
         try {
@@ -35,6 +37,7 @@ public class AccountDAO extends DBContext{
 
         }
     }
+
     public Account getAccount(String username) {
         String sql = "select * from Account where username = ?";
         try {
@@ -45,8 +48,9 @@ public class AccountDAO extends DBContext{
                 Account p = new Account();
                 p.setUsername(rs.getString("username"));
                 p.setPassword(rs.getString("password"));
-                p.setFullname(rs.getString("fullname"));
-                p.setPhone(rs.getString("phone"));
+                p.setFirstname(rs.getString("firstname"));
+                p.setLastname(rs.getString("lastname"));
+                p.setPhone(rs.getInt("phone"));
                 p.setGender(rs.getBoolean("gender"));
                 p.setEmail(rs.getString("email"));
                 p.setRoleId(rs.getInt("roleId"));
