@@ -6,8 +6,6 @@ package Model;
 
 import java.util.Date;
 
-
-
 /**
  *
  * @author Admin
@@ -30,6 +28,8 @@ public class Account {
         private int citizenID;
         private String workingShift;
         private String accImage;
+
+    
 
     public Account() {
     }
@@ -192,5 +192,4 @@ public class Account {
     public void setAccImage(String accImage) {
         this.accImage = accImage;
     }
-        
 }
