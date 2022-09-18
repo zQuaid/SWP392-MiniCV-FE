@@ -2,28 +2,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package Controller;
+package controller;
 
-import DAO.AccountDAO;
-import Model.Account;
+import DAO.RegisterDAO;
+import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
+import jakarta.servlet.http.HttpSession;
+import Model.Account;
 
 /**
  *
- * @author citih
+ * @author trung
  */
-    @WebServlet(name = "ProfileServlet", urlPatterns = {"/profile"})
-public class ProfileServlet extends HttpServlet {
+@WebServlet(name = "RegisterServlet", urlPatterns = {"/register"})
+public class RegisterServlet extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -38,10 +38,10 @@ public class ProfileServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ProfileServlet</title>");            
+            out.println("<title>Servlet RegisterServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ProfileServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet RegisterServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,12 +59,7 @@ public class ProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        AccountDAO ac = new AccountDAO();
-
-        String username = request.getParameter("username");
-        Account a = ac.getAccount(username);
-        request.setAttribute("detail", a);
-        request.getRequestDispatcher("profile.jsp").forward(request, response);
+        request.getRequestDispatcher("register.jsp").forward(request, response);
     }
 
     /**
@@ -77,8 +72,32 @@ public class ProfileServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+    throws ServletException, IOException {
+        String username = request.getParameter("user");
+        String password = request.getParameter("pass");
+        String cfpassword = request.getParameter("cfpass");
+        String firstname = request.getParameter("fname");
+        String lastname = request.getParameter("lname");
+        String phone = request.getParameter("phone");
+        boolean sex = Boolean.parseBoolean(request.getParameter("sex"));
+        String email = request.getParameter("mail");
+        RegisterDAO rd = new RegisterDAO();
+        HttpSession session = request.getSession();
+        if (!password.equals(cfpassword)) {
+            session.setAttribute("mess", "The entered Password must be the same!");
+            response.sendRedirect("register");
+        } else {
+            Account a = rd.checkAccountExist(username);
+            if (a == null) {
+                //tiếp tục cho register
+                rd.create(username, password, firstname, lastname, phone, sex, email);
+                response.sendRedirect("login");
+            }else{
+                //đẩy về trang register
+                session.setAttribute("mess", "The Username already exist!!");
+                response.sendRedirect("register");
+            }
+        }
     }
 
     /**
