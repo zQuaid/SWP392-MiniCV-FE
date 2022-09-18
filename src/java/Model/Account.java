@@ -189,6 +189,4 @@ public class Account {
     public void setAccImage(String accImage) {
         this.accImage = accImage;
     }
-        
-        
 }
