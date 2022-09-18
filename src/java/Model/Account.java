@@ -34,6 +34,7 @@ public class Account {
     public Account() {
     }
 
+
     public Account(int id, String username, String password, String firstName, String lastName, String email, int phone, String address, boolean gender, Date dob, String roleID, int bonusPoint, String trust, String salary, int citizenID, String workingShift, String accImage) {
         this.id = id;
         this.username = username;
@@ -118,6 +119,7 @@ public class Account {
         this.address = address;
     }
 
+
     public boolean isGender() {
         return gender;
     }
@@ -125,6 +127,7 @@ public class Account {
     public void setGender(boolean gender) {
         this.gender = gender;
     }
+
 
     public Date getDob() {
         return dob;
@@ -189,6 +192,5 @@ public class Account {
     public void setAccImage(String accImage) {
         this.accImage = accImage;
     }
-        
         
 }
