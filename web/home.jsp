@@ -150,13 +150,14 @@
                     <div class="row align-items-center">
                         <div class="col-lg-6">
                             <div class="deal_ofthe_week_img">
-                                <img src="images/deal_ofthe_week.jpg" alt="">
+                                <img src="blog2.jpg" alt="">
                             </div>
                         </div>
                         <div class="col-lg-6 text-right deal_ofthe_week_col">
                             <div class="deal_ofthe_week_content d-flex flex-column align-items-center float-right">
                                 <div class="section_title">
                                     <h2>Blog</h2>
+                                    <h3>Cà phê rang xay là gì</h3>
                                 </div>
 
                                 <div class="red_button deal_ofthe_week_button"><a href="">Read more</a></div>
