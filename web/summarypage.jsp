@@ -1,8 +1,8 @@
-<%-- 
+<!--
     Document   : admindashboard
     Created on : Sep 16, 2022, 10:09:40 AM
     Author     : Admin
---%>
+-->
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -111,11 +111,19 @@
                             <div class="white-box">
                                 <h3 class="box-title">Summary</h3>
                                 <div id="ct-visits" style="height: 405px;">
-                                    <div class="a">Total Revenue</div>
-                                    <div class="a">Target Revenue</div>
+                                    <div class="a">Total Revenue: ${requestScope.totalRevenue} VND</div>
+                                    <c:choose>
+                                        <c:when test="${requestScope.checkTargetRevenue == false}">
+                                        <div class="a">Target Revenue: ${requestScope.targetRevenue} VND</div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div>You don't have any target in this month</div>
+                                            <button>Add</button>
+                                        </c:otherwise>
+                                    </c:choose>
                                     <div class="a">Process</label>
                                         <div class="w3-light-grey w3-large">
-                                            <div class="w3-container w3-green" style="width:50%">50%</div>
+                                            <div class="w3-container w3-green" style="width:${requestScope.checkpercent}%">${requestScope.percent}%</div>
                                         </div>
                                     </div>                               
                                 </div>

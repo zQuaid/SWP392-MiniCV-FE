@@ -5,6 +5,7 @@ package Controller;
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
+import DAO.RevenueDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,13 +13,15 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.time.LocalDate;
+import java.util.Date;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name="AdmindashboardServlet", urlPatterns = {"/admindashboard"})
-public class AdmindashboardServlet extends HttpServlet {
+@WebServlet(name="Summary", urlPatterns = {"/summary"})
+public class SummaryServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +40,10 @@ public class AdmindashboardServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AdmindashboardServlet</title>");            
+            out.println("<title>Servlet SummaryServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AdmindashboardServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet SummaryServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -58,7 +61,25 @@ public class AdmindashboardServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/admindashboard.jsp").forward(request, response);
+        LocalDate ld = LocalDate.now();
+        int month = ld.getMonthValue();
+        int year = ld.getYear();
+        RevenueDAO rd = new RevenueDAO();
+        int totalRevenue = rd.getTotalRevenue(month, year);
+        boolean checkTargetRevenue = rd.checkTargetRevenue(month, year);
+        int targetRevenue = rd.getTargetRevenue(month, year);
+        int percent = totalRevenue*100/targetRevenue;
+        int checkpercent;
+        if(percent>100){
+            checkpercent = 100;
+        }else
+            checkpercent = percent;
+        request.setAttribute("percent", percent);
+        request.setAttribute("checkpercent", checkpercent);
+        request.setAttribute("targetRevenue", targetRevenue);
+        request.setAttribute("checkTargetRevenue", checkTargetRevenue);
+        request.setAttribute("totalRevenue", totalRevenue);
+        request.getRequestDispatcher("/summarypage.jsp").forward(request, response);
     }
 
     /**
