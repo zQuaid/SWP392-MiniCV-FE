@@ -4,11 +4,11 @@
  */
 package DAO;
 
-import context.DBContext;
+import Context.DBContext;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import model.Account;
+import Model.Account;
 
 /**
  *
@@ -17,14 +17,15 @@ import model.Account;
 public class RegisterDAO extends DBContext {
 
     public Account checkAccountExist(String username) {
-        String sql = "SELECT [username]\n"
-                + "      ,[password]\n"
-                + "      ,[fullname]\n"
-                + "      ,[phone]\n"
-                + "      ,[gender]\n"
-                + "      ,[email]\n"
-                + "      ,[roleId]\n"
-                + "  FROM [dbo].[Account_HE163615]\n"
+        String sql = "SELECT [Username]\n"
+                + "      ,[Password]\n"
+                + "      ,[FirstName]\n"
+                + "      ,[LirstName]\n"
+                + "      ,[Phone]\n"
+                + "      ,[Gender]\n"
+                + "      ,[Email]\n"
+                + "      ,[RoleID]\n"
+                + "  FROM [dbo].[Account]\n"
                 + "  WHERE [username] = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -35,9 +36,10 @@ public class RegisterDAO extends DBContext {
                         rs.getString(2),
                         rs.getString(3),
                         rs.getString(4),
-                        rs.getBoolean(5),
-                        rs.getString(6),
-                        rs.getInt(7));
+                        rs.getString(5),
+                        rs.getBoolean(6),
+                        rs.getString(7),
+                        rs.getString(8));
                 return a;
             }
         } catch (SQLException e) {
@@ -45,25 +47,27 @@ public class RegisterDAO extends DBContext {
         return null;
     }
 
-    public void create(String username, String password, String fullname,
-            String phone, String sex, String Email) {
-        String sql = "INSERT INTO [dbo].[Account_HE163615]\n"
-                + "           ([username]\n"
-                + "           ,[password]\n"
-                + "           ,[fullname]\n"
-                + "           ,[phone]\n"
-                + "           ,[gender]\n"
-                + "           ,[email]\n"
-                + "           ,[roleId])\n"
-                + "     VALUES (?,?,?,?,?,?,1)";
+    public void create(String username, String password, String firstName,String lastName,
+            String phone, boolean sex, String Email) {
+        String sql = "INSERT INTO [dbo].[Account]\n"
+                + "           ([Username]\n"
+                + "           ,[Password]\n"
+                + "           ,[FirstName]\n"
+                + "           ,[LirstName]\n"
+                + "           ,[Phone]\n"
+                + "           ,[Gender]\n"
+                + "           ,[Email]\n"
+                + "           ,[RoleID])\n"
+                + "     VALUES (?,?,?,?,?,?,?,1)";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, username);
             st.setString(2, password);
-            st.setString(3, fullname);
-            st.setString(4, phone);
-            st.setString(5, sex);
-            st.setString(6, Email);
+            st.setString(3, firstName);
+            st.setString(4, lastName);
+            st.setString(5, phone);
+            st.setBoolean(6, sex);
+            st.setString(7, Email);
             st.executeUpdate();
         } catch (SQLException e) {
         }

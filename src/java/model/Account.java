@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -7,19 +8,32 @@ package Model;
 import java.util.Date;
 
 
+=======
+package Model;
+
+import java.util.Date;
+>>>>>>> bb2b0d4d442621bdcce2b581436a860ed224156b
 
 /**
  *
  * @author Admin
  */
 public class Account {
+<<<<<<< HEAD
+=======
+
+>>>>>>> bb2b0d4d442621bdcce2b581436a860ed224156b
         private int id;
         private String username;
         private String password;
         private String firstName;
         private String lastName;
         private String email;
+<<<<<<< HEAD
         private int phone;
+=======
+        private String phone;
+>>>>>>> bb2b0d4d442621bdcce2b581436a860ed224156b
         private String address;
         private boolean gender;
         private Date dob;
@@ -27,19 +41,28 @@ public class Account {
         private int bonusPoint;
         private String trust;
         private String salary;
+<<<<<<< HEAD
         private int citizenID;
+=======
+        private String citizenID;
+>>>>>>> bb2b0d4d442621bdcce2b581436a860ed224156b
         private String workingShift;
         private String accImage;
 
     public Account() {
     }
 
+<<<<<<< HEAD
     public Account(int id, String username, String password, String firstName, String lastName, String email, int phone, String address, boolean gender, Date dob, String roleID, int bonusPoint, String trust, String salary, int citizenID, String workingShift, String accImage) {
+=======
+    public Account(int id, String username, String password, String firstName, String lastName, String email, String phone, String address, boolean gender, Date dob, String roleID, int bonusPoint, String trust, String salary, String citizenID, String workingShift, String accImage) {
+>>>>>>> bb2b0d4d442621bdcce2b581436a860ed224156b
         this.id = id;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
+<<<<<<< HEAD
         this.email = email;
         this.phone = phone;
         this.address = address;
@@ -52,6 +75,31 @@ public class Account {
         this.citizenID = citizenID;
         this.workingShift = workingShift;
         this.accImage = accImage;
+=======
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.gender = gender;
+        this.dob = dob;
+        this.roleID = roleID;
+        this.bonusPoint = bonusPoint;
+        this.trust = trust;
+        this.salary = salary;
+        this.citizenID = citizenID;
+        this.workingShift = workingShift;
+        this.accImage = accImage;
+    }
+
+    public Account(String username, String password, String firstName, String lastName, String phone, boolean gender, String email, String roleID) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.gender = gender;
+        this.email = email;
+        this.roleID = roleID;
+>>>>>>> bb2b0d4d442621bdcce2b581436a860ed224156b
     }
 
     public int getId() {
@@ -102,11 +150,19 @@ public class Account {
         this.email = email;
     }
 
+<<<<<<< HEAD
     public int getPhone() {
         return phone;
     }
 
     public void setPhone(int phone) {
+=======
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+>>>>>>> bb2b0d4d442621bdcce2b581436a860ed224156b
         this.phone = phone;
     }
 
@@ -166,11 +222,19 @@ public class Account {
         this.salary = salary;
     }
 
+<<<<<<< HEAD
     public int getCitizenID() {
         return citizenID;
     }
 
     public void setCitizenID(int citizenID) {
+=======
+    public String getCitizenID() {
+        return citizenID;
+    }
+
+    public void setCitizenID(String citizenID) {
+>>>>>>> bb2b0d4d442621bdcce2b581436a860ed224156b
         this.citizenID = citizenID;
     }
 
@@ -189,6 +253,9 @@ public class Account {
     public void setAccImage(String accImage) {
         this.accImage = accImage;
     }
+<<<<<<< HEAD
         
         
+=======
+>>>>>>> bb2b0d4d442621bdcce2b581436a860ed224156b
 }
