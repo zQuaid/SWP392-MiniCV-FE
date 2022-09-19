@@ -19,7 +19,7 @@ public class Account {
         private String firstName;
         private String lastName;
         private String email;
-        private int phone;
+        private String phone;
         private String address;
         private boolean gender;
         private Date dob;
@@ -27,14 +27,14 @@ public class Account {
         private int bonusPoint;
         private String trust;
         private String salary;
-        private int citizenID;
+        private String citizenID;
         private String workingShift;
         private String accImage;
 
     public Account() {
     }
 
-    public Account(int id, String username, String password, String firstName, String lastName, String email, int phone, String address, boolean gender, Date dob, String roleID, int bonusPoint, String trust, String salary, int citizenID, String workingShift, String accImage) {
+    public Account(int id, String username, String password, String firstName, String lastName, String email, String phone, String address, boolean gender, Date dob, String roleID, int bonusPoint, String trust, String salary, String citizenID, String workingShift, String accImage) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -102,11 +102,11 @@ public class Account {
         this.email = email;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -166,11 +166,11 @@ public class Account {
         this.salary = salary;
     }
 
-    public int getCitizenID() {
+    public String getCitizenID() {
         return citizenID;
     }
 
-    public void setCitizenID(int citizenID) {
+    public void setCitizenID(String citizenID) {
         this.citizenID = citizenID;
     }
 
