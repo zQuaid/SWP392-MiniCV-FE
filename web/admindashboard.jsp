@@ -38,8 +38,7 @@
                     <nav class="sidebar-nav">
                         <ul id="sidebarnav">
                             <li class="sidebar-item pt-2">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link active" href="#"
-                                   aria-expanded="false">
+                                <a class="sidebar-link active" aria-expanded="false">
                                     <img src="images/AdminProfileImage.jpg" style="width: 186px;height: 232px">
                                 </a>
                             </li>
@@ -95,9 +94,9 @@
                         </ul>
                     </nav>
                 </div>
+                </aside>
         </div>
-        </div>
-    </aside>
+        
     <script src="plugins/bower_components/jquery/jquery.min.js"></script>
     <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
     <script src="styles/bootstrap4/bootstrap.bundle.min.js"></script>
