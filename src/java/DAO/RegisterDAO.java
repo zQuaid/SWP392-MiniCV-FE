@@ -36,7 +36,7 @@ public class RegisterDAO extends DBContext {
                         rs.getString(2),
                         rs.getString(3),
                         rs.getString(4),
-                        rs.getInt(5),
+                        rs.getString(5),
                         rs.getBoolean(6),
                         rs.getString(7),
                         rs.getString(8));

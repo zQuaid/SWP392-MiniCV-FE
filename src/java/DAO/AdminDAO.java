@@ -39,7 +39,7 @@ public class AdminDAO extends DBContext {
                         rs.getString(2),
                         rs.getString(3),
                         rs.getString(4),
-                        rs.getInt(5),
+                        rs.getString(5),
                         rs.getBoolean(6),
                         rs.getString(7),
                         rs.getString(8));
@@ -62,7 +62,7 @@ public class AdminDAO extends DBContext {
                 p.setPassword(rs.getString("Password"));
                 p.setFirstName(rs.getString("FirstName"));
                 p.setLastName(rs.getString("LirstName"));
-                p.setPhone(Integer.parseInt(rs.getString("Phone")));
+                p.setPhone(rs.getString("Phone"));
                 p.setGender(rs.getBoolean("Gender"));
                 p.setEmail(rs.getString("Email"));
                 p.setRoleID(rs.getString("RoleID"));
@@ -85,7 +85,7 @@ public class AdminDAO extends DBContext {
                 p.setPassword(rs.getString("Password"));
                 p.setFirstName(rs.getString("FirstName"));
                 p.setLastName(rs.getString("LirstName"));
-                p.setPhone(Integer.parseInt(rs.getString("Phone")));
+                p.setPhone(rs.getString("Phone"));
                 p.setGender(rs.getBoolean("Gender"));
                 p.setEmail(rs.getString("Email"));
                 p.setRoleID(rs.getString("RoleID"));

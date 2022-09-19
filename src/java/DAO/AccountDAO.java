@@ -50,7 +50,7 @@ public class AccountDAO extends DBContext {
                 p.setPassword(rs.getString("password"));
                 p.setFirstName(rs.getString("firstname"));
                 p.setLastName(rs.getString("lastname"));
-                p.setPhone(rs.getInt("phone"));
+                p.setPhone(rs.getString("phone"));
                 p.setGender(rs.getBoolean("gender"));
                 p.setEmail(rs.getString("email"));
                 p.setRoleID(rs.getString("roleId"));

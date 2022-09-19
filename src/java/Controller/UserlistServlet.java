@@ -1,11 +1,11 @@
-package Controller;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
+package Controller;
 
-import DAO.RevenueDAO;
+import DAO.UserDAO;
+import Model.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,14 +13,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.time.LocalDate;
+import java.util.List;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name="Summary", urlPatterns = {"/summary"})
-public class SummaryServlet extends HttpServlet {
+@WebServlet(name = "UserlistServlet", urlPatterns = {"/userlist"})
+public class UserlistServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +39,10 @@ public class SummaryServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SummaryServlet</title>");            
+            out.println("<title>Servlet UserlistServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SummaryServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UserlistServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,25 +60,10 @@ public class SummaryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        LocalDate ld = LocalDate.now();
-        int month = ld.getMonthValue();
-        int year = ld.getYear();
-        RevenueDAO rd = new RevenueDAO();
-        int totalRevenue = rd.getTotalRevenue(month, year);
-        boolean checkTargetRevenue = rd.checkTargetRevenue(month, year);
-        int targetRevenue = rd.getTargetRevenue(month, year);
-        int percent = totalRevenue*100/targetRevenue;
-        int checkpercent;
-        if(percent>100){
-            checkpercent = 100;
-        }else
-            checkpercent = percent;
-        request.setAttribute("percent", percent);
-        request.setAttribute("checkpercent", checkpercent);
-        request.setAttribute("targetRevenue", targetRevenue);
-        request.setAttribute("checkTargetRevenue", checkTargetRevenue);
-        request.setAttribute("totalRevenue", totalRevenue);
-        request.getRequestDispatcher("/summarypage.jsp").forward(request, response);
+        UserDAO ud = new UserDAO();
+        List<Account> acc = ud.getUserList();
+        request.setAttribute("accList", acc);
+       request.getRequestDispatcher("/userlist.jsp").forward(request, response);
     }
 
     /**
