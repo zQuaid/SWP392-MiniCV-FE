@@ -88,9 +88,9 @@
                                             <i class="fa fa-bars" aria-hidden="true"></i>
                                         </div>
                                     </ul>&nbsp;&nbsp;&nbsp;
-                                    <a style="color: #000" class="nav-item" href="#">
+                                    <a style="color: #000" class="nav-item" href="profile">
                                         <i class="fa fa-user" aria-hidden="true"></i>
-                                        <span>${sessionScope.account.fullname}</span>
+                                        <span>${sessionScope.account.username}</span>
                                     </a>
                                 </nav>
                             </div>
