@@ -10,14 +10,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Admin
  */
 public class UserDAO extends DBContext{
-    public ArrayList<Account> getUserList(){
-        ArrayList<Account> users = new ArrayList<>();
+    public List<Account> getUserList(){
+        List<Account> users = new ArrayList<>();
         String sql = "SELECT * FROM Account WHERE RoleID = 2";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -45,4 +46,5 @@ public class UserDAO extends DBContext{
         }
         return users;
     }
+    
 }

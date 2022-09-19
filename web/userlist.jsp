@@ -4,6 +4,7 @@
     Author     : Admin
 --%>
 
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,6 +19,8 @@
         <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/chartist-plugin-tooltip.css">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link href="styles/css/style.min.css" rel="stylesheet">
+        <link href="styles/css/userlist.css" rel="stylesheet">
+        
     </head>
     <body>
         <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
@@ -108,19 +111,63 @@
                         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                             <div class="white-box">
                                 <div id="ct-visits" style="height: 405px;">
-
-                                    </div>                               
-                                </div>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">UserID</th>
+                                                <th scope="col">Username</th>
+                                                <th scope="col">Password</th>
+                                                <th scope="col">First Name</th>
+                                                <th scope="col">Last Name</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Phone Number</th>
+                                                <th scope="col">Address</th>
+                                                <th scope="col">Gender</th>
+                                                <th scope="col">Date of Birth</th>
+                                                <th scope="col">Bonus Point</th>
+                                                <th scope="col">Trust</th>
+                                                <th scope="col">Citizen ID</th>
+                                                <th scope="col">Image</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <c:forEach items="${requestScope.accList}" var="al">
+                                            <tr>
+                                                <th scope="row" class="count"></th>
+                                                <td>${al.id}</td>
+                                                <td>${al.username}</td>
+                                                <td>${al.password}</td>
+                                                <td>${al.firstName}</td>
+                                                <td>${al.lastName}</td>
+                                                <td>${al.email}</td>
+                                                <td>${al.phone}</td>
+                                                <td>${al.address}</td>
+                                                <td>${al.gender}</td>
+                                                <td>${al.dob}</td>
+                                                <td>${al.bonusPoint}</td>
+                                                <td>${al.trust}</td>
+                                                <td>${al.citizenID}</td>
+                                                <td>${al.accImage}</td>
+                                                <td>
+                                                    <button value="${al.id}">View</button>
+                                                    <button value="${al.id}">Delete</button>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+                                    </table>
+                                </div>                               
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <script src="plugins/bower_components/jquery/jquery.min.js"></script>
-        <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
-        <script src="styles/bootstrap4/bootstrap.bundle.min.js"></script>
-        <script src="plugins/bower_components/chartist/chartist.min.js"></script>
-        <script src="plugins/bower_components/chartist-plugin-tooltips/chartist-plugin-tooltip.min.js"></script>
+    </div>
+
+    <script src="plugins/bower_components/jquery/jquery.min.js"></script>
+    <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <script src="styles/bootstrap4/bootstrap.bundle.min.js"></script>
+    <script src="plugins/bower_components/chartist/chartist.min.js"></script>
+    <script src="plugins/bower_components/chartist-plugin-tooltips/chartist-plugin-tooltip.min.js"></script>
 </html>
