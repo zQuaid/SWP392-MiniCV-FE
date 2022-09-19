@@ -117,8 +117,8 @@
                                         <div class="a">Target Revenue: ${requestScope.targetRevenue} VND</div>
                                         </c:when>
                                         <c:otherwise>
-                                            <div>You don't have any target in this month</div>
-                                            <button>Add</button>
+                                            <div class="a">You don't have any target in this month</div>
+                                            <button class="a">Add</button>
                                         </c:otherwise>
                                     </c:choose>
                                     <div class="a">Process</label>
