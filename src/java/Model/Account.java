@@ -1,3 +1,4 @@
+
 package Model;
 
 import java.util.Date;
@@ -7,7 +8,6 @@ import java.util.Date;
  * @author Admin
  */
 public class Account {
-
         private int id;
         private String username;
         private String password;

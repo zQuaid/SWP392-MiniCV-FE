@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Model/Account.java</file>
             <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Context/DBContext.java</file>
@@ -23,5 +23,8 @@
 >>>>>>> HieuPT
             <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/web/summarypage.jsp</file>
         </group>
+=======
+        <group/>
+>>>>>>> 2d600d36f1fdea528539fb8ad90a6b181ccbe922
     </open-files>
 </project-private>
