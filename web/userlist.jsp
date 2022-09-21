@@ -1,11 +1,11 @@
-<!--
-    Document   : admindashboard
-    Created on : Sep 16, 2022, 10:09:40 AM
+<%-- 
+    Document   : userlist
+    Created on : Sep 19, 2022, 7:07:26 AM
     Author     : Admin
--->
+--%>
 
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,7 +19,8 @@
         <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/chartist-plugin-tooltip.css">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link href="styles/css/style.min.css" rel="stylesheet">
-        <link href="styles/css/admindashboard.css" rel="stylesheet">
+        <link href="styles/css/userlist.css" rel="stylesheet">
+        
     </head>
     <body>
         <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
@@ -101,7 +102,7 @@
                 <div class="page-breadcrumb bg-white">
                     <div class="row align-items-center">
                         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                            <h4 class="page-title">Dashboard</h4>
+                            <h4 class="page-title">Userlist</h4>
                         </div>
                     </div>
                 </div>
@@ -109,34 +110,64 @@
                     <div class="row">
                         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                             <div class="white-box">
-                                <h3 class="box-title">Summary</h3>
                                 <div id="ct-visits" style="height: 405px;">
-                                    <div class="a">Total Revenue: ${requestScope.totalRevenue} VND</div>
-                                    <c:choose>
-                                        <c:when test="${requestScope.checkTargetRevenue == false}">
-                                        <div class="a">Target Revenue: ${requestScope.targetRevenue} VND</div>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <div class="a">You don't have any target in this month</div>
-                                            <button class="a">Add</button>
-                                        </c:otherwise>
-                                    </c:choose>
-                                    <div class="a">Process</label>
-                                        <div class="w3-light-grey w3-large">
-                                            <div class="w3-container w3-green" style="width:${requestScope.checkpercent}%">${requestScope.percent}%</div>
-                                        </div>
-                                    </div>                               
-                                </div>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">UserID</th>
+                                                <th scope="col">Username</th>
+                                                <th scope="col">Password</th>
+                                                <th scope="col">First Name</th>
+                                                <th scope="col">Last Name</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Phone Number</th>
+                                                <th scope="col">Address</th>
+                                                <th scope="col">Gender</th>
+                                                <th scope="col">Date of Birth</th>
+                                                <th scope="col">Bonus Point</th>
+                                                <th scope="col">Trust</th>
+                                                <th scope="col">Citizen ID</th>
+                                                <th scope="col">Image</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <c:forEach items="${requestScope.accList}" var="al">
+                                            <tr>
+                                                <th scope="row" class="count"></th>
+                                                <td>${al.id}</td>
+                                                <td>${al.username}</td>
+                                                <td>${al.password}</td>
+                                                <td>${al.firstName}</td>
+                                                <td>${al.lastName}</td>
+                                                <td>${al.email}</td>
+                                                <td>${al.phone}</td>
+                                                <td>${al.address}</td>
+                                                <td>${al.gender}</td>
+                                                <td>${al.dob}</td>
+                                                <td>${al.bonusPoint}</td>
+                                                <td>${al.trust}</td>
+                                                <td>${al.citizenID}</td>
+                                                <td>${al.accImage}</td>
+                                                <td>
+                                                    <button value="${al.id}">View</button>
+                                                    <button value="${al.id}">Delete</button>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+                                    </table>
+                                </div>                               
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <script src="plugins/bower_components/jquery/jquery.min.js"></script>
-            <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
-            <script src="styles/bootstrap4/bootstrap.bundle.min.js"></script>
-            <script src="plugins/bower_components/chartist/chartist.min.js"></script>
-            <script src="plugins/bower_components/chartist-plugin-tooltips/chartist-plugin-tooltip.min.js"></script>
-    </body>
+    <script src="plugins/bower_components/jquery/jquery.min.js"></script>
+    <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <script src="styles/bootstrap4/bootstrap.bundle.min.js"></script>
+    <script src="plugins/bower_components/chartist/chartist.min.js"></script>
+    <script src="plugins/bower_components/chartist-plugin-tooltips/chartist-plugin-tooltip.min.js"></script>
 </html>
