@@ -3,21 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/mihxdat/Desktop/SWP391/SWP392-MiniCV-FE/web/home.jsp</file>
-=======
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/ValidateOtpServlet.java</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/ChangePasswordServlet.java</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Model/Account.java</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/LogoutServlet.java</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/RegisterServlet.java</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/DAO/AccountDAO.java</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/LoginServlet.java</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/DAO/AdminDAO.java</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/FogotPassWordServlet.java</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/DAO/OrderDAO.java</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/DAO/RegisterDAO.java</file>
->>>>>>> 201e5b61d5056dee39a62e2e4916c22627c1267a
+            <file>file:/C:/Users/mihxdat/Desktop/SWP391/SWP392-MiniCV-FE/src/java/Controller/RegisterServlet.java</file>
+            <file>file:/C:/Users/mihxdat/Desktop/SWP391/SWP392-MiniCV-FE/src/java/Controller/AdLogoutServlet.java</file>
+            <file>file:/C:/Users/mihxdat/Desktop/SWP391/SWP392-MiniCV-FE/src/java/Controller/ProfileServlet.java</file>
         </group>
     </open-files>
 </project-private>
