@@ -61,18 +61,15 @@ public class ChangePasswordServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("change.jsp").forward(request, response);
+        request.getRequestDispatcher("changepassword.jsp").forward(request, response);
         String userName = request.getParameter("userName");
         String oldPassWord = request.getParameter("oldPassWord");
         String newPassWord = request.getParameter("newPassWord");
         String reNewPassWord = request.getParameter("reNewPassWord");
 
         try {
-            Account a = new Account();
             AccountDAO accountDAO = new AccountDAO();
-            a.setUsername(userName);
-            a = accountDAO.getAccount(userName);
-            HttpSession session = request.getSession();
+            Account a = accountDAO.getAccount(userName);
             if (oldPassWord == null && newPassWord == null && reNewPassWord == null) {
                 request.setAttribute("error", "Password not empty!!");
                 request.getRequestDispatcher("changepassword.jsp").forward(request, response);

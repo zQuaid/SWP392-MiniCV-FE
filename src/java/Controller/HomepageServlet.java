@@ -4,6 +4,8 @@
  */
 package Controller;
 
+import DAO.CategoryDAO;
+import Model.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -11,6 +13,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  *
@@ -57,7 +60,14 @@ public class HomepageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/home.jsp").forward(request, response);
+        CategoryDAO cd = new CategoryDAO();
+        try {
+            List<Product> list = cd.getNewProduct();
+            request.setAttribute("listpd", list);
+        } catch (NumberFormatException e) {
+        }
+        request.getRequestDispatcher("home.jsp").forward(request, response);
+       // request.getRequestDispatcher("/home.jsp").forward(request, response);
     }
 
     /**

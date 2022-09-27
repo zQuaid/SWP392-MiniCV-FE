@@ -129,13 +129,13 @@
                                     <div class="product-item">
                                         <div class="product discount product_filter">
                                             <div class="product_image">
-                                                <img src="${pd.image}"/>
+                                                <img src="${pd.Image}"/>
                                             </div>
                                             <div class="favorite favorite_left"></div>
                                             <div class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"><span>new</span></div>
                                             <div class="product_info">
-                                                <h6 class="product_name"><a href="products">${pd.name}</a></h6>
-                                                <div class="product_price">₫ ${pd.price}</div>
+                                                <h6 class="product_name"><a href="products">${pd.ProductName}</a></h6>
+                                                <div class="product_price">₫ ${pd.Price}</div>
                                             </div>
                                         </div>
                                     </div>
