@@ -5,21 +5,23 @@
 package Controller;
 
 import DAO.AccountDAO;
-import Model.Account;
+import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
+import jakarta.servlet.http.HttpSession;
+import Model.Account;
 
 /**
  *
- * @author citih
+ * @author PC
  */
-    @WebServlet(name = "ProfileServlet", urlPatterns = {"/profile"})
-public class ProfileServlet extends HttpServlet {
+@WebServlet(name = "ChangePassword", urlPatterns = {"/changepass"})
+public class ChangePasswordServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,15 +35,15 @@ public class ProfileServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ProfileServlet</title>");            
+            out.println("<title>Servlet ChangePassword</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ProfileServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ChangePassword at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,12 +61,36 @@ public class ProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        AccountDAO ac = new AccountDAO();
+        request.getRequestDispatcher("changepassword.jsp").forward(request, response);
+        String userName = request.getParameter("userName");
+        String oldPassWord = request.getParameter("oldPassWord");
+        String newPassWord = request.getParameter("newPassWord");
+        String reNewPassWord = request.getParameter("reNewPassWord");
 
-        String username = request.getParameter("username");
-        Account a = ac.getAccount(username);
-        request.setAttribute("detail", a);
-        request.getRequestDispatcher("/userprofile.jsp").forward(request, response);
+        try {
+            AccountDAO accountDAO = new AccountDAO();
+            Account a = accountDAO.getAccount(userName);
+            if (oldPassWord == null && newPassWord == null && reNewPassWord == null) {
+                request.setAttribute("error", "Password not empty!!");
+                request.getRequestDispatcher("changepassword.jsp").forward(request, response);
+            } else if (!newPassWord.equals(reNewPassWord)) {
+                request.setAttribute("error", "Password does not match!!");
+                request.getRequestDispatcher("changepassword.jsp").forward(request, response);
+            } else if (!newPassWord.equals(a.getPassword())) {
+                request.setAttribute("error", "OldPassword incorrect!!");
+                request.getRequestDispatcher("changepassword.jsp").forward(request, response);
+            } else {
+                Account acc = new Account();
+                a.setPassword(newPassWord);
+                accountDAO.update(acc);
+                request.setAttribute("success", "Password updateSucces!!");
+                request.getRequestDispatcher("homepage.jsp").forward(request, response);
+            }
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        response.sendRedirect("homepage");
+        request.getRequestDispatcher("homepage.jsp").forward(request, response);
     }
 
     /**
@@ -78,7 +104,7 @@ public class ProfileServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        doGet(request, response);
     }
 
     /**

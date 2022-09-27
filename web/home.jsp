@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -129,13 +129,13 @@
                                     <div class="product-item">
                                         <div class="product discount product_filter">
                                             <div class="product_image">
-                                                <img src="${pd.image}"/>
+                                                <img src="${pd.Image}"/>
                                             </div>
                                             <div class="favorite favorite_left"></div>
                                             <div class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"><span>new</span></div>
                                             <div class="product_info">
-                                                <h6 class="product_name"><a href="products">${pd.name}</a></h6>
-                                                <div class="product_price">₫ ${pd.price}</div>
+                                                <h6 class="product_name"><a href="products">${pd.ProductName}</a></h6>
+                                                <div class="product_price">₫ ${pd.Price}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -150,13 +150,14 @@
                     <div class="row align-items-center">
                         <div class="col-lg-6">
                             <div class="deal_ofthe_week_img">
-                                <img src="images/deal_ofthe_week.jpg" alt="">
+                                <img src="blog2.jpg" alt="">
                             </div>
                         </div>
                         <div class="col-lg-6 text-right deal_ofthe_week_col">
                             <div class="deal_ofthe_week_content d-flex flex-column align-items-center float-right">
                                 <div class="section_title">
                                     <h2>Blog</h2>
+                                    <h3>Cà phê rang xay là gì</h3>
                                 </div>
 
                                 <div class="red_button deal_ofthe_week_button"><a href="">Read more</a></div>

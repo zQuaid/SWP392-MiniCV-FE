@@ -4,22 +4,23 @@
  */
 package Controller;
 
-import DAO.AccountDAO;
-import Model.Account;
+import DAO.CategoryDAO;
+import Model.Product;
+import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 
 /**
  *
- * @author citih
+ * @author Admin
  */
-    @WebServlet(name = "ProfileServlet", urlPatterns = {"/profile"})
-public class ProfileServlet extends HttpServlet {
+@WebServlet(name = "HomepageServlet", urlPatterns = {"/home"})
+public class HomepageServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +39,10 @@ public class ProfileServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ProfileServlet</title>");            
+            out.println("<title>Servlet HomepageServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ProfileServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet HomepageServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,12 +60,14 @@ public class ProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        AccountDAO ac = new AccountDAO();
-
-        String username = request.getParameter("username");
-        Account a = ac.getAccount(username);
-        request.setAttribute("detail", a);
-        request.getRequestDispatcher("/userprofile.jsp").forward(request, response);
+        CategoryDAO cd = new CategoryDAO();
+        try {
+            List<Product> list = cd.getNewProduct();
+            request.setAttribute("listpd", list);
+        } catch (NumberFormatException e) {
+        }
+        request.getRequestDispatcher("home.jsp").forward(request, response);
+       // request.getRequestDispatcher("/home.jsp").forward(request, response);
     }
 
     /**

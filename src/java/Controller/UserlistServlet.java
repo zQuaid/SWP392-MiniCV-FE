@@ -4,22 +4,23 @@
  */
 package Controller;
 
-import DAO.AccountDAO;
+import DAO.UserDAO;
 import Model.Account;
+import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 
 /**
  *
- * @author citih
+ * @author Admin
  */
-    @WebServlet(name = "ProfileServlet", urlPatterns = {"/profile"})
-public class ProfileServlet extends HttpServlet {
+@WebServlet(name = "UserlistServlet", urlPatterns = {"/userlist"})
+public class UserlistServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +39,10 @@ public class ProfileServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ProfileServlet</title>");            
+            out.println("<title>Servlet UserlistServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ProfileServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UserlistServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,12 +60,10 @@ public class ProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        AccountDAO ac = new AccountDAO();
-
-        String username = request.getParameter("username");
-        Account a = ac.getAccount(username);
-        request.setAttribute("detail", a);
-        request.getRequestDispatcher("/userprofile.jsp").forward(request, response);
+        UserDAO ud = new UserDAO();
+        List<Account> acc = ud.getUserList();
+        request.setAttribute("accList", acc);
+       request.getRequestDispatcher("/userlist.jsp").forward(request, response);
     }
 
     /**
