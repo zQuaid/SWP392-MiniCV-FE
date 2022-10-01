@@ -4,12 +4,14 @@
  */
 package Controller;
 
+import DAO.CategoryDAO;
 import DAO.ProductDAO;
 import Model.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -18,10 +20,10 @@ import java.util.List;
 
 /**
  *
- * @author Admin
+ * @author mihxdat
  */
-@WebServlet(name = "HomepageServlet", urlPatterns = {"/home"})
-public class HomepageServlet extends HttpServlet {
+@WebServlet(name = "DetailServlet", urlPatterns = {"/detail"})
+public class DetailServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,13 +42,12 @@ public class HomepageServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet HomepageServlet</title>");            
+            out.println("<title>Servlet DetailServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet HomepageServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet DetailServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-            request.getRequestDispatcher("home.jsp").forward(request, response);
         }
     }
 
@@ -62,11 +63,44 @@ public class HomepageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        String id_raw = request.getParameter("id");
+        int id;
+        try {
             ProductDAO productDAO = new ProductDAO();
-            List<Product> topProduct = productDAO.getTopProduct();
-            request.setAttribute("topProduct", topProduct);
-        request.getRequestDispatcher("home.jsp").forward(request, response);
-       // request.getRequestDispatcher("/home.jsp").forward(request, response);
+            Cookie arr[] = request.getCookies();
+            List<Product> list = new ArrayList<>();
+            for (Cookie o : arr) {
+                if (o.getName().equals("id")) {
+                    String txt[] = o.getValue().split(",");
+                    for (String s : txt) {
+                        list.add(productDAO.getProductDetail(s));
+                    }
+                }
+            }
+            for (int i = 0; i < list.size(); i++) {
+                int count = 1;
+                for (int j = i + 1; j < list.size(); j++) {
+                    if (list.get(i).getProductID() == list.get(j).getProductID()) {
+                        count++;
+                        list.remove(j);
+                        j--;
+                        list.get(i).setQuantity(count);
+                    }
+                }
+            }
+            for (Cookie o : arr) {
+                o.setMaxAge(0);
+                response.addCookie(o);
+            }
+            int n = list.size();
+            request.setAttribute("size", n);
+            id = Integer.parseInt(id_raw);
+            Product p = productDAO.getProductsById(id);
+            request.setAttribute("detail", p);
+            request.getRequestDispatcher("detail.jsp").forward(request, response);
+        } catch (Exception e) {
+        }
     }
 
     /**

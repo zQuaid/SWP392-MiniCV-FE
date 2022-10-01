@@ -12,20 +12,26 @@ public class Product {
     private int productID;
     private String productName;
     private int price;
+    private int discount;
     private int quantity;
     private String description;
     private String image;
+    private int categoryID;
+    private int warehouseID;
 
     public Product() {
     }
 
-    public Product(int productID, String productName, int price, int quantity, String description, String image) {
+    public Product(int productID, String productName, int price, int discount, int quantity, String description, String image, int categoryID, int warehouseID) {
         this.productID = productID;
         this.productName = productName;
         this.price = price;
+        this.discount = discount;
         this.quantity = quantity;
         this.description = description;
         this.image = image;
+        this.categoryID = categoryID;
+        this.warehouseID = warehouseID;
     }
 
     public int getProductID() {
@@ -52,6 +58,15 @@ public class Product {
         this.price = price;
     }
 
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+    
+
     public int getQuantity() {
         return quantity;
     }
@@ -75,6 +90,29 @@ public class Product {
     public void setImage(String image) {
         this.image = image;
     }
+
+    public int getCategoryID() {
+        return categoryID;
+    }
+
+    public void setCategoryID(int categoryID) {
+        this.categoryID = categoryID;
+    }
+
+    public int getWarehouseID() {
+        return warehouseID;
+    }
+
+    public void setWarehouseID(int warehouseID) {
+        this.warehouseID = warehouseID;
+    }
+
+    
+    
+    
+    
+    
+    
     
     
 }
