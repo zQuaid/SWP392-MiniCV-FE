@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class AccountDAO extends DBContext {
 
-public void newPassword(String newPassword, String email) {
+    public void newPassword(String newPassword, String email) {
         try {
 
             String sql = "update Account set password = ? where email = ? ";
@@ -39,7 +39,7 @@ public void newPassword(String newPassword, String email) {
         }
     }
 
-        public Account getAccount(String username) {
+    public Account getAccount(String username) {
         String sql = "select * from Account where username = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
