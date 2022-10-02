@@ -48,6 +48,12 @@
                             <li class="sidebar-item pt">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link active" href="#"
                                    aria-expanded="false">
+                                    <span class="hide-menu">Summary</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item pt">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link active" href="#"
+                                   aria-expanded="false">
                                     <span class="hide-menu">Profile</span>
                                 </a>
                             </li>
@@ -117,7 +123,6 @@
                                                 <th scope="col">#</th>
                                                 <th scope="col">UserID</th>
                                                 <th scope="col">Username</th>
-                                                <th scope="col">Password</th>
                                                 <th scope="col">First Name</th>
                                                 <th scope="col">Last Name</th>
                                                 <th scope="col">Email</th>
@@ -137,21 +142,25 @@
                                                 <th scope="row" class="count"></th>
                                                 <td>${al.id}</td>
                                                 <td>${al.username}</td>
-                                                <td>${al.password}</td>
                                                 <td>${al.firstName}</td>
                                                 <td>${al.lastName}</td>
                                                 <td>${al.email}</td>
                                                 <td>${al.phone}</td>
                                                 <td>${al.address}</td>
-                                                <td>${al.gender}</td>
+                                                <td><c:choose>
+                                                <c:when test="${user.gender==true}">Male</c:when>
+                                                <c:otherwise>Female</c:otherwise>
+                                            </c:choose></td>
                                                 <td>${al.dob}</td>
                                                 <td>${al.bonusPoint}</td>
                                                 <td>${al.trust}</td>
                                                 <td>${al.citizenID}</td>
-                                                <td>${al.accImage}</td>
+                                                <td><img src="${al.accImage}" alt="${al.id} width="50" height="70"/></td>
                                                 <td>
-                                                    <button value="${al.id}">View</button>
-                                                    <button value="${al.id}">Delete</button>
+                                                    <form method="POST">
+                                                        <input type="hidden" name="userid" value="${al.id}" />
+                                                        <input type="submit" value="View Detail" />
+                                                    </form>
                                                 </td>
                                             </tr>
                                         </c:forEach>
@@ -170,4 +179,5 @@
     <script src="styles/bootstrap4/bootstrap.bundle.min.js"></script>
     <script src="plugins/bower_components/chartist/chartist.min.js"></script>
     <script src="plugins/bower_components/chartist-plugin-tooltips/chartist-plugin-tooltip.min.js"></script>
+    <script src="js/userlistjs.js"></script>
 </html>
