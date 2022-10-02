@@ -171,7 +171,9 @@
                                         </c:forEach>
                                     </table>
                                 </div>
-                                <button>Add new Staff</button>
+                                <div class="col-sm-12">
+                                                <a href="addstaff" class="btn btn-success">Add new Staff</a>
+                                            </div>
                             </div>
                         </div>
                     </div>

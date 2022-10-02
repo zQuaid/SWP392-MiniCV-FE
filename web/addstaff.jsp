@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/chartist-plugin-tooltip.css">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link href="styles/css/style.min.css" rel="stylesheet">
-        <link href="styles/css/userlist.css" rel="stylesheet">
+        <link href="styles/css/addstaff.css" rel="stylesheet">
 
     </head>
     <body>
@@ -119,51 +119,68 @@
                                 <div class="card-body">
                                     <form class="form-horizontal form-material" method="POST">
                                         <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">Tên
-                                                <input type="text" name="fullname" class="form-control"/>
+                                            <div class="col-md-12 border-bottom p-0">First Name
+                                                <input type="text" name="firstname" id="firstname" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-4">
+                                            <div class="col-md-12 border-bottom p-0">Last Name
+                                                <input type="text" name="lastname" id=lastname class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Username
-                                                <input type="text" name="username" class="form-control"/>
+                                                <input type="text" name="username" id="username" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-4">
+                                            <div class="col-md-12 border-bottom p-0">Password
+                                                <input type="password" name="password" id="password" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Email
-                                                <input type="text" name="email" class="form-control"/>
+                                                <input type="text" name="email" class="form-control" id="email"/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Giôi Tính </div>
+                                            <input type="radio" name="gender" id="gender" value="1" checked=""> Male
+                                            <input type="radio" name="gender" id="gender" value="0"> Female
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Ðia Chi
-                                                <input type="text" class="form-control" name="address">
+                                                <input type="text" class="form-control" name="address" id="address">
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">SÐT     
-                                                <input type="text" name="phone" class="form-control"/>
+                                                <input type="text" name="phone" id="phone" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Ngày tháng nam sinh
-                                                <input type="text" name="dob" class="form-control"/>
+                                                <input type="date" name="dob" id="dob" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Ca lam viec
-                                                <input type="text" name="workingshift" class="form-control"/>
+                                                <select class="custom-select" style="width:200px;" name="workingshift" id="workingshift">
+                                                    <option value="Sang">Sáng</option>
+                                                    <option value="Chieu">Chiêu</option>
+                                                    <option value="Toi">Tôi</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Luong
-                                                <input  type="text" name="salary" class="form-control"/>
+                                                <input  type="text" name="salary" id="salary" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-sm-12">
                                                 <a href="stafflist" class="btn btn-success">Back</a>
+                                                <button type="submit" class="btn btn-success" id="btnadd">Add</button>
                                             </div>
                                         </div>
                                     </form>
@@ -191,4 +208,5 @@
     <script src="styles/bootstrap4/bootstrap.bundle.min.js"></script>
     <script src="plugins/bower_components/chartist/chartist.min.js"></script>
     <script src="plugins/bower_components/chartist-plugin-tooltips/chartist-plugin-tooltip.min.js"></script>
+    <script src="js/addstaff.js"></script>
 </html>
