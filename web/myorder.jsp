@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -33,7 +33,7 @@
                                         <h6 class="mb-2">Gurdeep Singh</h6>
                                         <p class="mb-1">+91 85680-79956</p>
                                         <p>iamosahan@gmail.com</p>
-                                        <p class="mb-0 text-black font-weight-bold"><a class="text-primary mr-3" data-toggle="modal" data-target="#edit-profile-modal" href="#"><i class="icofont-ui-edit"></i> EDIT</a></p>
+                                        <p class="mb-0 text-black font-weight-bold"><a class="text-primary mr-3" data-toggle="modal" data-target="#edit-profile-modal" href="editprofile"><i class="icofont-ui-edit"></i> EDIT</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -45,6 +45,7 @@
                         </ul>
                     </div>
                 </div>
+
                 <div class="col-md-9">
                     <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
                         <div class="tab-content" id="myTabContent">
@@ -61,7 +62,7 @@
 
 
                                                 <form>
-                                                    <input type="text" class="form-control" placeholder="Tìm kiếm theo Tên Shop, ID đơn hàng hoặc Tên Sản phẩm"> 
+                                                    <input type="text" class="form-control" placeholder="Tìm kiếm tho ID đơn hàng hoặc Tên Sản phẩm"> 
 
                                                 </form>
 
@@ -72,107 +73,48 @@
 
                                     </div>
                                 </div>
+                                
                                 <c:forEach items="${requestScope.listod}" var="od">
-                                <div class="bg-white card mb-4 order-list shadow-sm">
-                                    <div class="gold-members p-4">
-                                        <a href="#">
-                                        </a>
-                                        <div class="media">
+
+
+                                    <div class="bg-white card mb-4 order-list shadow-sm" >
+                                        <div class="gold-members p-4">
                                             <a href="#">
-                                                <img class="mr-4" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Generic placeholder image">
                                             </a>
-                                            <div class="media-body">
+                                            <div class="media">
+
                                                 <a href="#">
-                                                    <span class="float-right text-info"> <i class="icofont-check-circled text-success"></i></span>
+                                                    <img class="mr-4" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Generic placeholder image">
                                                 </a>
-                                                <h6 class="mb-2">
-                                                    <a href="#"></a>
-                                                    <a href="#" class="text-black">Gus's World Famous Fried Chicken</a>
-                                                </h6>
-                                                <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> ${od.shippingAddress}
-                                                </p>
-                                                <p class="text-gray mb-3"><i class="icofont-list"></i> ${od.orderID} <i class="icofont-clock-time ml-2"></i> ${od.date}</p>
-                                                <p class="text-dark">Veg Masala Roll x 1, Veg Burger x 1, Veg Penne Pasta in Red Sauce x 1
-                                                </p>
-                                                <hr>
-                                                <div class="float-right">
-                                                    <a class="btn btn-sm btn-outline-primary" href="#"><i class="icofont-headphone-alt"></i> HELP</a>
-                                                    <a class="btn btn-sm btn-primary" href="#"><i class="icofont-refresh"></i> REORDER</a>
+                                                <div class="media-body">
+                                                    <a href="#">
+                                                        <span class="float-right text-info"> <i class="icofont-check-circled text-success"></i></span>
+                                                    </a>
+                                                    <h6 class="mb-2">
+                                                        <a href="#"></a>
+                                                        <a href="#" class="text-black">Name : ${od.product.productName} </a>
+                                                    </h6>
+                                                    <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> Shipping address:${od.orderInfo.shippingAddress}   </p>
+                                                    <p class="text-gray mb-3"><i class="icofont-list"></i>OrderID: ${od.orderInfo.orderID}   <i class="icofont-clock-time ml-2"></i>Date:${od.orderInfo.date} </p>
+                                                    <p class="text-dark">Quantity: ${od.getQuantity()}
+                                                    </p>
+                                                    <hr>
+                                                    <div class="float-right">
+                                                        
+                                                            <a class="btn btn-sm btn-outline-primary" href="oderdetail?userid=${od.orderInfo.userID}?productid=${od.product.productID}?date=${od.orderInfo.date}"><i class="icofont-headphone-alt"></i> VIEW DETAIL</a>
+                                                       
+                                                        <a class="btn btn-sm btn-primary" href="#"><i class="icofont-refresh"></i> REORDER</a>
+                                                    </div>
+                                                    <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total Paid:</span> ${od.orderInfo.totalPrice}
+                                                    </p>
                                                 </div>
-                                                <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total Paid:</span> $300
-                                                </p>
                                             </div>
                                         </div>
-
                                     </div>
-                                </div>
+
                                 </c:forEach>
 
-                                <div class="bg-white card mb-4 order-list shadow-sm">
-                                    <div class="gold-members p-4">
-                                        <a href="#">
-                                        </a>
-                                        <div class="media">
-                                            <a href="#">
-                                                <img class="mr-4" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="Generic placeholder image">
-                                            </a>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <span class="float-right text-info">Delivered on Mon, Nov 12, 7:18 PM <i class="icofont-check-circled text-success"></i></span>
-                                                </a>
-                                                <h6 class="mb-2">
-                                                    <a href="#"></a>
-                                                    <a href="#" class="text-black">Jimmy's Famous American Tavern</a>
-                                                </h6>
-                                                <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> 1733 Ocean Ave, Santa Monica, CA 90401, USA
-                                                </p>
-                                                <p class="text-gray mb-3"><i class="icofont-list"></i> ORDER #25102589748 <i class="icofont-clock-time ml-2"></i> Mon, Nov 12, 6:26 PM</p>
-                                                <p class="text-dark">Veg Masala Roll x 5, Veg Burger x 1, Veg Penne Pasta in Red Sauce x 1
-                                                </p>
-                                                <hr>
-                                                <div class="float-right">
-                                                    <a class="btn btn-sm btn-outline-primary" href="#"><i class="icofont-headphone-alt"></i> HELP</a>
-                                                    <a class="btn btn-sm btn-primary" href="#"><i class="icofont-refresh"></i> REORDER</a>
-                                                </div>
-                                                <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total Paid:</span> $500
-                                                </p>
-                                            </div>
-                                        </div>
 
-                                    </div>
-                                </div>
-                                <div class="bg-white card  order-list shadow-sm">
-                                    <div class="gold-members p-4">
-                                        <a href="#">
-                                        </a>
-                                        <div class="media">
-                                            <a href="#">
-                                                <img class="mr-4" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="Generic placeholder image">
-                                            </a>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <span class="float-right text-info">Delivered on Mon, Nov 12, 7:18 PM <i class="icofont-check-circled text-success"></i></span>
-                                                </a>
-                                                <h6 class="mb-2">
-                                                    <a href="#"></a>
-                                                    <a href="#" class="text-black">The Famous Restaurant</a>   
-                                                </h6>
-                                                <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> 953 S Main St, Centerville, OH 45459, USA
-                                                </p>
-                                                <p class="text-gray mb-3"><i class="icofont-list"></i> ORDER #25102589748 <i class="icofont-clock-time ml-2"></i> Mon, Nov 12, 6:26 PM</p>
-                                                <p class="text-dark">Veg Masala Roll x 5, Veg Penne Pasta in Red Sauce x 1
-                                                </p>
-                                                <hr>
-                                                <div class="float-right">
-                                                    <a class="btn btn-sm btn-outline-primary" href="#"><i class="icofont-headphone-alt"></i> HELP</a>
-                                                    <a class="btn btn-sm btn-primary" href="#"><i class="icofont-refresh"></i> REORDER</a>
-                                                </div>
-                                                <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total Paid:</span> $420
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

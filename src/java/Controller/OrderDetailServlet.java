@@ -4,10 +4,9 @@
  */
 package Controller;
 
+
 import DAO.OrderDAO;
-
 import Model.Bill;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -16,14 +15,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
-
+import java.util.List;
 
 /**
  *
  * @author citih
  */
-@WebServlet(name = "MyOrderServlet", urlPatterns = {"/myorder"})
-public class MyOrderServlet extends HttpServlet {
+@WebServlet(name = "OrderDetailServlet", urlPatterns = {"/oderdetail"})
+public class OrderDetailServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +41,10 @@ public class MyOrderServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet MyOrderServlet</title>");
+            out.println("<title>Servlet OrderDetailServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet MyOrderServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet OrderDetailServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,15 +62,14 @@ public class MyOrderServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        OrderDAO o = new OrderDAO();
-
-        String userid = request.getParameter("userid");
-        ArrayList<Bill> list  = o.getOrder(userid);
         
-        request.setAttribute("listod", list);
-
-        request.getRequestDispatcher("myorder.jsp").forward(request, response);
+        OrderDAO o = new OrderDAO();
+        String userid = request.getParameter("userid");
+        String productid = request.getParameter("productid");
+        String date = request.getParameter("date");
+        List<Bill> list  = o.getOrderInfo(userid, productid, date);
+        request.setAttribute("listdt", list);
+        request.getRequestDispatcher("orderdetail.jsp").forward(request, response);
 
     }
 
@@ -86,7 +84,7 @@ public class MyOrderServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("myorder.jsp");
+        processRequest(request, response);
     }
 
     /**
