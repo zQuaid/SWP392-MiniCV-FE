@@ -6,6 +6,7 @@ package DAO;
 
 import Context.DBContext;
 import Model.Account;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -132,6 +133,24 @@ public class AccountDAO extends DBContext{
     }
     
     public void addStaff(Account a){
-        String sql = "INSERT INTO Account";
+        String sql = "INSERT INTO [dbo].[Account] ([Username], [Password], [FirstName], [LastName], [Email], [Phone], [Address], [Gender], [DOB], [RoleID],  [Salary], [CitizenID], [WorkingShift], [AccImage]) VALUES  ('?', '?', '?', '?', '?', '?', '?', ?, '?', 2, '?', '?', '?', '?')";
+        try{
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, a.getUsername());
+            st.setString(2, a.getPassword());
+            st.setString(3, a.getFirstName());
+            st.setString(4, a.getLastName());
+            st.setString(5, a.getEmail());
+            st.setString(6, a.getPhone());
+            st.setString(7, a.getAddress());
+            st.setBoolean(8, a.isGender());
+            st.setDate(9, new java.sql.Date(a.getDob().getTime()));
+            st.setString(10, a.getSalary());
+            st.setString(11, a.getCitizenID());
+            st.setString(12, a.getWorkingShift());
+            st.setString(13, a.getAccImage());
+            st.executeUpdate();
+            }catch(SQLException e){    
+        }
     }
 }

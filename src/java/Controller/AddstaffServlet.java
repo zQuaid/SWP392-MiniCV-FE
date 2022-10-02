@@ -4,6 +4,8 @@
  */
 package Controller;
 
+import DAO.AccountDAO;
+import Model.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -11,6 +13,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -71,7 +76,39 @@ public class AddstaffServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String firstName = request.getParameter("firstname");
+        String lastName = request.getParameter("lastname");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String email = request.getParameter("email");
+        boolean gender;
+        gender = request.getParameter("gender").equals("1");
+        Account a = new Account();
+        String address = request.getParameter("address");
+        String phone = request.getParameter("phone");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try{
+        Date dob = sdf.parse(request.getParameter("dob"));
+        a.setDob(dob);
+        }catch(ParseException e){
+        }
+        String workingShift = request.getParameter("workingshift");
+        String salary = request.getParameter("salary");
+        String citizenID = request.getParameter("citizenid");
+        a.setFirstName(firstName);
+        a.setLastName(lastName);
+        a.setUsername(username);
+        a.setPassword(password);
+        a.setEmail(email);
+        a.setCitizenID(citizenID);
+        a.setGender(gender);
+        a.setAddress(address);
+        a.setPhone(phone);
+        a.setWorkingShift(workingShift);
+        a.setSalary(salary);
+        AccountDAO ad = new AccountDAO();
+        ad.addStaff(a);
+        response.sendRedirect("stafflist");
     }
 
     /**

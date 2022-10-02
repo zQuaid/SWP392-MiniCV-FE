@@ -10,12 +10,14 @@ $(document).ready(function() {
    var regexEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
    var regexName = /^[a-zA-Z]{1,20}$/;
    var regexPhone = /^[0-9]{0,11}$/;
+   var regexCMT = /^(\d{9}|\d{12})$/;
 
    var firstname =  $("#firstname").val();
    var lastname = $("#lastname").val();
    var username = $("#username").val();
    var password = $("#password").val();
    var email = $("#email").val();
+   var citizenid = $("#citizenid").val();
    var address = $("#address").val();
    var phone =  $("#phone").val();
    var dob = $("#dob").val();
@@ -60,6 +62,14 @@ $(document).ready(function() {
        $("#address").after('<span class="error">Address must not null</span>');
        hasError = true;
     }
+    
+    if(citizenid == ""){
+       $("#citizenid").after('<span class="error">CitizenID must not null</span>');
+       hasError = true;
+   }else if(!regexCMT.test(citizenid)){
+       $("#citizenid").after('<span class="error">CitizenID must be 9 or 12 symbol</span>');
+       hasError = true;
+   }
 
    if(!regexPhone.test(phone)) {
      $("#phone").after('<span class="error">Phone is incorrect format</span>');

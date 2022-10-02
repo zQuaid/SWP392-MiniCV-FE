@@ -154,6 +154,11 @@
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
+                                            <div class="col-md-12 border-bottom p-0">CMT/CCCD
+                                                <input type="text" class="form-control" name="citizenid" id="citizenid">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">SÐT     
                                                 <input type="text" name="phone" id="phone" class="form-control"/>
                                             </div>
