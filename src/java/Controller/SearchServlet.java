@@ -57,7 +57,7 @@ public class SearchServlet extends HttpServlet {
                 int index = Integer.parseInt(request.getParameter("index"));
 
                 int count = productDAO.count(txt);
-                int size = 8;
+                int size = 1;
                 int endPage = count / size;
                 if (count % size != 0) {
                     endPage++;

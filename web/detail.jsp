@@ -58,7 +58,7 @@
                         <div class="row">
                             <div class="col-lg-12 text-right">
                                 <div class="logo_container">
-                                    <a href="home.jsp">Levents<span>shop</span></a>
+                                    <a href="home.jsp">Let's<span>café</span></a>
                                 </div>
                                 <nav class="navbar">
                                     <ul class="navbar_menu">
@@ -90,7 +90,7 @@
                             <ul>
                                 <li><a href="home">Home</a></li>
                                 <li><a href="product"><i class="fa fa-angle-right" aria-hidden="true"></i>Products</a></li>
-                                <li class="active"><i class="fa fa-angle-right" aria-hidden="true"></i>${detail.productName}</a></li></li>
+                                <li class="active"><i class="fa fa-angle-right" aria-hidden="true"></i>${detail.productName}</a></li></li
                             </ul>
                         </div>
                     </div>
@@ -113,9 +113,9 @@
                                 <h2>${detail.productName}</h2>
                                 <dt>Description</dt>
                                 <p>${detail.description}</p>
-                                
+
                             </div>
-                            <div class="product_price">₫ ${detail.price}</div>
+                            <div class="product_price">${detail.price} VND</div>
                             <div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">
                                 <span>Quantity:</span>
                                 <div class="quantity_selector">
@@ -126,7 +126,7 @@
                             </div>
                             <br/>
                             <div class="red_button add_to_cart_button"><a href="cart?id=${detail.productID}">add to cart</a></div>
-                        </div>
+                        </div>c
                     </div>
                     <a href="products" class="fa fa-angle-double-left">&nbsp; Back</a>
                 </div>

@@ -102,23 +102,38 @@ public class ProductDAO extends DBContext {
 
     }
 
-    public ArrayList<Product> getProductByCategoryID(int categoryID) {
+    public List<Product> getProductByCategoryID(int categoryID) {
         ArrayList<Product> list = new ArrayList<>();
+        String sql = "SELECT [ProductID]\n"
+                + "      ,[ProductName]\n"
+                + "      ,[Price]\n"
+                + "      ,[Discount]\n"
+                + "      ,[Quantity]\n"
+                + "      ,[Decription]\n"
+                + "      ,[Image]\n"
+                + "      ,[CategoryID]\n"
+                + "      ,[WarehouseID]\n"
+                + "  FROM [dbo].[Product]"
+                + "  WHERE 1=1 ";
+
+        if (categoryID != 0) {
+            sql += " and CategoryID=" + categoryID;
+        }
         try {
-            String sql = "SELECT * FROM Product WHERE CategoryID = ?";
+
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, categoryID);
+            
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                Product p = new Product(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getInt(3),
-                        rs.getInt(4),
-                        rs.getInt(5),
-                        rs.getString(6),
-                        rs.getString(7),
-                        rs.getInt(8),
-                        rs.getInt(9));
+                Product p = new Product();
+                p.setProductID(rs.getInt("ProductID"));
+                p.setProductName(rs.getString("ProductName"));
+                p.setPrice(rs.getInt("Price"));
+                p.setDiscount(rs.getInt("Discount"));
+                p.setQuantity(rs.getInt("Quantity"));
+                p.setDescription(rs.getString("Decription"));
+                p.setImage(rs.getString("Image"));
+                p.setWarehouseID(rs.getInt("WarehouseID"));
                 list.add(p);
             }
         } catch (Exception e) {
@@ -219,7 +234,5 @@ public class ProductDAO extends DBContext {
         }
         return 0;
     }
-    
-
 
 }

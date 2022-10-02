@@ -58,7 +58,7 @@
                         <div class="row">
                             <div class="col-lg-12 text-right">
                                 <div class="logo_container">
-                                    <a href="home">Levents<span>shop</span></a>
+                                    <a href="home">Let's<span>Café</span></a>
                                 </div>
                                 <nav class="navbar">
                                     <ul class="navbar_menu">
@@ -147,7 +147,9 @@
                                                                 <div class="favorite favorite_left"></div>
                                                                 <div class="product_info">
                                                                     <h6 class="product_name"><a href="detail?id=${product.productID}">${product.productName}</a></h6>
-                                                                    <div class="product_price">₫ ${product.price}</div>
+                                                                    <div class="product_price"> ${product.price} VND</div>
+                                                                    <br><!-- comment -->
+                                                                    <div class="red_button"><a href="cart?id=${product.productID}">add to cart</a></div>
                                                                 </div>
                                                             </div>
                                                         </div>
