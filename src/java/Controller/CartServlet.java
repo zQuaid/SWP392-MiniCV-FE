@@ -60,43 +60,38 @@ public class CartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String id_raw = request.getParameter("id");
-        int id;
-        try {
-            ProductDAO productDAO = new ProductDAO();
-            Cookie arr[] = request.getCookies();
-            List<Product> list = new ArrayList<>();
-            for (Cookie o : arr) {
-                if (o.getName().equals("id")) {
-                    String txt[] = o.getValue().split(",");
-                    for (String s : txt) {
-                        list.add(productDAO.getProductDetail(s));
-                    }
+        Cookie arr[] = request.getCookies();
+        List<Product> list = new ArrayList<>();
+        ProductDAO productDAO = new ProductDAO();
+        for (Cookie o : arr) {
+            if (o.getName().equals("id")) {
+                String txt[] = o.getValue().split(",");
+                for (String s : txt) {
+                    list.add(productDAO.getProductDetail(s));
                 }
             }
-            for (int i = 0; i < list.size(); i++) {
-                int count = 1;
-                for (int j = i + 1; j < list.size(); j++) {
-                    if (list.get(i).getProductID() == list.get(j).getProductID()) {
-                        count++;
-                        list.remove(j);
-                        j--;
-                        list.get(i).setQuantity(count);
-                    }
-                }
-            }
-            for (Cookie o : arr) {
-                o.setMaxAge(0);
-                response.addCookie(o);
-            }
-            int n = list.size();
-            request.setAttribute("size", n);
-            id = Integer.parseInt(id_raw);
-            Product p = productDAO.getProductsById(id);
-            request.setAttribute("detail", p);
-            request.getRequestDispatcher("detail.jsp").forward(request, response);
-        } catch (Exception e) {
         }
+        for (int i = 0; i < list.size(); i++) {
+            int count = 1;
+            for (int j = i + 1; j < list.size(); j++) {
+                if (list.get(i).getProductID() == list.get(j).getProductID()) {
+                    count++;
+                    list.remove(j);
+                    j--;
+                    list.get(i).setQuantity(count);
+                }
+            }
+        }
+        double total = 0;
+        for (Product o : list) {
+            total = total + o.getQuantity() * o.getPrice();
+        }
+
+        int n = list.size();
+        request.setAttribute("size", n);
+        request.setAttribute("list", list);
+        request.setAttribute("total", total);
+        request.getRequestDispatcher("cart.jsp").forward(request, response);
     } 
 
     /** 

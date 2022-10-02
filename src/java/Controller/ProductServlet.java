@@ -5,7 +5,6 @@
 
 package Controller;
 
-import DAO.CategoryDAO;
 import DAO.ProductDAO;
 import Model.Category;
 import Model.Product;
@@ -46,7 +45,6 @@ public class ProductServlet extends HttpServlet {
             out.println("<h1>Servlet ProductServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
-            request.getRequestDispatcher("products.jsp").forward(request, response);
         }
     } 
 
@@ -61,7 +59,7 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        CategoryDAO categoryDAO = new CategoryDAO();
+        ProductDAO categoryDAO = new ProductDAO();
         ProductDAO producrDAO = new ProductDAO();
         List<Category> listCategory = categoryDAO.getListCategory();
         request.setAttribute("listCategory", listCategory);

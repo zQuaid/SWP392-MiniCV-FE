@@ -5,6 +5,7 @@
 package DAO;
 
 import Context.DBContext;
+import Model.Category;
 import Model.Product;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,6 +19,27 @@ import java.util.List;
  * @author mihxdat
  */
 public class ProductDAO extends DBContext {
+
+    public List<Category> getListCategory() {
+        ArrayList<Category> list = new ArrayList<>();
+        try {
+            String sql = "SELECT [CategoryID]\n"
+                    + "      ,[CategoryName]\n"
+                    + "  FROM [dbo].[Category]";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Category c = new Category();
+                c.setCategoryID(rs.getInt("CategoryID"));
+                c.setCategoryName(rs.getString("CategoryName"));
+                list.add(c);
+            }
+        } catch (Exception e) {
+        }
+
+        return list;
+
+    }
 
     public ArrayList<Product> getTopProduct() {
         ArrayList<Product> list = new ArrayList<>();
@@ -47,7 +69,7 @@ public class ProductDAO extends DBContext {
 
     public ArrayList<Product> getAllProduct() {
         ArrayList<Product> list = new ArrayList<>();
-        
+
         try {
             String sql = "SELECT [ProductID]\n"
                     + "      ,[ProductName]\n"
@@ -61,7 +83,7 @@ public class ProductDAO extends DBContext {
                     + "  FROM [dbo].[Product]";
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {
                 Product p = new Product(rs.getInt(1),
                         rs.getString(2),
                         rs.getInt(3),
@@ -79,15 +101,15 @@ public class ProductDAO extends DBContext {
         return list;
 
     }
-    
-    public ArrayList<Product> getProductByCategoryID(int categoryID){
+
+    public ArrayList<Product> getProductByCategoryID(int categoryID) {
         ArrayList<Product> list = new ArrayList<>();
         try {
             String sql = "SELECT * FROM Product WHERE CategoryID = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, categoryID);
             ResultSet rs = st.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {
                 Product p = new Product(rs.getInt(1),
                         rs.getString(2),
                         rs.getInt(3),
@@ -102,18 +124,18 @@ public class ProductDAO extends DBContext {
         } catch (Exception e) {
         }
         return list;
-        
+
     }
-    
-        public Product getProductsById(int productID) {
-            ArrayList<Product> list = new ArrayList<>();
-        
+
+    public Product getProductsById(int productID) {
+        ArrayList<Product> list = new ArrayList<>();
+
         try {
             String sql = "select * from Product where ProductID = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, productID);
             ResultSet rs = st.executeQuery();
-             while (rs.next()) {                
+            while (rs.next()) {
                 Product p = new Product(rs.getInt(1),
                         rs.getString(2),
                         rs.getInt(3),
@@ -124,13 +146,13 @@ public class ProductDAO extends DBContext {
                         rs.getInt(8),
                         rs.getInt(9));
                 return p;
-             }
-             
+            }
+
         } catch (SQLException e) {
         }
         return null;
     }
-        
+
     public Product getProductDetail(String txt) {
         ArrayList<Product> list = new ArrayList<>();
         String sql = "select * from Product where ProductID = ?";
@@ -138,7 +160,7 @@ public class ProductDAO extends DBContext {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, txt);
             ResultSet rs = st.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {
                 Product p = new Product(rs.getInt(1),
                         rs.getString(2),
                         rs.getInt(3),
@@ -149,10 +171,55 @@ public class ProductDAO extends DBContext {
                         rs.getInt(8),
                         rs.getInt(9));
                 return p;
-             }
+            }
         } catch (SQLException e) {
         }
         return null;
     }
+
+    public List<Product> search(String txt, int index) throws SQLException {
+        List<Product> list = new ArrayList<>();
+        String sql = "select * from\n"
+                + "(select ROW_NUMBER () over (order by ProductID asc) as r, * \n"
+                + "from Product where [ProductName] like ?) as x\n"
+                + "where r between ? * 3 - 2 and ? * 3";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, "%" + txt + "%");
+            st.setInt(2, index);
+            st.setInt(3, index);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Product p = new Product(rs.getInt(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getInt(5),
+                        rs.getInt(6),
+                        rs.getString(7),
+                        rs.getString(8),
+                        rs.getInt(9),
+                        rs.getInt(10));
+                list.add(p);
+            }
+        } catch (SQLException e) {
+        }
+        return list;
+    }
+
+    public int count(String txt) throws SQLException {
+        try {
+            String sql = "select count (*) from Product where [ProductName] like ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, "%" + txt + "%");
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+        }
+        return 0;
+    }
+    
+
 
 }
