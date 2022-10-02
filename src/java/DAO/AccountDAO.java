@@ -65,6 +65,8 @@ public class AccountDAO extends DBContext{
                 a.setAddress(rs.getString("Address"));
                 a.setGender(rs.getBoolean("Gender"));
                 a.setDob(rs.getDate("DOB"));
+                a.setSalary(rs.getString("Salary"));
+                a.setWorkingShift(rs.getString("WorkingShift"));
                 a.setBonusPoint(rs.getInt("BonusPoint"));
                 a.setTrust(rs.getString("Trust"));
                 a.setCitizenID(rs.getString("CitizenID"));
@@ -104,5 +106,32 @@ public class AccountDAO extends DBContext{
             
         }
         return staffs;
+    }
+    
+    public void deleteAccount(int userId){
+        String sql = "DELETE From Account WHERE UserID = ?";
+        try{
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, userId);
+            st.executeUpdate();
+        }catch(SQLException e){
+            
+        }
+    }
+    
+    public void updateSalary(int userId, String salary){
+        String sql = "UPDATE Account SET Salary = ? WHERE UserID = ?";
+        try{
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, salary);
+            st.setInt(2, userId);
+            st.executeUpdate();
+        }catch(SQLException e){
+            
+        }
+    }
+    
+    public void addStaff(Account a){
+        String sql = "INSERT INTO Account";
     }
 }

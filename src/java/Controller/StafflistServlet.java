@@ -39,7 +39,7 @@ public class StafflistServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet StafflistServlet</title>");            
+            out.println("<title>Servlet StafflistServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet StafflistServlet at " + request.getContextPath() + "</h1>");
@@ -63,7 +63,7 @@ public class StafflistServlet extends HttpServlet {
         AccountDAO ud = new AccountDAO();
         List<Account> acc = ud.getStaffList();
         request.setAttribute("accList", acc);
-       request.getRequestDispatcher("/stafflist.jsp").forward(request, response);
+        request.getRequestDispatcher("/stafflist.jsp").forward(request, response);
     }
 
     /**
@@ -77,10 +77,28 @@ public class StafflistServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        AccountDAO ad = new AccountDAO();
-        String sid = (String)request.getParameter("userid");
-        int id = Integer.parseInt(sid);
-        Account a = ad.getAccount(id);
+        String act = request.getParameter("act");
+        if (act.equals("View Detail")) {
+            AccountDAO ad = new AccountDAO();
+            String sid = (String) request.getParameter("userid");
+            int id = Integer.parseInt(sid);
+            Account a = ad.getAccount(id);
+            request.setAttribute("user", a);
+            request.getRequestDispatcher("staffpage.jsp").forward(request, response);
+        } else if (act.equals("Delete")) {
+            AccountDAO ad = new AccountDAO();
+            String sid = (String) request.getParameter("userid");
+            int id = Integer.parseInt(sid);
+            ad.deleteAccount(id);
+            response.sendRedirect("stafflist");
+        } else if (act.equals("update")){
+            AccountDAO ad = new AccountDAO();
+            String sid = (String) request.getParameter("userid");
+            int id = Integer.parseInt(sid);
+            String salary = (String) request.getParameter("newsalary");
+            ad.updateSalary(id, salary);
+            response.sendRedirect("stafflist");
+        }
     }
 
     /**

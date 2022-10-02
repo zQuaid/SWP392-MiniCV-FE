@@ -154,7 +154,8 @@
                                                 <td>${al.dob}</td>
                                                 <td>${al.salary}<form method="POST">
                                                         <input type="hidden" name="userid" value="${al.id}" />
-                                                        <input type="submit" value="update" name="act" /></form>
+                                                        <input type="hidden" name="newsalary" id='newsalary' value="0"/>
+                                                        <input type="submit" value="update" name="act" onclick="sal()"/></form>
                                                 </td>
                                                 <td>${al.workingShift}</td>
                                                 <td>${al.citizenID}</td>
@@ -163,13 +164,14 @@
                                                     <form method="POST">
                                                         <input type="hidden" name="userid" value="${al.id}" />
                                                         <input type="submit" value="View Detail" name="act" />
-                                                        <input type="submit" value="Delete" name="act" />
+                                                        <input type="submit" value="Delete" name="act" onclick="clicked(event)"/>
                                                     </form>
                                                 </td>
                                             </tr>
                                         </c:forEach>
                                     </table>
-                                </div>                               
+                                </div>
+                                <button>Add new Staff</button>
                             </div>
                         </div>
                     </div>
@@ -183,5 +185,5 @@
     <script src="styles/bootstrap4/bootstrap.bundle.min.js"></script>
     <script src="plugins/bower_components/chartist/chartist.min.js"></script>
     <script src="plugins/bower_components/chartist-plugin-tooltips/chartist-plugin-tooltip.min.js"></script>
-    <script src="js/userlistjs.js"></script>
+    <script src="js/staffpage.js"></script>
 </html>

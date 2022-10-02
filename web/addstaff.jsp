@@ -117,52 +117,48 @@
                         <div class="col-lg-8 col-xlg-9 col-md-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <form class="form-horizontal form-material">
+                                    <form class="form-horizontal form-material" method="POST">
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Tên
-                                                <input value="${user.firstName} ${user.lastName}" type="text" name="fullname" class="form-control" readonly required/>
+                                                <input type="text" name="fullname" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Username
-                                                <input value="${user.username}" type="text" name="username" class="form-control" readonly required/>
+                                                <input type="text" name="username" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Email
-                                                <input value="${user.email}" type="text" name="email" class="form-control" readonly required/>
+                                                <input type="text" name="email" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Giôi Tính </div>
-                                            <c:choose>
-                                                <c:when test="${user.gender==true}"><input value="Male" type="text" name="gender" class="form-control" readonly required/></c:when>
-                                                <c:otherwise><input value="Female" type="text" name="gender" class="form-control" readonly required/></c:otherwise>
-                                            </c:choose>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Ðia Chi
-                                                <input value="${user.address}" type="text" class="form-control" name="address" readonly required>
+                                                <input type="text" class="form-control" name="address">
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">SÐT     
-                                                <input value="${user.phone}" type="text" name="phone" class="form-control" readonly required/>
+                                                <input type="text" name="phone" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Ngày tháng nam sinh
-                                                <input value="${user.dob}" type="text" name="dob" class="form-control" readonly required/>
+                                                <input type="text" name="dob" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Ca lam viec
-                                                <input value="${user.workingShift}" type="text" name="workingshift" class="form-control" readonly required/>
+                                                <input type="text" name="workingshift" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Luong
-                                                <input value="${user.salary}" type="text" name="salary" class="form-control" readonly required/>
+                                                <input  type="text" name="salary" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
