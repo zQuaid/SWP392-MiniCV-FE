@@ -5,7 +5,6 @@
 package DAO;
 
 import Context.DBContext;
-import Model.Revenue;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

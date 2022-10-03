@@ -44,11 +44,5 @@ public class Bill {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
- 
-
-  
-
-  
         
 }
