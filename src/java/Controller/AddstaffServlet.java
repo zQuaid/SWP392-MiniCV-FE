@@ -89,6 +89,7 @@ public class AddstaffServlet extends HttpServlet {
         String workingShift = request.getParameter("workingshift");
         String salary = request.getParameter("salary");
         String citizenID = request.getParameter("citizenid");
+        String image = "unimage";
         Account a = new Account();
         a.setFirstName(firstName);
         a.setLastName(lastName);
@@ -102,6 +103,7 @@ public class AddstaffServlet extends HttpServlet {
         a.setPhone(phone);
         a.setWorkingShift(workingShift);
         a.setSalary(salary);
+        a.setAccImage(image);
         AccountDAO ad = new AccountDAO();
         ad.addStaff(a,date);
         response.sendRedirect("stafflist");
