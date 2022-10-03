@@ -20,7 +20,7 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/login.js"></script>
         <link rel="stylesheet" type="text/css" href="styles/responsive.css">
-        <title>Login to come to Levents Shop</title>
+        <title>Login to come to Let's Café</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -29,7 +29,7 @@
             <div id="form">
                 <div class="logo_container">
                     <i class="fa fa-shopping-bag" style="color: #ff3333" aria-hidden="true"></i>
-                    <a href="home">Levents<span>shop</span></a>
+                    <a href="home">Let's<span>Café</span></a>
                 </div>
                 <div class="logo">
                     <h1 class="text-center head">
@@ -56,7 +56,7 @@
                 </form>
                 <a href="#"><small>Forgot Password</small></a>
                 <div class="form-item">
-                    <p class="pull-left"><small>New to Levents Shop?</small>
+                    <p class="pull-left"><small>New to Let's Café?</small>
                         <a href="register"><small>Register</small></a>
                     </p>
                     <div class="clear-fix"></div>

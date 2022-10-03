@@ -109,8 +109,7 @@ public class LoginServlet extends HttpServlet {
             //Tạo session
             session.setAttribute("account", a);
             response.sendRedirect("home");
-             session.setAttribute("admin", a);
-            response.sendRedirect("dashboard");
+           
         }
     }
 
