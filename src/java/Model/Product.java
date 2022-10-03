@@ -12,11 +12,12 @@ public class Product {
     private int productID;
     private String productName;
     private int price;
-    int discount;
+    private int discount;
     private int quantity;
     private String description;
     private String image;
-    int categoryID,warehouseID;
+    private int categoryID;
+    private int warehouseID;
 
     public Product() {
     }
@@ -104,8 +105,5 @@ public class Product {
     public void setWarehouseID(int warehouseID) {
         this.warehouseID = warehouseID;
     }
-
-   
-    
     
 }

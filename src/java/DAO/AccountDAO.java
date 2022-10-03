@@ -40,7 +40,7 @@ public class AccountDAO extends DBContext {
         }
     }
 
-    public Account getAccount(String username) {
+        public Account getAccount(String username) {
         String sql = "select * from Account where username = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -155,6 +155,7 @@ public class AccountDAO extends DBContext {
         }
         return list;
     }
+
     public List<Account> getUserList(){
         List<Account> users = new ArrayList<>();
         String sql = "SELECT * FROM Account WHERE RoleID = 3";

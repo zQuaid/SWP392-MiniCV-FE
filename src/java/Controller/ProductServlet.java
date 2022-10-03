@@ -4,8 +4,8 @@
  */
 package Controller;
 
-
 import DAO.ProductDAO;
+import Model.Category;
 import Model.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,10 +18,10 @@ import java.util.List;
 
 /**
  *
- * @author Admin
+ * @author mihxdat
  */
-@WebServlet(name = "HomepageServlet", urlPatterns = {"/home"})
-public class HomepageServlet extends HttpServlet {
+@WebServlet(name = "ProductServlet", urlPatterns = {"/product"})
+public class ProductServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,13 +40,12 @@ public class HomepageServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet HomepageServlet</title>");
+            out.println("<title>Servlet ProductServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet HomepageServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ProductServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-            request.getRequestDispatcher("home.jsp").forward(request, response);
         }
     }
 
@@ -62,11 +61,21 @@ public class HomepageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            ProductDAO productDAO = new ProductDAO();
-            List<Product> topProduct = productDAO.getTopProduct();
-            request.setAttribute("topProduct", topProduct);
-        request.getRequestDispatcher("home.jsp").forward(request, response);
-       // request.getRequestDispatcher("/home.jsp").forward(request, response);
+        ProductDAO categoryDAO = new ProductDAO();
+        List<Category> listCategory = categoryDAO.getListCategory();
+        request.setAttribute("listCategory", listCategory);
+
+        ProductDAO producrDAO = new ProductDAO();
+        String categoryID_raw = request.getParameter("categoryID");
+        int categoryID;
+        try {
+            categoryID = (categoryID_raw == null) ? 0 : Integer.parseInt(categoryID_raw);
+            List<Product> listProduct = producrDAO.getProductByCategoryID(categoryID);
+            request.setAttribute("listProduct", listProduct);
+        } catch (Exception e) {
+        }
+
+        request.getRequestDispatcher("products.jsp").forward(request, response);
     }
 
     /**

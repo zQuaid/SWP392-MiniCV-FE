@@ -4,8 +4,8 @@
  */
 package Controller;
 
-
 import DAO.ProductDAO;
+import Model.Category;
 import Model.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,14 +14,15 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
  *
- * @author Admin
+ * @author mihxdat
  */
-@WebServlet(name = "HomepageServlet", urlPatterns = {"/home"})
-public class HomepageServlet extends HttpServlet {
+@WebServlet(name = "SearchServlet", urlPatterns = {"/search"})
+public class SearchServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,13 +41,35 @@ public class HomepageServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet HomepageServlet</title>");
+            out.println("<title>Servlet SearchServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet HomepageServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet SearchServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-            request.getRequestDispatcher("home.jsp").forward(request, response);
+            
+            response.setContentType("text/html;charset=UTF-8");
+            ProductDAO productDAO = new ProductDAO();
+            List<Category> searchProduct = productDAO.getListCategory();
+            request.setAttribute("search", searchProduct);
+            try {
+                String txt = request.getParameter("txtSearch");
+                int index = Integer.parseInt(request.getParameter("index"));
+
+                int count = productDAO.count(txt);
+                int size = 1;
+                int endPage = count / size;
+                if (count % size != 0) {
+                    endPage++;
+                }
+                List<Product> list = productDAO.search(txt, index);
+                request.setAttribute("endPage", endPage);
+                request.setAttribute("listProduct", list);
+                request.setAttribute("txt", txt);
+                request.getRequestDispatcher("products.jsp").forward(request, response);
+            } catch (ServletException | IOException | NumberFormatException | SQLException e) {
+
+            }
         }
     }
 
@@ -62,11 +85,7 @@ public class HomepageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            ProductDAO productDAO = new ProductDAO();
-            List<Product> topProduct = productDAO.getTopProduct();
-            request.setAttribute("topProduct", topProduct);
-        request.getRequestDispatcher("home.jsp").forward(request, response);
-       // request.getRequestDispatcher("/home.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
