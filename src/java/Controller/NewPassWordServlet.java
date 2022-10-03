@@ -71,7 +71,7 @@ public class NewPassWordServlet extends HttpServlet {
         
         if (newPassword != null && confPassword != null && newPassword.equals(confPassword)) {
             a.newPassword(newPassword, email);
-           response.sendRedirect("/login.jsp");
+           response.sendRedirect("/SWP392-CoffeShop/login");
 
           
         }

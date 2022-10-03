@@ -4,8 +4,10 @@
  */
 package Controller;
 
-import DAO.CategoryDAO;
-import Model.Product;
+import DAO.OrderDAO;
+
+import Model.Bill;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,14 +15,15 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
+import java.util.ArrayList;
+
 
 /**
  *
- * @author Admin
+ * @author citih
  */
-@WebServlet(name = "HomepageServlet", urlPatterns = {"/home"})
-public class HomepageServlet extends HttpServlet {
+@WebServlet(name = "MyOrderServlet", urlPatterns = {"/myorder"})
+public class MyOrderServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +42,10 @@ public class HomepageServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet HomepageServlet</title>");
+            out.println("<title>Servlet MyOrderServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet HomepageServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet MyOrderServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,14 +63,16 @@ public class HomepageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        CategoryDAO cd = new CategoryDAO();
-        try {
-            List<Product> list = cd.getNewProduct();
-            request.setAttribute("listpd", list);
-        } catch (NumberFormatException e) {
-        }
-        request.getRequestDispatcher("home.jsp").forward(request, response);
-        // request.getRequestDispatcher("/home.jsp").forward(request, response);
+
+        OrderDAO o = new OrderDAO();
+
+        String userid = request.getParameter("userid");
+        ArrayList<Bill> list  = o.getOrder(userid);
+        
+        request.setAttribute("listod", list);
+
+        request.getRequestDispatcher("myorder.jsp").forward(request, response);
+
     }
 
     /**
@@ -81,7 +86,7 @@ public class HomepageServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.sendRedirect("myorder.jsp");
     }
 
     /**

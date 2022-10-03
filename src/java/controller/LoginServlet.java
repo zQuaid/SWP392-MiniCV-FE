@@ -110,7 +110,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("account", a);
             response.sendRedirect("home");
              session.setAttribute("admin", a);
-            response.sendRedirect("dashboard.jsp");
+            response.sendRedirect("dashboard");
         }
     }
 

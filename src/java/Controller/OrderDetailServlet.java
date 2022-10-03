@@ -4,8 +4,9 @@
  */
 package Controller;
 
-import DAO.CategoryDAO;
-import Model.Product;
+
+import DAO.OrderDAO;
+import Model.Bill;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,14 +14,15 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
- * @author Admin
+ * @author citih
  */
-@WebServlet(name = "HomepageServlet", urlPatterns = {"/home"})
-public class HomepageServlet extends HttpServlet {
+@WebServlet(name = "OrderDetailServlet", urlPatterns = {"/oderdetail"})
+public class OrderDetailServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +41,10 @@ public class HomepageServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet HomepageServlet</title>");
+            out.println("<title>Servlet OrderDetailServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet HomepageServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet OrderDetailServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,14 +62,15 @@ public class HomepageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        CategoryDAO cd = new CategoryDAO();
-        try {
-            List<Product> list = cd.getNewProduct();
-            request.setAttribute("listpd", list);
-        } catch (NumberFormatException e) {
-        }
-        request.getRequestDispatcher("home.jsp").forward(request, response);
-        // request.getRequestDispatcher("/home.jsp").forward(request, response);
+        
+        OrderDAO o = new OrderDAO();
+        String userid = request.getParameter("userid");
+        String productid = request.getParameter("productid");
+        String date = request.getParameter("date");
+        List<Bill> list  = o.getOrderInfo(userid, productid, date);
+        request.setAttribute("listdt", list);
+        request.getRequestDispatcher("orderdetail.jsp").forward(request, response);
+
     }
 
     /**

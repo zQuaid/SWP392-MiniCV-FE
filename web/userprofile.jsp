@@ -111,7 +111,7 @@
                                     <form class="form-horizontal form-material">
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Full Name
-                                                <input value="${p.fullname}" type="text" name="fullname" class="form-control validate" readonly required/>
+                                                <input value="${sessionScope.account.getEmail()}" type="text" name="fullname" class="form-control validate" readonly required/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
