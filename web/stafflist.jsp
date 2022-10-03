@@ -154,7 +154,7 @@
                                                 <td>${al.dob}</td>
                                                 <td>${al.salary}<form method="POST">
                                                         <input type="hidden" name="userid" value="${al.id}" />
-                                                        <input type="hidden" name="newsalary" id='newsalary' value="0"/>
+                                                        <input type="hidden" name="newsalary" id="newsalary" value="0"/>
                                                         <input type="submit" value="update" name="act" onclick="sal()"/></form>
                                                 </td>
                                                 <td>${al.workingShift}</td>

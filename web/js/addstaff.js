@@ -11,6 +11,7 @@ $(document).ready(function() {
    var regexName = /^[a-zA-Z]{1,20}$/;
    var regexPhone = /^[0-9]{0,11}$/;
    var regexCMT = /^(\d{9}|\d{12})$/;
+   var regetDigit = /^(0|[1-9][0-9]*|[1-9][0-9]{0,2}(,[0-9]{3,3})*)$/;
 
    var firstname =  $("#firstname").val();
    var lastname = $("#lastname").val();
@@ -86,6 +87,9 @@ $(document).ready(function() {
     
     if(salary == ""){
        $("#salary").after('<span class="error">Salary must not null</span>');
+       hasError = true;
+    }else if(!regetDigit.test(salary)){
+        $("#salary").after('<span class="error">Salary be a number</span>');
        hasError = true;
     }
 

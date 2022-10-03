@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
@@ -81,25 +81,21 @@ public class AddstaffServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
-        boolean gender;
-        gender = request.getParameter("gender").equals("1");
-        Account a = new Account();
+        boolean gender = request.getParameter("gender").equals("1");
         String address = request.getParameter("address");
         String phone = request.getParameter("phone");
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        try{
-        Date dob = sdf.parse(request.getParameter("dob"));
-        a.setDob(dob);
-        }catch(ParseException e){
-        }
+        String date = request.getParameter("dob");
+        Date dob = Date.valueOf(date);
         String workingShift = request.getParameter("workingshift");
         String salary = request.getParameter("salary");
         String citizenID = request.getParameter("citizenid");
+        Account a = new Account();
         a.setFirstName(firstName);
         a.setLastName(lastName);
         a.setUsername(username);
         a.setPassword(password);
         a.setEmail(email);
+        a.setDob(dob);
         a.setCitizenID(citizenID);
         a.setGender(gender);
         a.setAddress(address);
@@ -107,7 +103,7 @@ public class AddstaffServlet extends HttpServlet {
         a.setWorkingShift(workingShift);
         a.setSalary(salary);
         AccountDAO ad = new AccountDAO();
-        ad.addStaff(a);
+        ad.addStaff(a,date);
         response.sendRedirect("stafflist");
     }
 

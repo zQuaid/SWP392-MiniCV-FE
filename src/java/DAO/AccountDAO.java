@@ -132,8 +132,8 @@ public class AccountDAO extends DBContext{
         }
     }
     
-    public void addStaff(Account a){
-        String sql = "INSERT INTO [dbo].[Account] ([Username], [Password], [FirstName], [LastName], [Email], [Phone], [Address], [Gender], [DOB], [RoleID],  [Salary], [CitizenID], [WorkingShift], [AccImage]) VALUES  ('?', '?', '?', '?', '?', '?', '?', ?, '?', 2, '?', '?', '?', '?')";
+    public void addStaff(Account a, String date){
+        String sql = "INSERT INTO Account (Username, Password, FirstName, LastName, Email, Phone, Address, Gender, DOB, RoleID,  Salary, CitizenID, WorkingShift, AccImage) VALUES  (?, ?, ?, ?, ?, ?, ?, ?, ?, 2, ?, ?, ?, ?)";
         try{
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, a.getUsername());
@@ -144,7 +144,7 @@ public class AccountDAO extends DBContext{
             st.setString(6, a.getPhone());
             st.setString(7, a.getAddress());
             st.setBoolean(8, a.isGender());
-            st.setDate(9, new java.sql.Date(a.getDob().getTime()));
+            st.setDate(9, Date.valueOf(date));
             st.setString(10, a.getSalary());
             st.setString(11, a.getCitizenID());
             st.setString(12, a.getWorkingShift());

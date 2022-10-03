@@ -17,7 +17,7 @@ function clicked(e)
 
 function sal(){
     let newsal = prompt("Enter a new salary");
-    if(newsal !== null){
+    if(newsal !==null){
         document.getElementById("newsalary").value = newsal;
     }
 }
