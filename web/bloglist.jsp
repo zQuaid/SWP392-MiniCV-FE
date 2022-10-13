@@ -100,21 +100,23 @@
                         <div class="breadcrumbs d-flex flex-row align-items-center">
                             <ul>
                                 <li><a href="home">Home</a></li>
-                                <li class="active"><a href="products"><i class="fa fa-angle-right" aria-hidden="true"></i>Products</a></li>
+                                <li class="active"><a href="products"><i class="fa fa-angle-right" aria-hidden="true"></i>Blogs</a></li>
                             </ul>
                         </div>
                         <div class="sidebar">
                             <div class="sidebar_section">
-                                <div class="sidebar_title">
-                                    <h5>Product Category</h5>
-                                </div>
+
                                 <ul class="sidebar_categories">
-                                    <ul name="key">
-                                        <li><a href="product?categoryID=${0}">ALL</a></li>
-                                    </ul>
-                                    <c:forEach items="${listCategory}" var="category">
-                                        <li><a  href="product?categoryID=${category.categoryID}">${category.categoryName}</a></li>
-                                        </c:forEach>
+                                    <form action="search?index=1" method="post" class="app-search d-none d-md-block me-3">
+                                        <div class="input-group input-group-sm">
+                                            <input name="txtSearch" type="text" placeholder="Search..." class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                            <div class="input-group-append">
+                                                <button type="submit" class="btn btn-secondary">
+                                                    <i class="fa fa-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </ul>
                             </div>
                         </div>
@@ -135,21 +137,22 @@
                                             </ul>
                                         </div>
                                         <div class="product-grid">
-                                             
+
                                             <ul>
-                                                <c:forEach items="${listProduct}" var="product">
+                                                <c:forEach items="${listblog}" var="blog">
                                                     <li>
                                                         <div class="product-item">
                                                             <div class="product discount product_filter">
                                                                 <div class="product_image">
-                                                                    <img src="${product.image}"/>
+                                                                    <img src="images/loiichcf.jpg"/>
                                                                 </div>
                                                                 <div class="favorite favorite_left"></div>
                                                                 <div class="product_info">
-                                                                    <h6 class="product_name"><a href="detail?id=${product.productID}">${product.productName}</a></h6>
-                                                                    <div class="product_price"> ${product.price} VND</div>
+                                                                    <h6 class="product_name"><a href="detail?id=${blog.blogID}">${blog.blogTitle}</a></h6>
+                                                                    <br>
+                                                                    <div class="red_button"><a href="detail?id=${blog.blogID}">read more</a></div>
                                                                     <br><!-- comment -->
-                                                                    <div class="red_button"><a href="cart?id=${product.productID}">add to cart</a></div>
+   
                                                                 </div>
                                                             </div>
                                                         </div>

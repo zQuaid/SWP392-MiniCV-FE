@@ -65,6 +65,7 @@
                                     <ul class="navbar_menu">
                                         <li><a href="home">home</a></li>
                                         <li><a href="product">shop</a></li>
+                                        <li><a href="blog">blog</a></li>
                                     </ul>
                                     <ul class="navbar_user">
                                         <li class="navbar-brand">

@@ -5,6 +5,8 @@
 
 package Controller;
 
+import DAO.BlogDAO;
+import Model.Blog;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,13 +14,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  *
  * @author mihxdat
  */
-@WebServlet(name="CartServlet", urlPatterns={"/cart"})
-public class CartServlet extends HttpServlet {
+@WebServlet(name="BlogServlet", urlPatterns={"/blog"})
+public class BlogServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -35,10 +38,10 @@ public class CartServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CartServlet</title>");  
+            out.println("<title>Servlet BlogServlet</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CartServlet at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet BlogServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -55,7 +58,10 @@ public class CartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        BlogDAO blogDAO = new BlogDAO();
+        List<Blog> listblog = blogDAO.getAllBlog();
+        request.setAttribute("listblog", listblog);
+         request.getRequestDispatcher("bloglist.jsp").forward(request, response);
     } 
 
     /** 
