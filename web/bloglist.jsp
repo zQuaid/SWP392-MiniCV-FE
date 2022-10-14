@@ -148,9 +148,9 @@
                                                                 </div>
                                                                 <div class="favorite favorite_left"></div>
                                                                 <div class="product_info">
-                                                                    <h6 class="product_name"><a href="detail?id=${blog.blogID}">${blog.blogTitle}</a></h6>
+                                                                    <h6 class="product_name"><a href="blogdetail?id=${blog.blogID}">${blog.blogTitle}</a></h6>
                                                                     <br>
-                                                                    <div class="red_button"><a href="detail?id=${blog.blogID}">read more</a></div>
+                                                                    <div class="red_button"><a href="blogdetail?id=${blog.blogID}">read more</a></div>
                                                                     <br><!-- comment -->
    
                                                                 </div>

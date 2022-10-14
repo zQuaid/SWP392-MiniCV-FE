@@ -75,7 +75,7 @@
                                     </ul>
                                     <a style="color: #000" href="#">
                                         <i class="fa fa-user" aria-hidden="true"></i>
-                                        <span>${sessionScope.account.fullname}</span>
+                                        <span>${sessionScope.account.username}</span>
                                     </a>
                                 </nav>
                             </div>
@@ -89,8 +89,8 @@
                         <div class="breadcrumbs d-flex flex-row align-items-center">
                             <ul>
                                 <li><a href="home">Home</a></li>
-                                <li><a href="product"><i class="fa fa-angle-right" aria-hidden="true"></i>Products</a></li>
-                                <li class="active"><i class="fa fa-angle-right" aria-hidden="true"></i>${detail.productName}</a></li></li
+                                <li><a href="product"><i class="fa fa-angle-right" aria-hidden="true"></i>Blogs</a></li>
+                                <li class="active"><i class="fa fa-angle-right" aria-hidden="true"></i>${blogdetail.blogTitle}</a></li></li
                             </ul>
                         </div>
                     </div>
@@ -110,25 +110,18 @@
                     <div class="col-lg-5">
                         <div class="product_details">
                             <div class="product_details_title">
-                                <h2>${detail.productName}</h2>
+                                <h2>${blogdetail.blogTitle}</h2>
                                 <dt>Description</dt>
-                                <p>${detail.description}</p>
+                                <p>${blogdetail.description}</p>
 
                             </div>
-                            <div class="product_price">${detail.price} VND</div>
-                            <br><!-- comment -->
-                            <br><!-- comment -->
-                            <div class="">Available: ${detail.quantity}</div>
+                            
                             <div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">
-                                <span>Quantity:</span>
-                                <div class="quantity_selector">
-                                    <span class="minus"><i class="fa fa-minus" aria-hidden="true"><a href="sub?id=${detail.productID}"></a></i></span>
-                                    <span id="quantity_value">1</span>
-                                    <span class="plus"><i class="fa fa-plus" aria-hidden="true"><a href="cart?id=${detail.productID}"></a></i></span>
-                                </div>
+                                
+                                
                             </div>
                             <br/>
-                            <div class="red_button add_to_cart_button"><a href="cart?id=${detail.productID}">add to cart</a></div>
+                        
                         </div>
                     </div>
                     <a href="products" class="fa fa-angle-double-left">&nbsp; Back</a>
