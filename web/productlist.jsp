@@ -142,8 +142,8 @@
                                                 <td>${pd.quantity}</td>
                                                 <td>${pd.discount}</td>
                                                 <td>${pd.description}</td>
-                                                <td>${pd.warehouse.warehouseID}</td>
-                                                <td>${pd.category.categoryID}</td>
+                                                <td>${pd.warehouse.warehouseName}</td>
+                                                <td>${pd.category.categoryName}</td>
                                                 <td><img src="${pd.image}" alt="${pd.productID} width="50" height="70"/></td>
                                                 <td>
                                                     <form method="POST">
