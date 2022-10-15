@@ -11,22 +11,30 @@ package Model;
 public class Product {
     private int productID;
     private String productName;
-    private int price;
+    private String price;
+    private int discount;
     private int quantity;
     private String description;
     private String image;
+    private Warehouse warehouse;
+    private Category category;
 
     public Product() {
     }
 
-    public Product(int productID, String productName, int price, int quantity, String description, String image) {
+    public Product(int productID, String productName, String price, int discount, int quantity, String description, String image, Warehouse warehouse, Category category) {
         this.productID = productID;
         this.productName = productName;
         this.price = price;
+        this.discount = discount;
         this.quantity = quantity;
         this.description = description;
         this.image = image;
+        this.warehouse = warehouse;
+        this.category = category;
     }
+
+    
 
     public int getProductID() {
         return productID;
@@ -44,13 +52,22 @@ public class Product {
         this.productName = productName;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
+
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+    
 
     public int getQuantity() {
         return quantity;
@@ -75,6 +92,31 @@ public class Product {
     public void setImage(String image) {
         this.image = image;
     }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public Warehouse getWarehouse() {
+        return warehouse;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public void setWarehouse(Warehouse warehouse) {
+        this.warehouse = warehouse;
+    }
+
+    
+
+    
+    
+    
+    
+    
+    
     
     
 }
