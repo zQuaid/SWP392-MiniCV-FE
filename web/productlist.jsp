@@ -108,7 +108,7 @@
                 <div class="page-breadcrumb bg-white">
                     <div class="row align-items-center">
                         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                            <h4 class="page-title">Stafflist</h4>
+                            <h4 class="page-title">Product List</h4>
                         </div>
                     </div>
                 </div>
@@ -121,8 +121,8 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">ProductId</th>
-                                                <th scope="col">Product Name</th>
+                                                <th scope="col">Id</th>
+                                                <th scope="col">Name</th>
                                                 <th scope="col">Price</th>
                                                 <th scope="col">Quantity</th>
                                                 <th scope="col">Discount</th>
@@ -133,21 +133,21 @@
                                                 <th scope="col"></th>
                                             </tr>
                                         </thead>
-                                        <c:forEach items="${requestScope.accList}" var="al">
+                                        <c:forEach items="${requestScope.listpd}" var="pd">
                                             <tr>
                                                 <th scope="row" class="count"></th>
-                                                <td>${al.id}</td>
-                                                <td>${al.username}</td>
-                                                <td>${al.firstName}</td>
-                                                <td>${al.lastName}</td>
-                                                <td>${al.email}</td>
-                                                <td>${al.phone}</td>
-                                                <td>${al.address}</td>
-                                                <td>${al.citizenID}</td>
-                                                <td><img src="${al.accImage}" alt="${al.id} width="50" height="70"/></td>
+                                                <td>${pd.productID}</td>
+                                                <td>${pd.productName}</td>
+                                                <td>${pd.price}</td>
+                                                <td>${pd.quantity}</td>
+                                                <td>${pd.discount}</td>
+                                                <td>${pd.description}</td>
+                                                <td>${pd.warehouse.warehouseID}</td>
+                                                <td>${pd.category.categoryID}</td>
+                                                <td><img src="${pd.image}" alt="${pd.productID} width="50" height="70"/></td>
                                                 <td>
                                                     <form method="POST">
-                                                        <input type="hidden" name="userid" value="${al.id}" />
+                                                        <input type="hidden" name="userid" value="${pd.productID}" />
                                                         <input type="submit" value="View Detail" name="act" />
                                                         <input type="submit" value="Delete" name="act" onclick="clicked(event)"/>
                                                     </form>
@@ -157,7 +157,7 @@
                                     </table>
                                 </div>
                                 <div class="col-sm-12">
-                                                <a href="addstaff" class="btn btn-success">Add new product</a>
+                                                <a href="addproduct" class="btn btn-success">Add new product</a>
                                             </div>
                             </div>
                         </div>
@@ -172,5 +172,4 @@
     <script src="styles/bootstrap4/bootstrap.bundle.min.js"></script>
     <script src="plugins/bower_components/chartist/chartist.min.js"></script>
     <script src="plugins/bower_components/chartist-plugin-tooltips/chartist-plugin-tooltip.min.js"></script>
-    <script src="js/staffpage.js"></script>
 </html>
