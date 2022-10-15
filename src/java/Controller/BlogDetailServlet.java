@@ -64,34 +64,7 @@ public class BlogDetailServlet extends HttpServlet {
         int id;
         try {
             BlogDAO blogDAO = new BlogDAO();
-            Cookie arr[] = request.getCookies();
-            List<Blog> list = new ArrayList<>();
-            for (Cookie o : arr) {
-                if (o.getName().equals("id")) {
-                    String txt[] = o.getValue().split(",");
-                    for (String s : txt) {
-                        list.add(blogDAO.getBlogDetail(s));
-                    }
-                }
-            }
-//            for (int i = 0; i < list.size(); i++) {
-//                int count = 1;
-//                for (int j = i + 1; j < list.size(); j++) {
-//                    if (list.get(i).getBlogID()== list.get(j).getBlogID()) {
-//                        count++;
-//                        list.remove(j);
-//                        j--;
-//                        list.get(i).setQuantity(count);
-//                    }
-//                }
-//            }
-            for (Cookie o : arr) {
-                o.setMaxAge(0);
-                response.addCookie(o);
-            }
-            int n = list.size();
-            request.setAttribute("size", n);
-            id = Integer.parseInt(id_raw);
+                        id = Integer.parseInt(id_raw);
             Blog b = blogDAO.getBlogById(id);
             request.setAttribute("blogdetail", b);
             request.getRequestDispatcher("blogdetail.jsp").forward(request, response);

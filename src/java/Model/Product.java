@@ -11,18 +11,18 @@ package Model;
 public class Product {
     private int productID;
     private String productName;
-    private int price;
+    private String price;
     private int discount;
     private int quantity;
     private String description;
     private String image;
-    private int categoryID;
-    private int warehouseID;
+    private Warehouse warehouse;
+    private Category category;
 
     public Product() {
     }
 
-    public Product(int productID, String productName, int price, int discount, int quantity, String description, String image, int categoryID, int warehouseID) {
+    public Product(int productID, String productName, String price, int discount, int quantity, String description, String image, Warehouse warehouse, Category category) {
         this.productID = productID;
         this.productName = productName;
         this.price = price;
@@ -30,8 +30,8 @@ public class Product {
         this.quantity = quantity;
         this.description = description;
         this.image = image;
-        this.categoryID = categoryID;
-        this.warehouseID = warehouseID;
+        this.warehouse = warehouse;
+        this.category = category;
     }
 
     public int getProductID() {
@@ -50,11 +50,11 @@ public class Product {
         this.productName = productName;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
@@ -65,7 +65,6 @@ public class Product {
     public void setDiscount(int discount) {
         this.discount = discount;
     }
-    
 
     public int getQuantity() {
         return quantity;
@@ -91,21 +90,25 @@ public class Product {
         this.image = image;
     }
 
-    public int getCategoryID() {
-        return categoryID;
+    public Warehouse getWarehouse() {
+        return warehouse;
     }
 
-    public void setCategoryID(int categoryID) {
-        this.categoryID = categoryID;
+    public void setWarehouse(Warehouse warehouse) {
+        this.warehouse = warehouse;
     }
 
-    public int getWarehouseID() {
-        return warehouseID;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setWarehouseID(int warehouseID) {
-        this.warehouseID = warehouseID;
+    public void setCategory(Category category) {
+        this.category = category;
     }
+    
+    
+
+
 
     
     

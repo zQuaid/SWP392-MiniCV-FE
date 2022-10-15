@@ -5,6 +5,7 @@
 package DAO;
 
 import Context.DBContext;
+import Model.Cart;
 import Model.Category;
 import Model.Product;
 import java.sql.Connection;
@@ -49,15 +50,15 @@ public class ProductDAO extends DBContext {
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Product p = new Product(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getInt(3),
-                        rs.getInt(4),
-                        rs.getInt(5),
-                        rs.getString(6),
-                        rs.getString(7),
-                        rs.getInt(8),
-                        rs.getInt(9));
+                Product p = new Product();
+                p.setProductID(rs.getInt("ProductID"));
+                p.setProductName(rs.getString("ProductName"));
+                p.setPrice(rs.getString("Price"));
+                p.setDiscount(rs.getInt("Discount"));
+                p.setQuantity(rs.getInt("Quantity"));
+                p.setDescription(rs.getString("Decription"));
+                p.setImage(rs.getString("Image"));
+                p.getWarehouse();
                 list.add(p);
             }
         } catch (Exception e) {
@@ -84,15 +85,15 @@ public class ProductDAO extends DBContext {
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Product p = new Product(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getInt(3),
-                        rs.getInt(4),
-                        rs.getInt(5),
-                        rs.getString(6),
-                        rs.getString(7),
-                        rs.getInt(8),
-                        rs.getInt(9));
+                Product p = new Product();
+                p.setProductID(rs.getInt("ProductID"));
+                p.setProductName(rs.getString("ProductName"));
+                p.setPrice(rs.getString("Price"));
+                p.setDiscount(rs.getInt("Discount"));
+                p.setQuantity(rs.getInt("Quantity"));
+                p.setDescription(rs.getString("Decription"));
+                p.setImage(rs.getString("Image"));
+                p.getWarehouse();
                 list.add(p);
 
             }
@@ -122,18 +123,18 @@ public class ProductDAO extends DBContext {
         try {
 
             PreparedStatement st = connection.prepareStatement(sql);
-            
+
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Product p = new Product();
                 p.setProductID(rs.getInt("ProductID"));
                 p.setProductName(rs.getString("ProductName"));
-                p.setPrice(rs.getInt("Price"));
+                p.setPrice(rs.getString("Price"));
                 p.setDiscount(rs.getInt("Discount"));
                 p.setQuantity(rs.getInt("Quantity"));
                 p.setDescription(rs.getString("Decription"));
                 p.setImage(rs.getString("Image"));
-                p.setWarehouseID(rs.getInt("WarehouseID"));
+                p.getWarehouse();
                 list.add(p);
             }
         } catch (Exception e) {
@@ -151,15 +152,15 @@ public class ProductDAO extends DBContext {
             st.setInt(1, productID);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                Product p = new Product(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getInt(3),
-                        rs.getInt(4),
-                        rs.getInt(5),
-                        rs.getString(6),
-                        rs.getString(7),
-                        rs.getInt(8),
-                        rs.getInt(9));
+                Product p = new Product();
+                p.setProductID(rs.getInt("ProductID"));
+                p.setProductName(rs.getString("ProductName"));
+                p.setPrice(rs.getString("Price"));
+                p.setDiscount(rs.getInt("Discount"));
+                p.setQuantity(rs.getInt("Quantity"));
+                p.setDescription(rs.getString("Decription"));
+                p.setImage(rs.getString("Image"));
+                p.getWarehouse();
                 return p;
             }
 
@@ -176,15 +177,15 @@ public class ProductDAO extends DBContext {
             st.setString(1, txt);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                Product p = new Product(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getInt(3),
-                        rs.getInt(4),
-                        rs.getInt(5),
-                        rs.getString(6),
-                        rs.getString(7),
-                        rs.getInt(8),
-                        rs.getInt(9));
+                Product p = new Product();
+                p.setProductID(rs.getInt("ProductID"));
+                p.setProductName(rs.getString("ProductName"));
+                p.setPrice(rs.getString("Price"));
+                p.setDiscount(rs.getInt("Discount"));
+                p.setQuantity(rs.getInt("Quantity"));
+                p.setDescription(rs.getString("Decription"));
+                p.setImage(rs.getString("Image"));
+                p.getWarehouse();
                 return p;
             }
         } catch (SQLException e) {
@@ -205,15 +206,15 @@ public class ProductDAO extends DBContext {
             st.setInt(3, index);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                Product p = new Product(rs.getInt(2),
-                        rs.getString(3),
-                        rs.getInt(4),
-                        rs.getInt(5),
-                        rs.getInt(6),
-                        rs.getString(7),
-                        rs.getString(8),
-                        rs.getInt(9),
-                        rs.getInt(10));
+                Product p = new Product();
+                p.setProductID(rs.getInt("ProductID"));
+                p.setProductName(rs.getString("ProductName"));
+                p.setPrice(rs.getString("Price"));
+                p.setDiscount(rs.getInt("Discount"));
+                p.setQuantity(rs.getInt("Quantity"));
+                p.setDescription(rs.getString("Decription"));
+                p.setImage(rs.getString("Image"));
+                p.getWarehouse();
                 list.add(p);
             }
         } catch (SQLException e) {
@@ -233,6 +234,58 @@ public class ProductDAO extends DBContext {
         } catch (SQLException e) {
         }
         return 0;
+    }
+
+    public List<Cart> getCartProducts(ArrayList<Cart> cartList) {
+        List<Cart> products = new ArrayList<Cart>();
+        try {
+            if (cartList.size() > 0) {
+                for (Cart item : cartList) {
+                    String sql = "Select * from Product where ProductID =?";
+                    PreparedStatement st = connection.prepareStatement(sql);
+                    st.setInt(1, item.getProductID());
+                    ResultSet rs = st.executeQuery();
+                    while (rs.next()) {
+                        Cart row = new Cart();
+                        row.setProductID(rs.getInt("ProductID"));
+                        row.setProductName(rs.getString("ProductName"));
+                        row.setPrice(rs.getString("Price"));
+                        row.setDiscount(rs.getInt("Discount"));
+                        row.setQuantity(rs.getInt("Quantity"));
+                        row.setDescription(rs.getString("Decription"));
+                        row.setImage(rs.getString("Image"));
+                        row.getWarehouse();
+                        row.setQuantityAdd(item.getQuantityAdd());
+                        products.add(row);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return products;
+    }
+
+    public double getTotalCartPrice(ArrayList<Cart> carList) {
+        double sum = 0;
+        try {
+            if (carList.size() > 0) {
+                for (Cart item : carList) {
+                    String sql = "Select Price from Product where ProductID =?";
+                    PreparedStatement st = connection.prepareStatement(sql);
+                    st.setInt(1, item.getProductID());
+                    ResultSet rs = st.executeQuery();
+
+                    while (rs.next()) {
+                        sum += rs.getInt("Price") * item.getQuantityAdd();
+                    }
+                }
+
+            }
+
+        } catch (Exception e) {
+        }
+        return sum;
     }
 
 }

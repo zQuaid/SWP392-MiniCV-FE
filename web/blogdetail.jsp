@@ -9,7 +9,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Detail Product</title>
+        <title>Detail Blog</title>
+        <<script type="text/javascript">
+            var xhttp;
+            var name = document.myform.name.value;
+            var comment = document.myform.comment.value;
+            if(window.XMLHttpRequest()){
+                xhttp = new XMLHttpRequest();
+            }else{
+                xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        </script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
         <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -101,7 +111,17 @@
                             <div class="row">
                                 <div class="col-lg-9 image_col order-lg-2 order-1">
                                     <div class="single_product_image">
-                                        <div class="single_product_image_background" style="background-image:url(${detail.image})"></div>
+                                        <form name = "myform">
+                                            Username: <input type="text" name="name"/>
+                                            <br/>
+                                            <br/><!-- comment -->
+                                            <textarea style="width:500px; height: 100px" name="comment">
+                                                
+                                            </textarea>
+                                            <br/>
+                                            <br/><!-- comment -->
+                                            <input type="button" value="Post" onclick=""/>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

@@ -75,7 +75,7 @@
                                     </ul>
                                     <a style="color: #000" href="#">
                                         <i class="fa fa-user" aria-hidden="true"></i>
-                                        <span>${sessionScope.account.fullname}</span>
+                                        <span>${sessionScope.account.username}</span>
                                     </a>
                                 </nav>
                             </div>

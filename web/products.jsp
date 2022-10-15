@@ -79,8 +79,9 @@
                                             </form>
                                         </li>
                                         <li class="checkout">
-                                            <a href="show">
+                                            <a href="cart.jsp">
                                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+<!--                                                <span id="checkout_items" class="checkout_items">${cart_list.size()}</span>-->
                                             </a>
                                         </li>
                                     </ul>&nbsp;&nbsp;&nbsp;
@@ -149,7 +150,7 @@
                                                                     <h6 class="product_name"><a href="detail?id=${product.productID}">${product.productName}</a></h6>
                                                                     <div class="product_price"> ${product.price} VND</div>
                                                                     <br><!-- comment -->
-                                                                    <div class="red_button"><a href="cart?id=${product.productID}">add to cart</a></div>
+                                                                    <div class="red_button"><a href="cart?productID=${product.productID}">add to cart</a></div>
                                                                 </div>
                                                             </div>
                                                         </div>
