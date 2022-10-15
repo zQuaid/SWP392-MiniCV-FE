@@ -48,4 +48,21 @@ public class ProductDAO extends DBContext{
         }
         return list;
     }
+    
+    public void addProduct(Product p){
+        String sql = "INSERT INTO Product (ProductName, Price, Discount, Quantity, Product.Decription , Product.Image, CategoryID, WarehouseID) VALUES  (?,?,?,?,?,?,?,?)";
+        try{
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, p.getProductName());
+            st.setString(2, p.getPrice());
+            st.setInt(3, p.getDiscount());
+            st.setInt(4, p.getQuantity());
+            st.setString(5, p.getDescription());
+            st.setString(6, p.getImage());
+            st.setInt(7, p.getCategory().getCategoryID());
+            st.setInt(8, p.getWarehouse().getWarehouseID());
+            st.executeUpdate();
+            }catch(SQLException e){    
+        }
+    }
 }

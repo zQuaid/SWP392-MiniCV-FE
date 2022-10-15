@@ -108,7 +108,7 @@
                 <div class="page-breadcrumb bg-white">
                     <div class="row align-items-center">
                         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                            <h4 class="page-title">User Profile</h4>
+                            <h4 class="page-title">Add new Product</h4>
                         </div>
                     </div>
                 </div>
@@ -135,12 +135,12 @@
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Description
-                                                <input type="text" name="description" id="description" class="form-control"/>
+                                                <textarea type="text" name="description" id="description" class="form-control" style="padding: 30px"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">discount
-                                                <input type="text" name="discount" class="form-control" id="discount" placeholder="$"/>
+                                                <input type="text" name="discount" class="form-control" id="discount" placeholder="%"/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
@@ -163,8 +163,8 @@
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-sm-12">
-                                                <a href="stafflist" class="btn btn-success">Back</a>
-                                                <button type="submit" class="btn btn-success" id="btnadd">Add</button>
+                                                <a href="productlist" class="btn btn-success">Back</a>
+                                                <button type="submit" class="btn btn-success">Add</button>
                                             </div>
                                         </div>
                                     </form>
@@ -175,7 +175,6 @@
                 </div>
             </div>
         </div>
-    </div>
 
     <script src="plugins/bower_components/jquery/jquery.min.js"></script>
     <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>

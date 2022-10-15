@@ -5,8 +5,10 @@
 package Controller;
 
 import DAO.CategoryDAO;
+import DAO.ProductDAO;
 import DAO.WarehouseDAO;
 import Model.Category;
+import Model.Product;
 import Model.Warehouse;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -83,7 +85,30 @@ public class AddProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String productname = request.getParameter("productname");
+        String price = request.getParameter("price");
+        String quantity = request.getParameter("quantity");
+        String description = request.getParameter("description");
+        String discount = request.getParameter("discount");
+        String warehouse = request.getParameter("warehouse");
+        String category = request.getParameter("category");
+        String image = "unimage";
+        Product p = new Product();
+        Warehouse w = new Warehouse();
+        Category c = new Category();
+        p.setProductName(productname);
+        p.setPrice(price);
+        p.setQuantity(Integer.parseInt(quantity));
+        p.setDescription(description);
+        p.setDiscount(Integer.parseInt(discount));
+        p.setImage(image);
+        w.setWarehouseID(Integer.parseInt(warehouse));
+        c.setCategoryID(Integer.parseInt(category));
+        p.setWarehouse(w);
+        p.setCategory(c);
+        ProductDAO pd = new ProductDAO();
+        pd.addProduct(p);
+        response.sendRedirect("productlist");
     }
 
     /**

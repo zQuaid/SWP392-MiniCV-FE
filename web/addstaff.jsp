@@ -206,7 +206,6 @@
                 </div>
             </div>
         </div>
-    </div>
 
     <script src="plugins/bower_components/jquery/jquery.min.js"></script>
     <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
