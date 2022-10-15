@@ -140,24 +140,24 @@
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">discount
-                                                <input type="text" name="discount" class="form-control" id="discount"/>%
+                                                <input type="text" name="discount" class="form-control" id="discount" placeholder="$"/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Warehouse
                                                 <select class="custom-select" style="width:200px;" name="warehouse" id="warehouse">
-                                                    <option value="Sang">Sáng</option>
-                                                    <option value="Chieu">Chiêu</option>
-                                                    <option value="Toi">Tôi</option>
+                                                    <c:forEach items="${requestScope.listw}" var="lw">
+                                                        <option value="${lw.warehouseID}">${lw.warehouseName}</option>
+                                                    </c:forEach>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Category
                                                 <select class="custom-select" style="width:200px;" name="category" id="category">
-                                                    <option value="Sang">Sáng</option>
-                                                    <option value="Chieu">Chiêu</option>
-                                                    <option value="Toi">Tôi</option>
+                                                    <c:forEach items="${requestScope.listc}" var="lc">
+                                                        <option value="${lc.categoryID}">${lc.categoryName}</option>
+                                                    </c:forEach>
                                                 </select>
                                             </div>
                                         </div>
@@ -168,16 +168,6 @@
                                             </div>
                                         </div>
                                     </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-xlg-3 col-md-12">
-                            <div class="white-box">
-                                <div class="user-bg">
-                                    <div class="overlay-box">
-                                        <div class="user-content"><img src="${user.accImage}" width="150" height="150" alt="${user.id}">
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>

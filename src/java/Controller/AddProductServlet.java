@@ -4,8 +4,10 @@
  */
 package Controller;
 
-import DAO.AccountDAO;
-import Model.Account;
+import DAO.CategoryDAO;
+import DAO.WarehouseDAO;
+import Model.Category;
+import Model.Warehouse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,14 +15,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.sql.Date;
+import java.util.List;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "AddstaffServlet", urlPatterns = {"/addstaff"})
-public class AddstaffServlet extends HttpServlet {
+@WebServlet(name = "AddProductServlet", urlPatterns = {"/addproduct"})
+public class AddProductServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +41,10 @@ public class AddstaffServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddstaffServlet</title>");            
+            out.println("<title>Servlet AddProductServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AddstaffServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AddProductServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,7 +62,14 @@ public class AddstaffServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/addstaff.jsp").forward(request, response);
+        CategoryDAO cd = new CategoryDAO();
+        WarehouseDAO wd = new WarehouseDAO();
+        List<Category> listc = cd.getAllCategory();
+        List<Warehouse>listw = wd.getAllWarehouse();
+        request.setAttribute("listc", listc);
+        request.setAttribute("listw", listw);
+        request.getRequestDispatcher("/addproduct.jsp").forward(request, response);
+        
     }
 
     /**
@@ -74,37 +83,7 @@ public class AddstaffServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String firstName = request.getParameter("firstname");
-        String lastName = request.getParameter("lastname");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String email = request.getParameter("email");
-        boolean gender = request.getParameter("gender").equals("1");
-        String address = request.getParameter("address");
-        String phone = request.getParameter("phone");
-        String date = request.getParameter("dob");
-        Date dob = Date.valueOf(date);
-        String workingShift = request.getParameter("workingshift");
-        String salary = request.getParameter("salary");
-        String citizenID = request.getParameter("citizenid");
-        String image = "unimage";
-        Account a = new Account();
-        a.setFirstName(firstName);
-        a.setLastName(lastName);
-        a.setUsername(username);
-        a.setPassword(password);
-        a.setEmail(email);
-        a.setDob(dob);
-        a.setCitizenID(citizenID);
-        a.setGender(gender);
-        a.setAddress(address);
-        a.setPhone(phone);
-        a.setWorkingShift(workingShift);
-        a.setSalary(salary);
-        a.setAccImage(image);
-        AccountDAO ad = new AccountDAO();
-        ad.addStaff(a,date);
-        response.sendRedirect("stafflist");
+        processRequest(request, response);
     }
 
     /**
