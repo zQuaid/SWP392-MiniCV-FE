@@ -20,9 +20,10 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link href="styles/css/style.min.css" rel="stylesheet">
         <link href="styles/css/userlist.css" rel="stylesheet">
-
+        
     </head>
     <body>
+        <input type="hidden" name="userid" value="7"/>
         <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
              data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
             <header class="topbar" data-navbarbg="skin5">
@@ -108,7 +109,7 @@
                 <div class="page-breadcrumb bg-white">
                     <div class="row align-items-center">
                         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                            <h4 class="page-title">User Profile</h4>
+                            <h4 class="page-title">Admin Profile</h4>
                         </div>
                     </div>
                 </div>
@@ -120,49 +121,39 @@
                                     <form class="form-horizontal form-material">
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Tên
-                                                <input value="${user.firstName} ${user.lastName}" type="text" name="fullname" class="form-control" readonly required/>
+                                                <input value="${admin.firstName} ${admin.lastName}" type="text" name="fullname" class="form-control" readonly required/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Username
-                                                <input value="${user.username}" type="text" name="username" class="form-control" readonly required/>
+                                                <input value="${admin.username}" type="text" name="username" class="form-control" readonly required/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Email
-                                                <input value="${user.email}" type="text" name="email" class="form-control" readonly required/>
+                                                <input value="${admin.email}" type="text" name="email" class="form-control" readonly required/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Giôi Tính </div>
                                             <c:choose>
-                                                <c:when test="${user.gender==true}"><input value="Male" type="text" name="gender" class="form-control" readonly required/></c:when>
+                                                <c:when test="${admin.gender==true}"><input value="Male" type="text" name="gender" class="form-control" readonly required/></c:when>
                                                 <c:otherwise><input value="Female" type="text" name="gender" class="form-control" readonly required/></c:otherwise>
                                             </c:choose>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Ðia Chi
-                                                <input value="${user.address}" type="text" class="form-control" name="address" readonly required>
+                                                <input value="${admin.address}" type="text" class="form-control" name="address" readonly required>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">SÐT     
-                                                <input value="${user.phone}" type="text" name="phone" class="form-control" readonly required/>
+                                                <input value="${admin.phone}" type="text" name="phone" class="form-control" readonly required/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Ngày tháng nam sinh
-                                                <input value="${user.dob}" type="text" name="dob" class="form-control" readonly required/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">Ca lam viec
-                                                <input value="${user.workingShift}" type="text" name="workingshift" class="form-control" readonly required/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">Luong
-                                                <input value="${user.salary}" type="text" name="salary" class="form-control" readonly required/>
+                                                <input value="${admin.dob}" type="text" name="dob" class="form-control" readonly required/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
@@ -178,7 +169,7 @@
                             <div class="white-box">
                                 <div class="user-bg">
                                     <div class="overlay-box">
-                                        <div class="user-content"><img src="${user.accImage}" width="150" height="150" alt="${user.id}">
+                                        <div class="user-content"><img src="${admin.accImage}" width="150" height="150" alt="${admin.id}">
                                         </div>
                                     </div>
                                 </div>
