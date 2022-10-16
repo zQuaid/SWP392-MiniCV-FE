@@ -61,7 +61,7 @@ public class AdminpageServlet extends HttpServlet {
             throws ServletException, IOException {
         AccountDAO ad = new AccountDAO();
         
-        int userid = Integer.parseInt(request.getParameter("userid"));
+        int userid = 7;
         
         Account a = ad.getAccount(userid);
         request.setAttribute("admin", a);

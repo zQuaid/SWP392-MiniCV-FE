@@ -4,6 +4,8 @@
  */
 package Controller;
 
+import DAO.AccountDAO;
+import Model.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -11,13 +13,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.sql.Date;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "StaffpageServlet", urlPatterns = {"/staff"})
-public class StaffpageServlet extends HttpServlet {
+@WebServlet(name = "UpdateAdServlet", urlPatterns = {"/updatead"})
+public class UpdateAdServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,10 +39,10 @@ public class StaffpageServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet StaffpageServlet</title>");            
+            out.println("<title>Servlet UpdateAdServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet StaffpageServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UpdateAdServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -57,7 +60,11 @@ public class StaffpageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/staffpage.jsp").forward(request, response);
+        AccountDAO ad = new AccountDAO();
+        int userid = 7;
+        Account a = ad.getAccount(userid);
+        request.setAttribute("admin", a);
+        request.getRequestDispatcher("/updatead.jsp").forward(request, response);
     }
 
     /**
@@ -71,6 +78,27 @@ public class StaffpageServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        int userid = Integer.parseInt(request.getParameter("userid"));
+        String firstName = request.getParameter("firstname");
+        String lastName = request.getParameter("lastname");
+        String email = request.getParameter("email");
+        boolean gender = request.getParameter("gender").equals("1");
+        String address = request.getParameter("address");
+        String phone = request.getParameter("phone");
+        String date = request.getParameter("dob");
+        Date dob = Date.valueOf(date);
+        Account a = new Account();
+        a.setId(userid);
+        a.setFirstName(firstName);
+        a.setLastName(lastName);
+        a.setEmail(email);
+        a.setDob(dob);
+        a.setGender(gender);
+        a.setAddress(address);
+        a.setPhone(phone);
+        AccountDAO ad = new AccountDAO();
+        ad.updateAccount(a, date);
+        response.sendRedirect("adpage");
     }
 
     /**

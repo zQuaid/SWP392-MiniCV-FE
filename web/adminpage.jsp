@@ -23,7 +23,6 @@
         
     </head>
     <body>
-        <input type="hidden" name="userid" value="7"/>
         <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
              data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
             <header class="topbar" data-navbarbg="skin5">
@@ -159,7 +158,7 @@
                                         <div class="form-group mb-4">
                                             <div class="col-sm-12">
                                                 <a href="summary" class="btn btn-success">Back</a>
-                                                <input type="submit" value="Update" name="act" />
+                                                <a href="updatead?=${admin.id}" class="btn btn-success">Update</a>
                                             </div>
                                         </div>
                                     </form>
