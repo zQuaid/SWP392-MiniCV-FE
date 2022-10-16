@@ -5,6 +5,7 @@
 package DAO;
 
 import Context.DBContext;
+<<<<<<< HEAD
 import Model.Bill;
 
 import Model.OrderInfo;
@@ -13,11 +14,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+=======
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+>>>>>>> 9a91acbe35befbf50e8957d5bc9ad72036479e8a
 
 /**
  *
  * @author Admin
  */
+<<<<<<< HEAD
 public class OrderDAO extends DBContext {
 
     public ArrayList<Bill> getOrder(String userid) {
@@ -85,5 +92,51 @@ public class OrderDAO extends DBContext {
         } catch (SQLException e) {
         }
         return list;
+=======
+public class OrderDAO extends DBContext{
+    public int getOrderBySuccess(int userId){
+        int orderSuccess = 0;
+        String sql = "SELECT * FROM OrderInfor WHERE Status = 'Success' AND UserID = ?";
+        try{
+        PreparedStatement st = connection.prepareStatement(sql);
+        st.setInt(1, userId);
+        ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                orderSuccess +=1;
+            }
+        }catch(SQLException e){
+        }
+        return orderSuccess;
+    }
+    
+    public int getOrderByPending(int userId){
+        int orderPending = 0;
+        String sql = "SELECT * FROM OrderInfor WHERE Status = 'Pending' AND UserID = ?";
+        try{
+        PreparedStatement st = connection.prepareStatement(sql);
+        st.setInt(1, userId);
+        ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                orderPending +=1;
+            }
+        }catch(SQLException e){
+        }
+        return orderPending;
+    }
+    
+    public int getOrderByCanceled(int userId){
+        int orderCanceled = 0;
+        String sql = "SELECT * FROM OrderInfor WHERE Status = 'Canceled' AND UserID = ?";   
+        try{
+        PreparedStatement st = connection.prepareStatement(sql);
+        st.setInt(1, userId);
+        ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                orderCanceled +=1;
+            }
+        }catch(SQLException e){
+        }
+        return orderCanceled;
+>>>>>>> 9a91acbe35befbf50e8957d5bc9ad72036479e8a
     }
 }
