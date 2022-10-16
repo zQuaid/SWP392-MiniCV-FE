@@ -36,6 +36,32 @@ public class PaymentDAO extends DBContext{
         }return listpmb;
     }
     
+    public PaymentByBanking getPaymentByBanking(String accountNumber){
+        PaymentByBanking pmb = new PaymentByBanking();
+        String sql = "SELECT * From PaymentByBanking WHERE AccountNumber = ?";
+        try{
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, accountNumber);
+            ResultSet rs = st.executeQuery();
+            pmb.setBankName(rs.getString("BankName"));
+            pmb.setAccountNumber(rs.getString("AccountNumber"));
+            pmb.setCardNumber(rs.getString("CardNumber"));
+            pmb.setOwnerName(rs.getString("OwnerName"));
+        }catch(SQLException e){
+        }return pmb;
+    }
+    
+    public void deletePaymentByBanking(String accountNumber){
+        String sql = "DELETE FROM PaymentByBanking WHERE accountNumber = ?";
+        try{
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, accountNumber);
+            st.executeUpdate();
+        }catch(SQLException e){
+            
+        }
+    }
+    
     public List<PaymentByQR> getPaymentByQR(){
         List<PaymentByQR> listpbq = new ArrayList<>();
         String sql = "SELECT * From PaymentByQR";

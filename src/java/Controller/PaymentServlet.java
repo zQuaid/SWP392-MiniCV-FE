@@ -84,7 +84,15 @@ public class PaymentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String act = request.getParameter("act");
+        PaymentDAO pd = new PaymentDAO();
+        if(act.equals("Banking Update")){
+            
+        }else if(act.equals("Banking Delete")){
+            String accountNumber = request.getParameter("accountNumber");
+            pd.deletePaymentByBanking(accountNumber);
+            response.sendRedirect("payment");
+        }
     }
 
     /**

@@ -20,8 +20,8 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link href="styles/css/style.min.css" rel="stylesheet">
         <link href="styles/css/userlist.css" rel="stylesheet">
-
-    </head>
+        <link href="styles/css/paymentcss.css"
+              </head>
     <body>
         <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
              data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
@@ -117,18 +117,22 @@
                         <div class="col-lg-9 col-xlg-9 col-md-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <form class="form-horizontal form-material" method="POST">
-                                        <c:forEach items="${requestScope.listpmb}" var="lmb">
+                                    <c:forEach items="${requestScope.listpmb}" var="lmb">
+                                        <form class="form-horizontal form-material" method="POST">
                                             <div class="card">
+                                                <input type="hidden" value="${lmb.accountNumber}" name="accountNumber" />
                                                 <div>Bank Name: ${lmb.bankName}</div>
                                                 <div>So The: ${lmb.accountNumber}</div>
                                                 <div>STK: ${lmb.cardNumber}</div>
                                                 <div>Chu Tai Khoan: ${lmb.ownerName}</div>
+                                                <div class="buttons">
+                                                    <input type="submit" value="Banking Update" name="act"/>
+                                                    <input type="submit" value="Banking Delete" onclick="clicked(event)" name="act"/>
+                                                </div>
                                             </div>
-                                        </c:forEach>
-                                        <input type="submit" value="Update"/>
-                                        <input type="submit" value="Add"/> 
-                                    </form>
+                                        </form>
+                                    </c:forEach>
+                                    <a href="addBank" class="btn btn-success">Add new Banking Info</a> 
                                 </div>
                             </div>
                         </div>
@@ -136,9 +140,9 @@
                             <div class="white-box">
                                 QR Payment
                                 <c:forEach items="${requestScope.listpbq}" var="lbq">
-                                        <div class="overlay-box">
-                                            <div class="user-content"><img src="${lbq.qrImage}" width="230" height="230" alt="${lbq.qrID}"></div>
-                                        </div>
+                                    <div class="overlay-box">
+                                        <div class="user-content"><img src="${lbq.qrImage}" width="345" height="345" alt="${lbq.qrID}"></div>
+                                    </div>
                                 </c:forEach>
                             </div>
                         </div>
@@ -153,4 +157,5 @@
     <script src="styles/bootstrap4/bootstrap.bundle.min.js"></script>
     <script src="plugins/bower_components/chartist/chartist.min.js"></script>
     <script src="plugins/bower_components/chartist-plugin-tooltips/chartist-plugin-tooltip.min.js"></script>
+    <script src="js/staffpage.js"></script>
 </html>
