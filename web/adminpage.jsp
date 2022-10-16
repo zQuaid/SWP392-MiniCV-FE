@@ -118,7 +118,7 @@
                         <div class="col-lg-8 col-xlg-9 col-md-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <form class="form-horizontal form-material">
+                                    <form class="form-horizontal form-material" method="POST">
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Tên
                                                 <input value="${admin.firstName} ${admin.lastName}" type="text" name="fullname" class="form-control" readonly required/>
@@ -158,7 +158,8 @@
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-sm-12">
-                                                <a href="stafflist" class="btn btn-success">Back</a>
+                                                <a href="summary" class="btn btn-success">Back</a>
+                                                <input type="submit" value="Update" name="act" />
                                             </div>
                                         </div>
                                     </form>
