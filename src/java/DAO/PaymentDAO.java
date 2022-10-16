@@ -51,6 +51,20 @@ public class PaymentDAO extends DBContext{
         }return pmb;
     }
     
+    public void addPaymentByBanking(PaymentByBanking pmb){
+        String sql = "INSERT INTO PaymentByBanking(BankName, AccountNumber, CardNumber, OwnerName) VALUES(?,?,?,?)";
+        try{
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, pmb.getBankName());
+            st.setString(2, pmb.getAccountNumber());
+            st.setString(3, pmb.getCardNumber());
+            st.setString(4, pmb.getOwnerName());
+            st.executeUpdate();
+        }catch(SQLException e){
+            
+        }
+    }
+    
     public void deletePaymentByBanking(String accountNumber){
         String sql = "DELETE FROM PaymentByBanking WHERE accountNumber = ?";
         try{
