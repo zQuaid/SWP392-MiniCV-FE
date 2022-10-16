@@ -64,11 +64,12 @@ public class OrderDetailServlet extends HttpServlet {
             throws ServletException, IOException {
         
         OrderDAO o = new OrderDAO();
+
         String userid = request.getParameter("userid");
-        String productid = request.getParameter("productid");
-        String date = request.getParameter("date");
-        List<Bill> list  = o.getOrderInfo(userid, productid, date);
+        ArrayList<Bill> list  = o.getOrder(userid);
+        
         request.setAttribute("listdt", list);
+
         request.getRequestDispatcher("orderdetail.jsp").forward(request, response);
 
     }

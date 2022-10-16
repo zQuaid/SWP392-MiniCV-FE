@@ -11,14 +11,29 @@ package Model;
 public class Product {
     private int productID;
     private String productName;
+    private String price;
+    private int discount;
     private int quantity;
     private String description;
     private String image;
-    int categoryID,warehouseID;
-    private String price;
-    private int discount;
     private Warehouse warehouse;
     private Category category;
+
+    public Product() {
+    }
+
+    public Product(int productID, String productName, String price, int discount, int quantity, String description, String image, Warehouse warehouse, Category category) {
+        this.productID = productID;
+        this.productName = productName;
+        this.price = price;
+        this.discount = discount;
+        this.quantity = quantity;
+        this.description = description;
+        this.image = image;
+        this.warehouse = warehouse;
+        this.category = category;
+    }
+    
 
     public int getProductID() {
         return productID;
@@ -34,6 +49,23 @@ public class Product {
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
     }
 
     public int getQuantity() {
@@ -60,38 +92,6 @@ public class Product {
         this.image = image;
     }
 
-    public int getCategoryID() {
-        return categoryID;
-    }
-
-    public void setCategoryID(int categoryID) {
-        this.categoryID = categoryID;
-    }
-
-    public int getWarehouseID() {
-        return warehouseID;
-    }
-
-    public void setWarehouseID(int warehouseID) {
-        this.warehouseID = warehouseID;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
-    public int getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(int discount) {
-        this.discount = discount;
-    }
-
     public Warehouse getWarehouse() {
         return warehouse;
     }
@@ -107,34 +107,5 @@ public class Product {
     public void setCategory(Category category) {
         this.category = category;
     }
-
-    public Product(int productID, String productName, int quantity, String description, String image, int categoryID, int warehouseID, String price, int discount, Warehouse warehouse, Category category) {
-        this.productID = productID;
-        this.productName = productName;
-        this.quantity = quantity;
-        this.description = description;
-        this.image = image;
-        this.categoryID = categoryID;
-        this.warehouseID = warehouseID;
-        this.price = price;
-        this.discount = discount;
-        this.warehouse = warehouse;
-        this.category = category;
-    }
-
-    public Product() {
-    }
-
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
     
 }

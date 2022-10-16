@@ -21,7 +21,8 @@ import java.util.List;
  */
 public class AccountDAO extends DBContext {
 
-    public void newPassword(String newPassword, String email) {
+
+public void newPassword(String newPassword, String email) {
         try {
 
             String sql = "update Account set password = ? where email = ? ";
@@ -42,7 +43,7 @@ public class AccountDAO extends DBContext {
         }
     }
 
-    public Account getAccount(String username) {
+        public Account getAccount(String username) {
         String sql = "select * from Account where username = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -134,5 +135,29 @@ public class AccountDAO extends DBContext {
         }
         return null;
     }
+    
+    public List<Account> getAllAccount() {
+        List<Account> list = new ArrayList<>();
+        String sql = "SELECT * FROM [dbo].[Account]";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Account p = new Account();
+                p.setUsername(rs.getString("Username"));
+                p.setPassword(rs.getString("Password"));
+                p.setFirstName(rs.getString("FirstName"));
+                p.setLastName(rs.getString("LirstName"));
+                p.setPhone(rs.getString("Phone"));
+                p.setGender(rs.getBoolean("Gender"));
+                p.setEmail(rs.getString("Email"));
+                p.setRoleID(rs.getString("RoleID"));
+                list.add(p);
+            }
+        } catch (SQLException e) {
+        }
+        return list;
+    }
+
 }
 

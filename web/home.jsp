@@ -65,7 +65,8 @@
                                 <nav class="navbar">
                                     <ul class="navbar_menu">
                                         <li><a href="home">home</a></li>
-                                        <li><a href="products">shop</a></li>
+                                        <li><a href="product">shop</a></li>
+                                        <li><a href="blog">blog</a></li>
                                     </ul>
                                     <ul class="navbar_user">
                                         <li class="navbar-brand">
@@ -102,7 +103,7 @@
                     </div>
                 </div>
             </header>
-            <div class="main_slider" style="background-image:url(images/coffebanner.jpg)">
+            <div class="main_slider" style="background-image:url(images/cafelogo.png)">
                 <div class="container fill_height">
                     <div class="row align-items-center fill_height">
                         <div class="col">
@@ -129,17 +130,18 @@
                     <div class="row">
                         <div class="col">
                             <div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
-                                <c:forEach items="${requestScope.listpd}" var="pd">
+                                <c:forEach items="${topProduct}" var="product">
                                     <div class="product-item">
                                         <div class="product discount product_filter">
                                             <div class="product_image">
-                                                <img src="${pd.Image}"/>
+                                                <img src="${product.image}"/>
                                             </div>
                                             <div class="favorite favorite_left"></div>
                                             <div class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"><span>new</span></div>
                                             <div class="product_info">
-                                                <h6 class="product_name"><a href="products">${pd.ProductName}</a></h6>
-                                                <div class="product_price">₫ ${pd.Price}</div>
+                                                <h6 class="product_name"><a href="product">${product.productName}</a></h6>
+                                                <div class="product_price">₫ ${product.price}</div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -170,48 +172,7 @@
                     </div>
                 </div>
             </div>
-            <div class="benefit">
-                <div class="container">
-                    <div class="row benefit_row">
-                        <div class="col-lg-3 benefit_col">
-                            <div class="benefit_item d-flex flex-row align-items-center">
-                                <div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
-                                <div class="benefit_content">
-                                    <h6>shipping</h6>
-                                    <p>Apply Voucher code for Free Shipping</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 benefit_col">
-                            <div class="benefit_item d-flex flex-row align-items-center">
-                                <div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
-                                <div class="benefit_content">
-                                    <h6>payments</h6>
-                                    <p>Payment methods</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 benefit_col">
-                            <div class="benefit_item d-flex flex-row align-items-center">
-                                <div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true"></i></div>
-                                <div class="benefit_content">
-                                    <h6>45 days return</h6>
-                                    <p>Making it Look Like Readable</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 benefit_col">
-                            <div class="benefit_item d-flex flex-row align-items-center">
-                                <div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
-                                <div class="benefit_content">
-                                    <h6>opening</h6>
-                                    <p>9.30 AM - 21.30 PM</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
             <div class="newsletter">
                 <div class="container">
                     <div class="row">

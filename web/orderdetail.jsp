@@ -20,11 +20,12 @@
     </head>
     <body>
         <div class="container-fluid">
-           
+            
             <div class="container">
                 <!-- Title -->
                 <div class="d-flex justify-content-between align-items-center py-3">
-                    <h2 class="h5 mb-0"><a href="#" class="text-muted"></a> Order # </h2>
+                    <c:set var="a" value="${requestScope.listdt}"></c:set>
+                    <h2 class="h5 mb-0"><a href="#" class="text-muted"></a> ${a.orderInfo.orderID} </h2>
                 </div>
 
                 <!-- Main content -->
