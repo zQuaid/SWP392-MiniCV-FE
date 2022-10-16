@@ -167,48 +167,7 @@
                     </div>
                 </div>
             </div>
-            <div class="benefit">
-                <div class="container">
-                    <div class="row benefit_row">
-                        <div class="col-lg-3 benefit_col">
-                            <div class="benefit_item d-flex flex-row align-items-center">
-                                <div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
-                                <div class="benefit_content">
-                                    <h6>shipping</h6>
-                                    <p>Apply Voucher code for Free Shipping</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 benefit_col">
-                            <div class="benefit_item d-flex flex-row align-items-center">
-                                <div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
-                                <div class="benefit_content">
-                                    <h6>payments</h6>
-                                    <p>Payment methods</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 benefit_col">
-                            <div class="benefit_item d-flex flex-row align-items-center">
-                                <div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true"></i></div>
-                                <div class="benefit_content">
-                                    <h6>45 days return</h6>
-                                    <p>Making it Look Like Readable</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 benefit_col">
-                            <div class="benefit_item d-flex flex-row align-items-center">
-                                <div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
-                                <div class="benefit_content">
-                                    <h6>opening</h6>
-                                    <p>9.30 AM - 21.30 PM</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
             <div class="newsletter">
                 <div class="container">
                     <div class="row">

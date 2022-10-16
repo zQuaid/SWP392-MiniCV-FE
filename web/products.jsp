@@ -216,7 +216,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="footer_nav_container">
-                                <div class="cr">©2022 Levents Shop. All Rights Reserved.</div>
+                                <div class="cr">©2022 Let's Café. All Rights Reserved.</div>
                             </div>
                         </div>
                     </div>

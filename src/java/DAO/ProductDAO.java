@@ -249,7 +249,7 @@ public class ProductDAO extends DBContext {
                         Cart row = new Cart();
                         row.setProductID(rs.getInt("ProductID"));
                         row.setProductName(rs.getString("ProductName"));
-                        row.setPrice(rs.getString("Price"));
+                        row.setPrice(String.valueOf(Integer.parseInt(rs.getString("Price")) * item.getQuantityAdd()));
                         row.setDiscount(rs.getInt("Discount"));
                         row.setQuantity(rs.getInt("Quantity"));
                         row.setDescription(rs.getString("Decription"));

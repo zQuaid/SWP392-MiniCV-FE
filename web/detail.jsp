@@ -128,7 +128,7 @@
                                 </div>
                             </div>
                             <br/>
-                            <div class="red_button add_to_cart_button"><a href="cart?id=${detail.productID}">add to cart</a></div>
+                            <div class="red_button add_to_cart_button"><a href="cart?productID=${detail.productID}">add to cart</a></div>
                         </div>
                     </div>
                     <a href="products" class="fa fa-angle-double-left">&nbsp; Back</a>
