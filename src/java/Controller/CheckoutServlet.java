@@ -4,11 +4,9 @@
  */
 package Controller;
 
-
 import DAO.AccountDAO;
 import DAO.OrderDAO;
 import Model.Account;
-import Model.Bill;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -16,15 +14,16 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.ZoneId;
 
 /**
  *
  * @author citih
  */
-@WebServlet(name = "OrderDetailServlet", urlPatterns = {"/oderdetail"})
-public class OrderDetailServlet extends HttpServlet {
+@WebServlet(name = "CheckoutServlet", urlPatterns = {"/checkout"})
+public class CheckoutServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,10 +42,10 @@ public class OrderDetailServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet OrderDetailServlet</title>");
+            out.println("<title>Servlet CheckoutServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet OrderDetailServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet CheckoutServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -64,17 +63,11 @@ public class OrderDetailServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        OrderDAO o = new OrderDAO();
         AccountDAO a = new AccountDAO();
-        String orderid = request.getParameter("orderid");
-        ArrayList<Bill> list  = o.getOrderbyOrderid(orderid);
         String userid = request.getParameter("userid");
         Account b = a.getAccountbyUserid(userid);
-        request.setAttribute("listdt", list);
         request.setAttribute("user", b);
-        request.getRequestDispatcher("orderdetail.jsp").forward(request, response);
-
+        request.getRequestDispatcher("checkout.jsp").forward(request, response);
     }
 
     /**
@@ -88,7 +81,26 @@ public class OrderDetailServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        OrderDAO o = new OrderDAO();
+        LocalDate date = LocalDate.now();
+        Date a  = Date.valueOf(date);
+        String coupon ="a";
+        
+        int userid = 11;
+        String shipaddress = request.getParameter("address");
+        String Bonus = "0";
+        String totalprice = request.getParameter("totalprice");
+        String shippingunit = "ghtk";
+        int price = 15000;
+        String status = "0";
+        
+        
+        int b = Integer.parseInt(totalprice.replaceAll("[.]",""));
+            
+            
+        
+        o.addOrderinfo(a, coupon, userid, shipaddress, userid, b, shippingunit, status, price);
+        response.sendRedirect("home");
     }
 
     /**

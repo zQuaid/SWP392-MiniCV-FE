@@ -101,7 +101,7 @@
                                                     <hr>
                                                     <div class="float-right">
 
-                                                        <a class="btn btn-sm btn-outline-primary" href="oderdetail?userid=${od.orderInfo.userID}"><i class="icofont-headphone-alt"></i> VIEW DETAIL</a>
+                                                        <a class="btn btn-sm btn-outline-primary" href="oderdetail?orderid=${od.orderInfo.orderID}&userid=${od.orderInfo.userID}"><i class="icofont-headphone-alt"></i> VIEW DETAIL</a>
 
                                                         <a class="btn btn-sm btn-primary" href="detail?id=${od.product.productID}"><i class="icofont-refresh"></i> REORDER</a>
                                                     </div>

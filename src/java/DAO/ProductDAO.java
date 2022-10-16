@@ -5,6 +5,7 @@
 package DAO;
 
 import Context.DBContext;
+import Model.Bill;
 import Model.Cart;
 import Model.Category;
 import Model.Product;
@@ -359,5 +360,27 @@ public class ProductDAO extends DBContext {
         }
         return sum;
     }
+    public double getTotalPrice(ArrayList<Bill> bill) {
+        double sum = 0;
+        try {
+            if (bill.size() > 0) {
+                for (Bill item : bill) {
+                    String sql = "Select Price from Product where ProductID =?";
+                    PreparedStatement st = connection.prepareStatement(sql);
+                    st.setInt(1, item.getProduct().getProductID());
+                    ResultSet rs = st.executeQuery();
+
+                    while (rs.next()) {
+                        sum += rs.getInt("Price") * item.getQuantity();
+                    }
+                }
+
+            }
+
+        } catch (Exception e) {
+        }
+        return sum;
+    }
+    
 }
 

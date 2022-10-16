@@ -75,6 +75,38 @@ public void newPassword(String newPassword, String email) {
         }
         return null;
     }
+        public Account getAccountbyUserid(String userid) {
+        String sql = "select * from Account where UserID = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, userid);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                Account p = new Account();
+                p.setUsername(rs.getString("username"));
+                p.setPassword(rs.getString("password"));
+                p.setFirstName(rs.getString("firstname"));
+                p.setLastName(rs.getString("lastname"));
+                p.setPhone(rs.getString("phone"));
+                p.setGender(rs.getBoolean("gender"));
+                p.setEmail(rs.getString("email"));
+                p.setRoleID(rs.getString("roleId"));
+                p.setCitizenID(rs.getString("CitizenID"));
+                p.setId(rs.getInt("UserID"));
+                p.setAccImage(rs.getString("accImage"));
+                p.setAddress(rs.getString("Address"));
+                p.setBonusPoint(rs.getInt("BonusPoint"));
+                p.setDob(rs.getDate("DOB"));
+                p.setSalary(rs.getString("Salary"));
+                p.setTrust(rs.getString("Trust"));
+                p.setWorkingShift(rs.getString("WorkingShift"));
+
+                return p;
+            }
+        } catch (SQLException e) {
+        }
+        return null;
+    }
 
     public void update(Account p) {
         String sql = "UPDATE [dbo].[Product]\n"
