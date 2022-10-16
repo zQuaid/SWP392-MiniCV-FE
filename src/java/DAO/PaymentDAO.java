@@ -43,10 +43,12 @@ public class PaymentDAO extends DBContext{
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, accountNumber);
             ResultSet rs = st.executeQuery();
+            while(rs.next()){
             pmb.setBankName(rs.getString("BankName"));
             pmb.setAccountNumber(rs.getString("AccountNumber"));
             pmb.setCardNumber(rs.getString("CardNumber"));
             pmb.setOwnerName(rs.getString("OwnerName"));
+            }
         }catch(SQLException e){
         }return pmb;
     }
@@ -59,6 +61,21 @@ public class PaymentDAO extends DBContext{
             st.setString(2, pmb.getAccountNumber());
             st.setString(3, pmb.getCardNumber());
             st.setString(4, pmb.getOwnerName());
+            st.executeUpdate();
+        }catch(SQLException e){
+            
+        }
+    }
+    
+    public void updatePaymentByBanking(PaymentByBanking pmb, String accnum){
+        String sql = "UPDATE PaymentByBanking SET BankName =?, AccountNumber = ?, CardNumber = ?, OwnerName = ? WHERE AccountNumber = ?";
+        try{
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, pmb.getBankName());
+            st.setString(2, pmb.getAccountNumber());
+            st.setString(3, pmb.getCardNumber());
+            st.setString(4, pmb.getOwnerName());
+            st.setString(5, accnum);
             st.executeUpdate();
         }catch(SQLException e){
             
@@ -90,5 +107,16 @@ public class PaymentDAO extends DBContext{
             }
         }catch(SQLException e){
         }return listpbq;
+    }
+    
+    public void deletePaymentQR(int qrid){
+        String sql = "DELETE FROM PaymentByQR WHERE QRId = ?";
+        try{
+            PreparedStatement st = connection.prepareCall(sql);
+            st.setInt(1, qrid);
+            st.executeUpdate();
+        }catch(SQLException e){
+            
+        }
     }
 }

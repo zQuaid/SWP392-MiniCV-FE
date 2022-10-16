@@ -19,9 +19,9 @@
         <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/chartist-plugin-tooltip.css">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link href="styles/css/style.min.css" rel="stylesheet">
-        <link href="styles/css/userlist.css" rel="stylesheet">
-        <link href="styles/css/paymentcss.css"
-              </head>
+        <link href="styles/css/addstaff.css" rel="stylesheet">
+
+    </head>
     <body>
         <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
              data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
@@ -108,60 +108,56 @@
                 <div class="page-breadcrumb bg-white">
                     <div class="row align-items-center">
                         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                            <h4 class="page-title">Payment Method</h4>
+                            <h4 class="page-title">Update Banking Payment Method</h4>
                         </div>
                     </div>
                 </div>
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-9 col-xlg-9 col-md-12">
+                        <div class="col-lg-12 col-xlg-12 col-md-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <c:forEach items="${requestScope.listpmb}" var="lmb">
-                                        <form class="form-horizontal form-material" method="POST">
-                                            <div class="card">
-                                                <input type="hidden" value="${lmb.accountNumber}" name="accountNumber" />
-                                                <div>Bank Name: ${lmb.bankName}</div>
-                                                <div>So The: ${lmb.accountNumber}</div>
-                                                <div>STK: ${lmb.cardNumber}</div>
-                                                <div>Chu Tai Khoan: ${lmb.ownerName}</div>
-                                                <div class="buttons">
-                                                    <a href="bankupdate?accountNumber=${lmb.accountNumber}" class="btn btn-warning">Update</a>
-                                                    <input type="submit" value="Delete" onclick="clicked(event)" name="act" class="btn btn-danger"/>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </c:forEach>
-                                    <a href="addbank" class="btn btn-success">Add new Banking Info</a> 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-xlg-3 col-md-12">
-                            <div class="white-box">
-                                QR Payment
-                                <c:forEach items="${requestScope.listpbq}" var="lbq">
                                     <form class="form-horizontal form-material" method="POST">
-                                        <input type="hidden" name="qrid" value="${lbq.qrID}"/>
-                                        <div class="overlay-box">
-                                            <div class="user-content"><img src="${lbq.qrImage}" width="345" height="345" alt="${lbq.qrID}"></div>
-                                            <div class="buttons">
-                                                <input type="submit" value="Delete QR" onclick="clicked(event)" name="act" class="btn btn-danger"/>
+                                        <input type="hidden" value="${bank.accountNumber}" name="accnum"/>
+                                        <div class="form-group mb-4">
+                                            <div class="col-md-12 border-bottom p-0">Bank Name
+                                                <input type="text" name="bankname" id="bankname" class="form-control" value="${bank.bankName}"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-4">
+                                            <div class="col-md-12 border-bottom p-0">Account Number
+                                                <input type="text" name="accountnumber" id=accountnumber class="form-control" value="${bank.accountNumber}"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-4">
+                                            <div class="col-md-12 border-bottom p-0">Card Number
+                                                <input type="text" name="cardnumber" id="cardnumber" class="form-control" value="${bank.cardNumber}"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-4">
+                                            <div class="col-md-12 border-bottom p-0">Owner Name
+                                                <input type="text" name="ownername" id="ownername" class="form-control" value="${bank.ownerName}"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-4">
+                                            <div class="col-sm-12">
+                                                <a href="payment" class="btn btn-success">Back</a>
+                                                <button type="submit" class="btn btn-success">update</button>
                                             </div>
                                         </div>
                                     </form>
-                                </c:forEach>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
     <script src="plugins/bower_components/jquery/jquery.min.js"></script>
     <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
     <script src="styles/bootstrap4/bootstrap.bundle.min.js"></script>
     <script src="plugins/bower_components/chartist/chartist.min.js"></script>
     <script src="plugins/bower_components/chartist-plugin-tooltips/chartist-plugin-tooltip.min.js"></script>
-    <script src="js/staffpage.js"></script>
+    <script src="js/addstaff.js"></script>
 </html>

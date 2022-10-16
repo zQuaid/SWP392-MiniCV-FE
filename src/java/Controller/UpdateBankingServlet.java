@@ -6,7 +6,6 @@ package Controller;
 
 import DAO.PaymentDAO;
 import Model.PaymentByBanking;
-import Model.PaymentByQR;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -14,15 +13,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "PaymentServlet", urlPatterns = {"/payment"})
-public class PaymentServlet extends HttpServlet {
+@WebServlet(name = "UpdateBankingServlet", urlPatterns = {"/bankupdate"})
+public class UpdateBankingServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,10 +38,10 @@ public class PaymentServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet PaymentServlet</title>");            
+            out.println("<title>Servlet UpdateBankingServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet PaymentServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UpdateBankingServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,15 +59,11 @@ public class PaymentServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String accountNumber = request.getParameter("accountNumber");
         PaymentDAO pd = new PaymentDAO();
-        List<PaymentByBanking> listpmb = new ArrayList<>();
-        List<PaymentByQR> listpbq = new ArrayList<>();
-        listpmb = pd.getListBanking();
-        listpbq = pd.getPaymentByQR();
-        request.setAttribute("listpmb", listpmb);
-        request.setAttribute("listpbq", listpbq);
-        request.getRequestDispatcher("/payment.jsp").forward(request, response);
-        
+        PaymentByBanking pmb = pd.getPaymentByBanking(accountNumber);
+        request.setAttribute("bank", pmb);
+        request.getRequestDispatcher("/updatebank.jsp").forward(request, response);
     }
 
     /**
@@ -84,17 +77,15 @@ public class PaymentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String act = request.getParameter("act");
         PaymentDAO pd = new PaymentDAO();
-        if(act.equals("Delete")){
-            String accountNumber = request.getParameter("accountNumber");
-            pd.deletePaymentByBanking(accountNumber);
-            response.sendRedirect("payment");
-        }else if(act.equals("Delete QR")){
-            int qrid = Integer.parseInt(request.getParameter("qrid"));
-            pd.deletePaymentQR(qrid);
-            response.sendRedirect("payment");
-        }
+        PaymentByBanking pmb = new PaymentByBanking();
+        String accnum = request.getParameter("accnum");
+        pmb.setAccountNumber(request.getParameter("accountnumber"));
+        pmb.setBankName(request.getParameter("bankname"));
+        pmb.setCardNumber(request.getParameter("cardnumber"));
+        pmb.setOwnerName(request.getParameter("ownername"));
+        pd.updatePaymentByBanking(pmb,accnum);
+        response.sendRedirect("payment");
     }
 
     /**
