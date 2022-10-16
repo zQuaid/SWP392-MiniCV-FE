@@ -82,8 +82,10 @@
                                                     <div class="quantity_selector">
                                                         <a class="minus" href="quantityaddtocart?action=dec&id=<%= c.getProductID()%>"><i class="fa fa-minus" aria-hidden="true"></i></a>
                                                         <!--                                                        <span class="minus"><i class="fa fa-minus" aria-hidden="true"><a href="quantityaddtocart"></a></i></span>-->
-                                                        <!--                                                        <span id="quantity_value" name ="quantity" value=""></span>-->
-                                                        <input id="quantity_value" type="text" name ="quantity" value="<%= c.getQuantityAdd()%>">
+                                                        <!-- 
+                                                        <span id="quantity_value" name ="quantity" value=""></span>-->
+                                                        <span id="quantity_value" name ="quantity"><%= c.getQuantityAdd()%></span>
+<!--                                                        <a id="quantity_value" type="text" name ="quantity" value="<%= c.getQuantityAdd()%>"</>-->
                                                         <a class="plus" href="quantityaddtocart?action=inc&id=<%= c.getProductID()%>"><i class="fa fa-plus" aria-hidden="true"></i></a>
                                                         <!--                                                        <span class="plus"><i class="fa fa-plus" aria-hidden="true"><a href="quantityaddtocart"></a></i></span>-->
                                                     </div>
