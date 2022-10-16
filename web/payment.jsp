@@ -20,7 +20,7 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link href="styles/css/style.min.css" rel="stylesheet">
         <link href="styles/css/userlist.css" rel="stylesheet">
-        
+
     </head>
     <body>
         <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
@@ -114,27 +114,32 @@
                 </div>
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-6 col-xlg-6 col-md-12">
+                        <div class="col-lg-9 col-xlg-9 col-md-12">
                             <div class="card">
                                 <div class="card-body">
                                     <form class="form-horizontal form-material" method="POST">
-                                        <c:forEach items="${requestScope.listpmb}" var="lpb">
+                                        <c:forEach items="${requestScope.listpmb}" var="lmb">
                                             <div class="card">
-                                                s
+                                                <div>Bank Name: ${lmb.bankName}</div>
+                                                <div>So The: ${lmb.accountNumber}</div>
+                                                <div>STK: ${lmb.cardNumber}</div>
+                                                <div>Chu Tai Khoan: ${lmb.ownerName}</div>
                                             </div>
                                         </c:forEach>
+                                        <input type="submit" value="Update"/>
+                                        <input type="submit" value="Add"/> 
                                     </form>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-xlg-6 col-md-12">
+                        <div class="col-lg-3 col-xlg-3 col-md-12">
                             <div class="white-box">
-                                <div class="user-bg">
-                                    <div class="overlay-box">
-                                        <div class="user-content"><img src="${admin.accImage}" width="150" height="150" alt="${admin.id}">
+                                QR Payment
+                                <c:forEach items="${requestScope.listpbq}" var="lbq">
+                                        <div class="overlay-box">
+                                            <div class="user-content"><img src="${lbq.qrImage}" width="230" height="230" alt="${lbq.qrID}"></div>
                                         </div>
-                                    </div>
-                                </div>
+                                </c:forEach>
                             </div>
                         </div>
                     </div>

@@ -10,16 +10,18 @@ package Model;
  */
 public class PaymentByBanking {
     private String bankName;
-    private int accountNumber;
-    private int cardNumber;
+    private String accountNumber;
+    private String cardNumber;
+    private String ownerName;
 
     public PaymentByBanking() {
     }
 
-    public PaymentByBanking(String bankName, int accountNumber, int cardNumber) {
+    public PaymentByBanking(String bankName, String accountNumber, String cardNumber, String ownerName) {
         this.bankName = bankName;
         this.accountNumber = accountNumber;
         this.cardNumber = cardNumber;
+        this.ownerName = ownerName;
     }
 
     public String getBankName() {
@@ -30,21 +32,32 @@ public class PaymentByBanking {
         this.bankName = bankName;
     }
 
-    public int getAccountNumber() {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(int accountNumber) {
+    public void setAccountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
     }
 
-    public int getCardNumber() {
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public String getCardNumber() {
         return cardNumber;
     }
 
-    public void setCardNumber(int cardNumber) {
-        this.cardNumber = cardNumber;
+    public String getOwnerName() {
+        return ownerName;
     }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
+    }
+    
+    
+    
     
     
 }
