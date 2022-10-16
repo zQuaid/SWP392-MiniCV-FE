@@ -5,46 +5,6 @@
 package DAO;
 
 import Context.DBContext;
-<<<<<<< HEAD
-import Model.Product;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-
-/**
- *
- * @author citih
- */
-public class ProductDAO extends DBContext{
-    public Product getProduct(int productid){
-        
-        String sql = "select * from Product where ProductID = ?";
-        try {
-            PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, productid);
-            ResultSet rs = st.executeQuery();
-            if (rs.next()) {
-                Product a = new Product();
-                a.setProductID(rs.getInt(1));
-                a.setProductName(rs.getString(2));
-                a.setPrice(rs.getInt(3));
-                a.setDiscount(rs.getInt(4));
-                a.setQuantity(rs.getInt(5));
-                a.setDescription(rs.getString(6));
-                a.setImage(rs.getString(7));
-                a.setCategoryID(rs.getInt(8));
-                a.setWarehouseID(rs.getInt(9));
-                
-                
-                return a;
-            }
-        } catch (SQLException e) {
-        }
-        return null;
-    }
-    
-=======
 import Model.Category;
 import Model.Product;
 import Model.Warehouse;
@@ -56,16 +16,43 @@ import java.util.List;
 
 /**
  *
- * @author Admin
+ * @author citih
  */
-public class ProductDAO extends DBContext{
-    public List<Product> getProductList(){
+public class ProductDAO extends DBContext {
+
+    public Product getProduct(int productid) {
+
+        String sql = "select * from Product where ProductID = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, productid);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                Product a = new Product();
+                a.setProductID(rs.getInt(1));
+                a.setProductName(rs.getString(2));
+                a.setPrice(rs.getString(3));
+                a.setDiscount(rs.getInt(4));
+                a.setQuantity(rs.getInt(5));
+                a.setDescription(rs.getString(6));
+                a.setImage(rs.getString(7));
+                a.setCategoryID(rs.getInt(8));
+                a.setWarehouseID(rs.getInt(9));
+
+                return a;
+            }
+        } catch (SQLException e) {
+        }
+        return null;
+    }
+
+    public List<Product> getProductList() {
         List<Product> list = new ArrayList<>();
         String sql = "SELECT * FROM (Product INNER JOIN Warehouse ON Product.WarehouseID = Warehouse.WarehouseID) INNER JOIN Category ON Product.CategoryID = Category.CategoryID ";
-        try{
-        PreparedStatement st = connection.prepareStatement(sql);
-        ResultSet rs = st.executeQuery();
-            while(rs.next()){
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
                 Product p = new Product();
                 Category c = new Category();
                 Warehouse w = new Warehouse();
@@ -84,14 +71,14 @@ public class ProductDAO extends DBContext{
                 p.setWarehouse(w);
                 list.add(p);
             }
-        }catch(SQLException e){
+        } catch (SQLException e) {
         }
         return list;
     }
-    
-    public void addProduct(Product p){
+
+    public void addProduct(Product p) {
         String sql = "INSERT INTO Product (ProductName, Price, Discount, Quantity, Product.Decription , Product.Image, CategoryID, WarehouseID) VALUES  (?,?,?,?,?,?,?,?)";
-        try{
+        try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, p.getProductName());
             st.setString(2, p.getPrice());
@@ -102,8 +89,7 @@ public class ProductDAO extends DBContext{
             st.setInt(7, p.getCategory().getCategoryID());
             st.setInt(8, p.getWarehouse().getWarehouseID());
             st.executeUpdate();
-            }catch(SQLException e){    
+        } catch (SQLException e) {
         }
     }
->>>>>>> 9a91acbe35befbf50e8957d5bc9ad72036479e8a
 }

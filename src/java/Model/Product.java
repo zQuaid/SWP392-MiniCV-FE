@@ -11,48 +11,14 @@ package Model;
 public class Product {
     private int productID;
     private String productName;
-<<<<<<< HEAD
-    private int price;
-    int discount;
     private int quantity;
     private String description;
     private String image;
     int categoryID,warehouseID;
-=======
     private String price;
     private int discount;
-    private int quantity;
-    private String description;
-    private String image;
     private Warehouse warehouse;
     private Category category;
->>>>>>> 9a91acbe35befbf50e8957d5bc9ad72036479e8a
-
-    public Product() {
-    }
-
-<<<<<<< HEAD
-    public Product(int productID, String productName, int price, int discount, int quantity, String description, String image, int categoryID, int warehouseID) {
-=======
-    public Product(int productID, String productName, String price, int discount, int quantity, String description, String image, Warehouse warehouse, Category category) {
->>>>>>> 9a91acbe35befbf50e8957d5bc9ad72036479e8a
-        this.productID = productID;
-        this.productName = productName;
-        this.price = price;
-        this.discount = discount;
-        this.quantity = quantity;
-        this.description = description;
-        this.image = image;
-<<<<<<< HEAD
-        this.categoryID = categoryID;
-        this.warehouseID = warehouseID;
-=======
-        this.warehouse = warehouse;
-        this.category = category;
->>>>>>> 9a91acbe35befbf50e8957d5bc9ad72036479e8a
-    }
-
-    
 
     public int getProductID() {
         return productID;
@@ -69,26 +35,6 @@ public class Product {
     public void setProductName(String productName) {
         this.productName = productName;
     }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
-    public int getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(int discount) {
-        this.discount = discount;
-    }
-<<<<<<< HEAD
-=======
-    
->>>>>>> 9a91acbe35befbf50e8957d5bc9ad72036479e8a
 
     public int getQuantity() {
         return quantity;
@@ -114,7 +60,6 @@ public class Product {
         this.image = image;
     }
 
-<<<<<<< HEAD
     public int getCategoryID() {
         return categoryID;
     }
@@ -131,27 +76,59 @@ public class Product {
         this.warehouseID = warehouseID;
     }
 
-   
-=======
-    public Category getCategory() {
-        return category;
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
     }
 
     public Warehouse getWarehouse() {
         return warehouse;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
     public void setWarehouse(Warehouse warehouse) {
         this.warehouse = warehouse;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Product(int productID, String productName, int quantity, String description, String image, int categoryID, int warehouseID, String price, int discount, Warehouse warehouse, Category category) {
+        this.productID = productID;
+        this.productName = productName;
+        this.quantity = quantity;
+        this.description = description;
+        this.image = image;
+        this.categoryID = categoryID;
+        this.warehouseID = warehouseID;
+        this.price = price;
+        this.discount = discount;
+        this.warehouse = warehouse;
+        this.category = category;
+    }
+
+    public Product() {
+    }
+
     
 
->>>>>>> 9a91acbe35befbf50e8957d5bc9ad72036479e8a
+    
+
     
     
     

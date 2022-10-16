@@ -5,11 +5,8 @@
 package DAO;
 
 import Context.DBContext;
-<<<<<<< HEAD
 import Model.Product;
-=======
 import Model.Category;
->>>>>>> 9a91acbe35befbf50e8957d5bc9ad72036479e8a
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,7 +29,7 @@ public class CategoryDAO extends DBContext {
                 Product p = new Product();
                 p.setProductID(rs.getInt("ProductId"));
                 p.setProductName(rs.getString("ProductName"));
-                p.setPrice(rs.getInt("Price"));
+                p.setPrice(rs.getString("Price"));
                 p.setDescription(rs.getString("Description"));
                 p.setQuantity(rs.getInt("Quantity"));
                 p.setImage(rs.getString("Image"));
@@ -42,12 +39,7 @@ public class CategoryDAO extends DBContext {
         }
         return list;
     }
-}
-=======
- * @author Admin
- */
-public class CategoryDAO extends DBContext{
-    public List<Category> getAllCategory(){
+     public List<Category> getAllCategory(){
         List<Category> list = new ArrayList<>();
         String sql = "SELECT * FROM Category";
         try{
@@ -65,4 +57,5 @@ public class CategoryDAO extends DBContext{
         }return list;
     }
 }
->>>>>>> 9a91acbe35befbf50e8957d5bc9ad72036479e8a
+
+
