@@ -122,7 +122,7 @@
                             <div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">
                                 <span>Quantity:</span>
                                 <div class="quantity_selector">
-                                    <span class="minus"><i class="fa fa-minus" aria-hidden="true"><a href="sub?id=${detail.productID}"></a></i></span>
+                                    <span class="minus"><i class="fa fa-minus" aria-hidden="true"><a href="quantityaddtocart"></a></i></span>
                                     <span id="quantity_value">1</span>
                                     <span class="plus"><i class="fa fa-plus" aria-hidden="true"><a href="cart?id=${detail.productID}"></a></i></span>
                                 </div>

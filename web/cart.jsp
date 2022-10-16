@@ -36,7 +36,9 @@
         <link rel="stylesheet" type="text/css" href="plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
         <link rel="stylesheet" type="text/css" href="styles/css/all.min.css.css">
         <link rel="stylesheet" type="text/css" href="styles/css/bootstrap.min.css">
-        
+        <link rel="stylesheet" type="text/css" href="styles/detail_styles.css">
+        <link rel="stylesheet" type="text/css" href="styles/detail_responsive.css">
+
     </head>
     <body>
         <section class="pt-5 pb-5">
@@ -63,23 +65,39 @@
                                             <img src="${i.image}" class="img-fluid d-none d-md-block rounded mb-2 shadow ">
                                         </div>
                                         <div class="col-md-9 text-left mt-sm-2">
-                                            
+
                                             <h4><%= c.getProductName()%></h4>
                                         </div>
                                     </div>
                                 </td>
                                 <td data-th="Price"><%= c.getPrice()%></td>
-                                <td  <div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">
-                                
-                                <div class="quantity_selector">
-                                    <span class="minus"><i class="fa fa-minus" aria-hidden="true"><a href=""></a></i></span>
-                                    <span id="quantity_value">1</span>
-                                    <span class="plus"><i class="fa fa-plus" aria-hidden="true"><a href=""></a></i></span>
-                                </div></td>
+                                <td  <div class="container single_product_container">
+
+                                    <div class="row">
+
+                                        <div class="col-lg-5">
+                                            <div class="product_details">
+                                                <div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">
+
+                                                    <div class="quantity_selector">
+                                                        <a class="minus" href="quantityaddtocart?action=dec&id=<%= c.getProductID()%>"><i class="fa fa-minus" aria-hidden="true"></i></a>
+                                                        <!--                                                        <span class="minus"><i class="fa fa-minus" aria-hidden="true"><a href="quantityaddtocart"></a></i></span>-->
+                                                        <!--                                                        <span id="quantity_value" name ="quantity" value=""></span>-->
+                                                        <input id="quantity_value" type="text" name ="quantity" value="<%= c.getQuantityAdd()%>">
+                                                        <a class="plus" href="quantityaddtocart?action=inc&id=<%= c.getProductID()%>"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                                                        <!--                                                        <span class="plus"><i class="fa fa-plus" aria-hidden="true"><a href="quantityaddtocart"></a></i></span>-->
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    </div></td>
                                 <td class="actions" data-th="">
                                     <div class="text-right">
                                         <button class="btn btn-white border-secondary bg-white btn-md mb-2">
-                                            <a href="remove?id=${i.id}">
+                                            <a href="remove-from-cart?id=<%= c.getProductID()%>">
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                         </button>
