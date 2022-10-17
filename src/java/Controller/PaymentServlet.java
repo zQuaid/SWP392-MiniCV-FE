@@ -4,9 +4,9 @@
  */
 package Controller;
 
-import DAO.ProductDAO;
-import Model.Category;
-import Model.Product;
+import DAO.PaymentDAO;
+import Model.PaymentByBanking;
+import Model.PaymentByQR;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -14,14 +14,15 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
- * @author mihxdat
+ * @author Admin
  */
-@WebServlet(name = "ProductServlet", urlPatterns = {"/product"})
-public class ProductServlet extends HttpServlet {
+@WebServlet(name = "PaymentServlet", urlPatterns = {"/payment"})
+public class PaymentServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +41,10 @@ public class ProductServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ProductServlet</title>");
+            out.println("<title>Servlet PaymentServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ProductServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet PaymentServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,21 +62,15 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ProductDAO categoryDAO = new ProductDAO();
-        List<Category> listCategory = categoryDAO.getListCategory();
-        request.setAttribute("listCategory", listCategory);
-
-        ProductDAO producrDAO = new ProductDAO();
-        String categoryID_raw = request.getParameter("categoryID");
-        int categoryID;
-        try {
-            categoryID = (categoryID_raw == null) ? 0 : Integer.parseInt(categoryID_raw);
-            //List<Product> listProduct = producrDAO.getProductByCategoryID(categoryID);
-           // request.setAttribute("listProduct", listProduct);
-        } catch (Exception e) {
-        }
-
-        request.getRequestDispatcher("products.jsp").forward(request, response);
+        PaymentDAO pd = new PaymentDAO();
+        List<PaymentByBanking> listpmb = new ArrayList<>();
+        List<PaymentByQR> listpbq = new ArrayList<>();
+        listpmb = pd.getListBanking();
+        listpbq = pd.getPaymentByQR();
+        request.setAttribute("listpmb", listpmb);
+        request.setAttribute("listpbq", listpbq);
+        request.getRequestDispatcher("/payment.jsp").forward(request, response);
+        
     }
 
     /**
@@ -89,7 +84,17 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String act = request.getParameter("act");
+        PaymentDAO pd = new PaymentDAO();
+        if(act.equals("Delete")){
+            String accountNumber = request.getParameter("accountNumber");
+            pd.deletePaymentByBanking(accountNumber);
+            response.sendRedirect("payment");
+        }else if(act.equals("Delete QR")){
+            int qrid = Integer.parseInt(request.getParameter("qrid"));
+            pd.deletePaymentQR(qrid);
+            response.sendRedirect("payment");
+        }
     }
 
     /**

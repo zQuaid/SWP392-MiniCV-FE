@@ -19,8 +19,8 @@
         <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/chartist-plugin-tooltip.css">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link href="styles/css/style.min.css" rel="stylesheet">
-        <link href="styles/css/addstaff.css" rel="stylesheet">
-
+        <link href="styles/css/userlist.css" rel="stylesheet">
+        
     </head>
     <body>
         <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
@@ -108,7 +108,7 @@
                 <div class="page-breadcrumb bg-white">
                     <div class="row align-items-center">
                         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                            <h4 class="page-title">Add New Staff</h4>
+                            <h4 class="page-title">Update Admin Profile</h4>
                         </div>
                     </div>
                 </div>
@@ -118,29 +118,25 @@
                             <div class="card">
                                 <div class="card-body">
                                     <form class="form-horizontal form-material" method="POST">
+                                        <input value="${admin.id}" type="hidden" name="userid" />
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">First Name
-                                                <input type="text" name="firstname" id="firstname" class="form-control"/>
+                                                <input value="${admin.firstName}" type="text" name="firstname" class="form-control" required/>
                                             </div>
                                         </div>
-                                        <div class="form-group mb-4">
+                                            <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Last Name
-                                                <input type="text" name="lastname" id=lastname class="form-control"/>
+                                                <input value="${admin.lastName}" type="text" name="lastname" class="form-control" required/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Username
-                                                <input type="text" name="username" id="username" class="form-control"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">Password
-                                                <input type="password" name="password" id="password" class="form-control"/>
+                                                <input value="${admin.username}" type="text" name="username" class="form-control" readonly required/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Email
-                                                <input type="text" name="email" class="form-control" id="email"/>
+                                                <input value="${admin.email}" type="text" name="email" class="form-control" required/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
@@ -150,42 +146,23 @@
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Ðia Chi
-                                                <input type="text" class="form-control" name="address" id="address">
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">CMT/CCCD
-                                                <input type="text" class="form-control" name="citizenid" id="citizenid">
+                                                <input value="${admin.address}" type="text" class="form-control" name="address"required>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">SÐT     
-                                                <input type="text" name="phone" id="phone" class="form-control"/>
+                                                <input value="${admin.phone}" type="text" name="phone" class="form-control" required/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-md-12 border-bottom p-0">Ngày tháng nam sinh
-                                                <input type="date" name="dob" id="dob" class="form-control"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">Ca lam viec
-                                                <select class="custom-select" style="width:200px;" name="workingshift" id="workingshift">
-                                                    <option value="Sang">Sáng</option>
-                                                    <option value="Chieu">Chiêu</option>
-                                                    <option value="Toi">Tôi</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">Luong
-                                                <input  type="text" name="salary" id="salary" class="form-control"/>
+                                                <input value="${admin.dob}" type="text" name="dob" class="form-control" required/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-sm-12">
-                                                <a href="stafflist" class="btn btn-success">Back</a>
-                                                <button type="submit" class="btn btn-success" id="btnadd">Add</button>
+                                                <a href="summary" class="btn btn-success">Back</a>
+                                                <input type="submit" class="btn btn-success" value="Update" name="act" />
                                             </div>
                                         </div>
                                     </form>
@@ -196,7 +173,7 @@
                             <div class="white-box">
                                 <div class="user-bg">
                                     <div class="overlay-box">
-                                        <div class="user-content"><img src="${user.accImage}" width="150" height="150" alt="${user.id}">
+                                        <div class="user-content"><img src="${admin.accImage}" width="150" height="150" alt="${admin.id}">
                                         </div>
                                     </div>
                                 </div>
@@ -206,11 +183,11 @@
                 </div>
             </div>
         </div>
+    </div>
 
     <script src="plugins/bower_components/jquery/jquery.min.js"></script>
     <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
     <script src="styles/bootstrap4/bootstrap.bundle.min.js"></script>
     <script src="plugins/bower_components/chartist/chartist.min.js"></script>
     <script src="plugins/bower_components/chartist-plugin-tooltips/chartist-plugin-tooltip.min.js"></script>
-    <script src="js/addstaff.js"></script>
 </html>

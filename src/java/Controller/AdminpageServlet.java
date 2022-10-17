@@ -4,9 +4,8 @@
  */
 package Controller;
 
-import DAO.ProductDAO;
-import Model.Category;
-import Model.Product;
+import DAO.AccountDAO;
+import Model.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -14,14 +13,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
 
 /**
  *
- * @author mihxdat
+ * @author Admin
  */
-@WebServlet(name = "ProductServlet", urlPatterns = {"/product"})
-public class ProductServlet extends HttpServlet {
+@WebServlet(name = "AdminpageServlet", urlPatterns = {"/adpage"})
+public class AdminpageServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +38,10 @@ public class ProductServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ProductServlet</title>");
+            out.println("<title>Servlet AdminpageServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ProductServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AdminpageServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,21 +59,13 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ProductDAO categoryDAO = new ProductDAO();
-        List<Category> listCategory = categoryDAO.getListCategory();
-        request.setAttribute("listCategory", listCategory);
-
-        ProductDAO producrDAO = new ProductDAO();
-        String categoryID_raw = request.getParameter("categoryID");
-        int categoryID;
-        try {
-            categoryID = (categoryID_raw == null) ? 0 : Integer.parseInt(categoryID_raw);
-            //List<Product> listProduct = producrDAO.getProductByCategoryID(categoryID);
-           // request.setAttribute("listProduct", listProduct);
-        } catch (Exception e) {
-        }
-
-        request.getRequestDispatcher("products.jsp").forward(request, response);
+        AccountDAO ad = new AccountDAO();
+        
+        int userid = 7;
+        
+        Account a = ad.getAccount(userid);
+        request.setAttribute("admin", a);
+        request.getRequestDispatcher("/adminpage.jsp").forward(request, response);
     }
 
     /**

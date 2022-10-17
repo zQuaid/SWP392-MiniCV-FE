@@ -10,7 +10,7 @@ if(document.getElementById("gender").values=0){
 
 function clicked(e)
 {
-    if(!confirm('Ban co chac muon xoa nguoi dung nay khong')) {
+    if(!confirm('Ban co chac muon xoa khong')) {
         e.preventDefault();
     }
 }

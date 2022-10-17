@@ -11,19 +11,13 @@ package Model;
 public class Warehouse {
     private int warehouseID;
     private String warehouseName;
-    private int productID;
-    private int orderID;
-    private int quantity;
 
     public Warehouse() {
     }
 
-    public Warehouse(int warehouseID, String warehouseName, int productID, int orderID, int quantity) {
+    public Warehouse(int warehouseID, String warehouseName) {
         this.warehouseID = warehouseID;
         this.warehouseName = warehouseName;
-        this.productID = productID;
-        this.orderID = orderID;
-        this.quantity = quantity;
     }
 
     public int getWarehouseID() {
@@ -40,30 +34,6 @@ public class Warehouse {
 
     public void setWarehouseName(String warehouseName) {
         this.warehouseName = warehouseName;
-    }
-
-    public int getProductID() {
-        return productID;
-    }
-
-    public void setProductID(int productID) {
-        this.productID = productID;
-    }
-
-    public int getOrderID() {
-        return orderID;
-    }
-
-    public void setOrderID(int orderID) {
-        this.orderID = orderID;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
     
     

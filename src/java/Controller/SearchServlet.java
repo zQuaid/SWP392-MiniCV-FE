@@ -62,9 +62,9 @@ public class SearchServlet extends HttpServlet {
                 if (count % size != 0) {
                     endPage++;
                 }
-                List<Product> list = productDAO.search(txt, index);
+                //List<Product> list = productDAO.search(txt, index);
                 request.setAttribute("endPage", endPage);
-                request.setAttribute("listProduct", list);
+                //request.setAttribute("listProduct", list);
                 request.setAttribute("txt", txt);
                 request.getRequestDispatcher("products.jsp").forward(request, response);
             } catch (ServletException | IOException | NumberFormatException | SQLException e) {

@@ -13,6 +13,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -71,8 +74,7 @@ public class OrderDAO extends DBContext {
                 b.setProductName(rs.getString(3));
                 a.setQuantity(rs.getInt(4));
                 c.setTotalPrice(rs.getInt(5));
-                b.setPrice(rs.getInt(6));
-
+                b.setPrice(rs.getString(6));
                 b.setDiscount(rs.getInt(7));
                 b.setDescription(rs.getString(8));
                 c.setShippingUnit(rs.getString(9));

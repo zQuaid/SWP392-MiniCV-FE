@@ -19,8 +19,8 @@
         <link rel="stylesheet" href="plugins/bower_components/chartist-plugin-tooltips/chartist-plugin-tooltip.css">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link href="styles/css/style.min.css" rel="stylesheet">
-        <link href="styles/css/addstaff.css" rel="stylesheet">
-
+        <link href="styles/css/userlist.css" rel="stylesheet">
+        
     </head>
     <body>
         <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
@@ -108,109 +108,68 @@
                 <div class="page-breadcrumb bg-white">
                     <div class="row align-items-center">
                         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                            <h4 class="page-title">Add New Staff</h4>
+                            <h4 class="page-title">Product List</h4>
                         </div>
                     </div>
                 </div>
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-8 col-xlg-9 col-md-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <form class="form-horizontal form-material" method="POST">
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">First Name
-                                                <input type="text" name="firstname" id="firstname" class="form-control"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">Last Name
-                                                <input type="text" name="lastname" id=lastname class="form-control"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">Username
-                                                <input type="text" name="username" id="username" class="form-control"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">Password
-                                                <input type="password" name="password" id="password" class="form-control"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">Email
-                                                <input type="text" name="email" class="form-control" id="email"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">Giôi Tính </div>
-                                            <input type="radio" name="gender" id="gender" value="1" checked=""> Male
-                                            <input type="radio" name="gender" id="gender" value="0"> Female
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">Ðia Chi
-                                                <input type="text" class="form-control" name="address" id="address">
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">CMT/CCCD
-                                                <input type="text" class="form-control" name="citizenid" id="citizenid">
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">SÐT     
-                                                <input type="text" name="phone" id="phone" class="form-control"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">Ngày tháng nam sinh
-                                                <input type="date" name="dob" id="dob" class="form-control"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">Ca lam viec
-                                                <select class="custom-select" style="width:200px;" name="workingshift" id="workingshift">
-                                                    <option value="Sang">Sáng</option>
-                                                    <option value="Chieu">Chiêu</option>
-                                                    <option value="Toi">Tôi</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">Luong
-                                                <input  type="text" name="salary" id="salary" class="form-control"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-sm-12">
-                                                <a href="stafflist" class="btn btn-success">Back</a>
-                                                <button type="submit" class="btn btn-success" id="btnadd">Add</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-xlg-3 col-md-12">
+                        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                             <div class="white-box">
-                                <div class="user-bg">
-                                    <div class="overlay-box">
-                                        <div class="user-content"><img src="${user.accImage}" width="150" height="150" alt="${user.id}">
-                                        </div>
-                                    </div>
+                                <div id="ct-visits" style="height: 405px;">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Id</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Price</th>
+                                                <th scope="col">Quantity</th>
+                                                <th scope="col">Discount</th>
+                                                <th scope="col">Description</th>
+                                                <th scope="col">Warehouse</th>
+                                                <th scope="col">Category</th>
+                                                <th scope="col">Image</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <c:forEach items="${requestScope.listpd}" var="pd">
+                                            <tr>
+                                                <th scope="row" class="count"></th>
+                                                <td>${pd.productID}</td>
+                                                <td>${pd.productName}</td>
+                                                <td>${pd.price}</td>
+                                                <td>${pd.quantity}</td>
+                                                <td>${pd.discount}</td>
+                                                <td>${pd.description}</td>
+                                                <td>${pd.warehouse.warehouseName}</td>
+                                                <td>${pd.category.categoryName}</td>
+                                                <td><img src="${pd.image}" alt="${pd.productID} width="50" height="70"/></td>
+                                                <td>
+                                                    <form method="POST">
+                                                        <input type="hidden" name="userid" value="${pd.productID}" />
+                                                        <input type="submit" value="View Detail" name="act" />
+                                                        <input type="submit" value="Delete" name="act" onclick="clicked(event)"/>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+                                    </table>
                                 </div>
+                                <div class="col-sm-12">
+                                                <a href="addproduct" class="btn btn-success">Add new product</a>
+                                            </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
     <script src="plugins/bower_components/jquery/jquery.min.js"></script>
     <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
     <script src="styles/bootstrap4/bootstrap.bundle.min.js"></script>
     <script src="plugins/bower_components/chartist/chartist.min.js"></script>
     <script src="plugins/bower_components/chartist-plugin-tooltips/chartist-plugin-tooltip.min.js"></script>
-    <script src="js/addstaff.js"></script>
 </html>

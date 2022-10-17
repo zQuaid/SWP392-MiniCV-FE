@@ -4,9 +4,12 @@
  */
 package Controller;
 
+import DAO.CategoryDAO;
 import DAO.ProductDAO;
+import DAO.WarehouseDAO;
 import Model.Category;
 import Model.Product;
+import Model.Warehouse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -18,10 +21,10 @@ import java.util.List;
 
 /**
  *
- * @author mihxdat
+ * @author Admin
  */
-@WebServlet(name = "ProductServlet", urlPatterns = {"/product"})
-public class ProductServlet extends HttpServlet {
+@WebServlet(name = "AddProductServlet", urlPatterns = {"/addproduct"})
+public class AddProductServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +43,10 @@ public class ProductServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ProductServlet</title>");
+            out.println("<title>Servlet AddProductServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ProductServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AddProductServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,21 +64,14 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ProductDAO categoryDAO = new ProductDAO();
-        List<Category> listCategory = categoryDAO.getListCategory();
-        request.setAttribute("listCategory", listCategory);
-
-        ProductDAO producrDAO = new ProductDAO();
-        String categoryID_raw = request.getParameter("categoryID");
-        int categoryID;
-        try {
-            categoryID = (categoryID_raw == null) ? 0 : Integer.parseInt(categoryID_raw);
-            //List<Product> listProduct = producrDAO.getProductByCategoryID(categoryID);
-           // request.setAttribute("listProduct", listProduct);
-        } catch (Exception e) {
-        }
-
-        request.getRequestDispatcher("products.jsp").forward(request, response);
+        CategoryDAO cd = new CategoryDAO();
+        WarehouseDAO wd = new WarehouseDAO();
+        List<Category> listc = cd.getAllCategory();
+        List<Warehouse>listw = wd.getAllWarehouse();
+        request.setAttribute("listc", listc);
+        request.setAttribute("listw", listw);
+        request.getRequestDispatcher("/addproduct.jsp").forward(request, response);
+        
     }
 
     /**
@@ -89,7 +85,30 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String productname = request.getParameter("productname");
+        String price = request.getParameter("price");
+        String quantity = request.getParameter("quantity");
+        String description = request.getParameter("description");
+        String discount = request.getParameter("discount");
+        String warehouse = request.getParameter("warehouse");
+        String category = request.getParameter("category");
+        String image = "unimage";
+        Product p = new Product();
+        Warehouse w = new Warehouse();
+        Category c = new Category();
+        p.setProductName(productname);
+        p.setPrice(price);
+        p.setQuantity(Integer.parseInt(quantity));
+        p.setDescription(description);
+        p.setDiscount(Integer.parseInt(discount));
+        p.setImage(image);
+        w.setWarehouseID(Integer.parseInt(warehouse));
+        c.setCategoryID(Integer.parseInt(category));
+        p.setWarehouse(w);
+        p.setCategory(c);
+        ProductDAO pd = new ProductDAO();
+        pd.addProduct(p);
+        response.sendRedirect("productlist");
     }
 
     /**

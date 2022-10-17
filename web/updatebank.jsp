@@ -108,97 +108,44 @@
                 <div class="page-breadcrumb bg-white">
                     <div class="row align-items-center">
                         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                            <h4 class="page-title">Add New Staff</h4>
+                            <h4 class="page-title">Update Banking Payment Method</h4>
                         </div>
                     </div>
                 </div>
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-8 col-xlg-9 col-md-12">
+                        <div class="col-lg-12 col-xlg-12 col-md-12">
                             <div class="card">
                                 <div class="card-body">
                                     <form class="form-horizontal form-material" method="POST">
+                                        <input type="hidden" value="${bank.accountNumber}" name="accnum"/>
                                         <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">First Name
-                                                <input type="text" name="firstname" id="firstname" class="form-control"/>
+                                            <div class="col-md-12 border-bottom p-0">Bank Name
+                                                <input type="text" name="bankname" id="bankname" class="form-control" value="${bank.bankName}"/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">Last Name
-                                                <input type="text" name="lastname" id=lastname class="form-control"/>
+                                            <div class="col-md-12 border-bottom p-0">Account Number
+                                                <input type="text" name="accountnumber" id=accountnumber class="form-control" value="${bank.accountNumber}"/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">Username
-                                                <input type="text" name="username" id="username" class="form-control"/>
+                                            <div class="col-md-12 border-bottom p-0">Card Number
+                                                <input type="text" name="cardnumber" id="cardnumber" class="form-control" value="${bank.cardNumber}"/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">Password
-                                                <input type="password" name="password" id="password" class="form-control"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">Email
-                                                <input type="text" name="email" class="form-control" id="email"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">Giôi Tính </div>
-                                            <input type="radio" name="gender" id="gender" value="1" checked=""> Male
-                                            <input type="radio" name="gender" id="gender" value="0"> Female
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">Ðia Chi
-                                                <input type="text" class="form-control" name="address" id="address">
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">CMT/CCCD
-                                                <input type="text" class="form-control" name="citizenid" id="citizenid">
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">SÐT     
-                                                <input type="text" name="phone" id="phone" class="form-control"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">Ngày tháng nam sinh
-                                                <input type="date" name="dob" id="dob" class="form-control"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">Ca lam viec
-                                                <select class="custom-select" style="width:200px;" name="workingshift" id="workingshift">
-                                                    <option value="Sang">Sáng</option>
-                                                    <option value="Chieu">Chiêu</option>
-                                                    <option value="Toi">Tôi</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="col-md-12 border-bottom p-0">Luong
-                                                <input  type="text" name="salary" id="salary" class="form-control"/>
+                                            <div class="col-md-12 border-bottom p-0">Owner Name
+                                                <input type="text" name="ownername" id="ownername" class="form-control" value="${bank.ownerName}"/>
                                             </div>
                                         </div>
                                         <div class="form-group mb-4">
                                             <div class="col-sm-12">
-                                                <a href="stafflist" class="btn btn-success">Back</a>
-                                                <button type="submit" class="btn btn-success" id="btnadd">Add</button>
+                                                <a href="payment" class="btn btn-success">Back</a>
+                                                <button type="submit" class="btn btn-success">update</button>
                                             </div>
                                         </div>
                                     </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-xlg-3 col-md-12">
-                            <div class="white-box">
-                                <div class="user-bg">
-                                    <div class="overlay-box">
-                                        <div class="user-content"><img src="${user.accImage}" width="150" height="150" alt="${user.id}">
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -63,8 +63,8 @@ public class HomepageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             ProductDAO productDAO = new ProductDAO();
-            List<Product> topProduct = productDAO.getTopProduct();
-            request.setAttribute("topProduct", topProduct);
+            //List<Product> topProduct = productDAO.getTopProduct();
+            //request.setAttribute("topProduct", topProduct);
         request.getRequestDispatcher("home.jsp").forward(request, response);
        // request.getRequestDispatcher("/home.jsp").forward(request, response);
     }
