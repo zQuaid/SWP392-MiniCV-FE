@@ -47,6 +47,12 @@
                             <li class="sidebar-item pt">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link active" href="#"
                                    aria-expanded="false">
+                                    <span class="hide-menu">Summary</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item pt">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link active" href="#"
+                                   aria-expanded="false">
                                     <span class="hide-menu">Profile</span>
                                 </a>
                             </li>

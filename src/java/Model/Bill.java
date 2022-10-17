@@ -9,42 +9,44 @@ package Model;
  * @author Admin
  */
 public class Bill {
-        private int orderID;
-        private int productID;
+        private OrderInfo order;
+        private Product product;
         private int price;
 
     public Bill() {
     }
 
-    public Bill(int orderID, int productID, int price) {
-        this.orderID = orderID;
-        this.productID = productID;
+    public Bill(OrderInfo order, Product product, int price) {
+        this.order = order;
+        this.product = product;
         this.price = price;
     }
 
-    public int getOrderID() {
-        return orderID;
-    }
-
-    public void setOrderID(int orderID) {
-        this.orderID = orderID;
-    }
-
-    public int getProductID() {
-        return productID;
-    }
-
-    public void setProductID(int productID) {
-        this.productID = productID;
+    public OrderInfo getOrder() {
+        return order;
     }
 
     public int getPrice() {
         return price;
     }
 
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setOrder(OrderInfo order) {
+        this.order = order;
+    }
+
     public void setPrice(int price) {
         this.price = price;
     }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    
         
         
 }

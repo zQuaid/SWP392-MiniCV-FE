@@ -48,7 +48,6 @@ public class Account {
         this.workingShift = workingShift;
         this.accImage = accImage;
     }
-    
 
     public Account(String username, String password, String firstName, String lastName, String phone, boolean gender, String email, String roleID) {
         this.username = username;
@@ -59,10 +58,6 @@ public class Account {
         this.gender = gender;
         this.email = email;
         this.roleID = roleID;
-    }
-
-    public Account(String string, String string0, String string1, String string2, String string3, String string4, boolean aBoolean, String string5, String string6, int aInt, String string7, String string8, String string9) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public int getId() {

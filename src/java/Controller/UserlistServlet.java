@@ -4,7 +4,8 @@
  */
 package Controller;
 
-import DAO.UserDAO;
+import DAO.AccountDAO;
+import DAO.OrderDAO;
 import Model.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -60,7 +61,7 @@ public class UserlistServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        UserDAO ud = new UserDAO();
+        AccountDAO ud = new AccountDAO();
         List<Account> acc = ud.getUserList();
         request.setAttribute("accList", acc);
        request.getRequestDispatcher("/userlist.jsp").forward(request, response);
@@ -77,7 +78,19 @@ public class UserlistServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        AccountDAO ad = new AccountDAO();
+        OrderDAO od = new OrderDAO();
+        String sid = (String)request.getParameter("userid");
+        int id = Integer.parseInt(sid);
+        Account a = ad.getAccount(id);
+        int orderSuccess = od.getOrderBySuccess(id);
+        int orderPending = od.getOrderByPending(id);
+        int orderCanceled = od.getOrderByCanceled(id);
+        request.setAttribute("user", a);
+        request.setAttribute("success", orderSuccess);
+        request.setAttribute("pending", orderPending);
+        request.setAttribute("canceled", orderCanceled);
+        request.getRequestDispatcher("userpage.jsp").forward(request, response);
     }
 
     /**
