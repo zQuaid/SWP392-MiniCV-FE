@@ -21,10 +21,24 @@ public class OrderInfo {
     private int bonusPoint;
     private int totalPrice;
     private String status;
-
+    private String paymentMethod;
     public OrderInfo() {
     }
 
+    public OrderInfo(int orderID, int productID, Date date, String coupon, int userID, String shippingAddress, String shippingUnit, int bonusPoint, int totalPrice, String status, String paymentMethod) {
+        this.orderID = orderID;
+        this.productID = productID;
+        this.date = date;
+        this.coupon = coupon;
+        this.userID = userID;
+        this.shippingAddress = shippingAddress;
+        this.shippingUnit = shippingUnit;
+        this.bonusPoint = bonusPoint;
+        this.totalPrice = totalPrice;
+        this.status = status;
+        this.paymentMethod = paymentMethod;
+    }
+    
     public OrderInfo(int orderID, int productID, Date date, String coupon, int userID, String shippingAddress, String shippingUnit, int bonusPoint, int totalPrice, String status) {
         this.orderID = orderID;
         this.productID = productID;
@@ -36,6 +50,14 @@ public class OrderInfo {
         this.bonusPoint = bonusPoint;
         this.totalPrice = totalPrice;
         this.status = status;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 
     public int getOrderID() {

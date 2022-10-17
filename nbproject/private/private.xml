@@ -5,6 +5,7 @@
         <group>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             <file>file:/C:/Users/mihxdat/Desktop/SWP391/web/home.jsp</file>
             <file>file:/C:/Users/mihxdat/Desktop/SWP391/web/cart.jsp</file>
             <file>file:/C:/Users/mihxdat/Desktop/SWP391/src/java/Controller/RemoveFromCartServlet.java</file>
@@ -68,6 +69,18 @@
             <file>file:/C:/Users/mihxdat/Desktop/SWP391/src/java/Controller/CartServlet.java</file>
             <file>file:/C:/Users/mihxdat/Desktop/SWP391/web/blogdetail.jsp</file>
 >>>>>>> origin/Minh-Dat
+=======
+            <file>file:/C:/Users/citih/OneDrive/Máy%20tính/SWP391/SWP392-MiniCV-FE/web/checkout.jsp</file>
+            <file>file:/C:/Users/citih/OneDrive/Máy%20tính/SWP391/SWP392-MiniCV-FE/src/java/DAO/AccountDAO.java</file>
+            <file>file:/C:/Users/citih/OneDrive/Máy%20tính/SWP391/SWP392-MiniCV-FE/src/java/Model/Item.java</file>
+            <file>file:/C:/Users/citih/OneDrive/Máy%20tính/SWP391/SWP392-MiniCV-FE/src/java/DAO/ProductDAO.java</file>
+            <file>file:/C:/Users/citih/OneDrive/Máy%20tính/SWP391/SWP392-MiniCV-FE/src/java/Controller/OrderDetailServlet.java</file>
+            <file>file:/C:/Users/citih/OneDrive/Máy%20tính/SWP391/SWP392-MiniCV-FE/src/java/Controller/CheckoutServlet.java</file>
+            <file>file:/C:/Users/citih/OneDrive/Máy%20tính/SWP391/SWP392-MiniCV-FE/src/java/Controller/CartServlet.java</file>
+            <file>file:/C:/Users/citih/OneDrive/Máy%20tính/SWP391/SWP392-MiniCV-FE/src/java/Model/Cart.java</file>
+            <file>file:/C:/Users/citih/OneDrive/Máy%20tính/SWP391/SWP392-MiniCV-FE/src/java/DAO/OrderDAO.java</file>
+            <file>file:/C:/Users/citih/OneDrive/Máy%20tính/SWP391/SWP392-MiniCV-FE/web/cart.jsp</file>
+>>>>>>> origin/Hieu-Huu
         </group>
     </open-files>
 </project-private>

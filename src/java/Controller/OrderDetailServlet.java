@@ -5,7 +5,9 @@
 package Controller;
 
 
+import DAO.AccountDAO;
 import DAO.OrderDAO;
+import Model.Account;
 import Model.Bill;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -64,11 +66,13 @@ public class OrderDetailServlet extends HttpServlet {
             throws ServletException, IOException {
         
         OrderDAO o = new OrderDAO();
+        AccountDAO a = new AccountDAO();
+        String orderid = request.getParameter("orderid");
+        ArrayList<Bill> list  = o.getOrderbyOrderid(orderid);
         String userid = request.getParameter("userid");
-        String productid = request.getParameter("productid");
-        String date = request.getParameter("date");
-        List<Bill> list  = o.getOrderInfo(userid, productid, date);
+        Account b = a.getAccountbyUserid(userid);
         request.setAttribute("listdt", list);
+        request.setAttribute("user", b);
         request.getRequestDispatcher("orderdetail.jsp").forward(request, response);
 
     }

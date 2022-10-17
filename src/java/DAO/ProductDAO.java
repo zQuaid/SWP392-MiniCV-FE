@@ -5,16 +5,22 @@
 package DAO;
 
 import Context.DBContext;
+import Model.Bill;
 import Model.Cart;
 import Model.Category;
 import Model.Product;
 import Model.Warehouse;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * @author mihxdat
+ */
 
 public class ProductDAO extends DBContext {
     public List<Category> getListCategory() {
@@ -135,6 +141,30 @@ public class ProductDAO extends DBContext {
         return list;
 
     }
+    
+    public Product getProduct(int productid) {
+        String sql = "select * from Product where ProductID = ?";
+        Product a = new Product();
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, productid);
+            ResultSet rs = st.executeQuery();
+                Category c = new Category();
+                Warehouse w = new Warehouse();
+                a.setProductID(rs.getInt(1));
+                a.setProductName(rs.getString(2));
+                a.setPrice(rs.getString(3));
+                a.setDiscount(rs.getInt(4));
+                a.setQuantity(rs.getInt(5));
+                a.setDescription(rs.getString(6));
+                a.setImage(rs.getString(7));
+                c.setCategoryID(rs.getInt(8));
+                w.setWarehouseID(rs.getInt(9));
+                a.setCategory(c);
+                a.setWarehouse(w);
+        }catch(SQLException e){
+        }return a;
+        }
 
     public Product getProductsById(int productID) {
         ArrayList<Product> list = new ArrayList<>();
@@ -186,7 +216,7 @@ public class ProductDAO extends DBContext {
         return null;
     }
 
-    public List<Product> search(String txt, int index) throws SQLException {
+    public List<Product> search(String txt, int index) {
         List<Product> list = new ArrayList<>();
         String sql = "select * from\n"
                 + "(select ROW_NUMBER () over (order by ProductID asc) as r, * \n"
@@ -214,29 +244,14 @@ public class ProductDAO extends DBContext {
         }
         return list;
     }
-
-    public int count(String txt) throws SQLException {
-        try {
-            String sql = "select count (*) from Product where [ProductName] like ?";
-            PreparedStatement st = connection.prepareStatement(sql);
-            st.setString(1, "%" + txt + "%");
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                return rs.getInt(1);
-            }
-        } catch (SQLException e) {
-        }
-        return 0;
-    }
-
-
-    public List<Product> getProductList(){
+    
+     public List<Product> getProductList() {
         List<Product> list = new ArrayList<>();
         String sql = "SELECT * FROM (Product INNER JOIN Warehouse ON Product.WarehouseID = Warehouse.WarehouseID) INNER JOIN Category ON Product.CategoryID = Category.CategoryID ";
-        try{
-        PreparedStatement st = connection.prepareStatement(sql);
-        ResultSet rs = st.executeQuery();
-            while(rs.next()){
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
                 Product p = new Product();
                 Category c = new Category();
                 Warehouse w = new Warehouse();
@@ -255,14 +270,28 @@ public class ProductDAO extends DBContext {
                 p.setWarehouse(w);
                 list.add(p);
             }
-        }catch(SQLException e){
+        }catch (SQLException e) {
         }
         return list;
+     }
+        
+    public int count(String txt) throws SQLException {
+        try {
+            String sql = "select count (*) from Product where [ProductName] like ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, "%" + txt + "%");
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+        }
+        return 0;
     }
     
-    public void addProduct(Product p){
+    public void addProduct(Product p) {
         String sql = "INSERT INTO Product (ProductName, Price, Discount, Quantity, Product.Decription , Product.Image, CategoryID, WarehouseID) VALUES  (?,?,?,?,?,?,?,?)";
-        try{
+        try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, p.getProductName());
             st.setString(2, p.getPrice());
@@ -273,7 +302,7 @@ public class ProductDAO extends DBContext {
             st.setInt(7, p.getCategory().getCategoryID());
             st.setInt(8, p.getWarehouse().getWarehouseID());
             st.executeUpdate();
-            }catch(SQLException e){    
+        } catch (SQLException e) {
         }
     }
 
@@ -328,5 +357,28 @@ public class ProductDAO extends DBContext {
         }
         return sum;
     }
+
+    public double getTotalPrice(ArrayList<Bill> bill) {
+        double sum = 0;
+        try {
+            if (bill.size() > 0) {
+                for (Bill item : bill) {
+                    String sql = "Select Price from Product where ProductID =?";
+                    PreparedStatement st = connection.prepareStatement(sql);
+                    st.setInt(1, item.getProduct().getProductID());
+                    ResultSet rs = st.executeQuery();
+
+                    while (rs.next()) {
+                        sum += rs.getInt("Price") * item.getQuantity();
+                    }
+                }
+
+            }
+
+        } catch (Exception e) {
+        }
+        return sum;
+    }
+    
 }
-        
+

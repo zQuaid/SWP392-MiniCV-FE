@@ -3,14 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Model;
+
 /**
  *
  * @author Admin
  */
 public class Bill {
-        private OrderInfo orderInfo;
-        private Product product;
-        private int quantity;
+    private OrderInfo orderInfo;
+    private Product product;
+    private int quantity;
 
     public Bill() {
     }
@@ -20,6 +21,8 @@ public class Bill {
         this.product = product;
         this.quantity = quantity;
     }
+
+    
 
     public OrderInfo getOrderInfo() {
         return orderInfo;
@@ -44,5 +47,4 @@ public class Bill {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-        
 }

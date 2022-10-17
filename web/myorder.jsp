@@ -63,7 +63,7 @@
 
                                                 <form>
                                                     <input type="text" class="form-control" placeholder="Tìm kiếm tho ID đơn hàng hoặc Tên Sản phẩm"> 
-
+                                                    <input type="submit" class="form-control" > 
                                                 </form>
 
 
@@ -73,7 +73,7 @@
 
                                     </div>
                                 </div>
-                                
+
                                 <c:forEach items="${requestScope.listod}" var="od">
 
 
@@ -100,10 +100,10 @@
                                                     </p>
                                                     <hr>
                                                     <div class="float-right">
-                                                        
-                                                            <a class="btn btn-sm btn-outline-primary" href="oderdetail?userid=${od.orderInfo.userID}?productid=${od.product.productID}?date=${od.orderInfo.date}"><i class="icofont-headphone-alt"></i> VIEW DETAIL</a>
-                                                       
-                                                        <a class="btn btn-sm btn-primary" href="#"><i class="icofont-refresh"></i> REORDER</a>
+
+                                                        <a class="btn btn-sm btn-outline-primary" href="oderdetail?orderid=${od.orderInfo.orderID}&userid=${od.orderInfo.userID}"><i class="icofont-headphone-alt"></i> VIEW DETAIL</a>
+
+                                                        <a class="btn btn-sm btn-primary" href="detail?id=${od.product.productID}"><i class="icofont-refresh"></i> REORDER</a>
                                                     </div>
                                                     <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total Paid:</span> ${od.orderInfo.totalPrice}
                                                     </p>

@@ -13,7 +13,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ *
+ * @author mihxdat
+ */
 public class CategoryDAO extends DBContext {
     public List<Product> getNewProduct() {
         List<Product> list = new ArrayList<>();
@@ -36,7 +39,7 @@ public class CategoryDAO extends DBContext {
         return list;
     }
 
-    public List<Category> getAllCategory(){
+     public List<Category> getAllCategory(){
         List<Category> list = new ArrayList<>();
         String sql = "SELECT * FROM Category";
         try{
@@ -54,3 +57,4 @@ public class CategoryDAO extends DBContext {
         }return list;
     }
 }
+

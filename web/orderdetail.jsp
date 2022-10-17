@@ -6,6 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,11 +22,12 @@
     </head>
     <body>
         <div class="container-fluid">
-           
+            
             <div class="container">
                 <!-- Title -->
                 <div class="d-flex justify-content-between align-items-center py-3">
-                    <h2 class="h5 mb-0"><a href="#" class="text-muted"></a> Order # </h2>
+                     
+                    <h2 class="h5 mb-0"><a href="#" class="text-muted"></a> ${a.orderInfo.orderID} </h2>
                 </div>
 
                 <!-- Main content -->
@@ -49,6 +52,7 @@
                                 
                                 <table class="table table-borderless">
                                     <tbody>
+                                        <c:forEach items="${requestScope.listdt}" var="dt">
                                         <tr>
                                             <td>
                                                 <div class="d-flex mb-2">
@@ -56,29 +60,15 @@
                                                         <img src="https://via.placeholder.com/280x280/87CEFA/000000" alt="" width="35" class="img-fluid">
                                                     </div>
                                                     <div class="flex-lg-grow-1 ms-3">
-                                                        <h6 class="small mb-0"><a href="#" class="text-reset">Wireless Headphones with Noise Cancellation Tru Bass Bluetooth HiFi</a></h6>
-                                                        <span class="small">Color: Black</span>
+                                                        <h6 class="small mb-0"><a href="#" class="text-reset">${dt.product.productName}</a></h6>
+                                                        <span class="small"></span>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>1</td>
-                                            <td class="text-end">$79.99</td>
+                                            <td>${dt.quantity}</td>
+                                            <td class="text-end">${dt.product.price}</td>
                                         </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex mb-2">
-                                                    <div class="flex-shrink-0">
-                                                        <img src="https://via.placeholder.com/280x280/FF69B4/000000" alt="" width="35" class="img-fluid">
-                                                    </div>
-                                                    <div class="flex-lg-grow-1 ms-3">
-                                                        <h6 class="small mb-0"><a href="#" class="text-reset">Smartwatch IP68 Waterproof GPS and Bluetooth Support</a></h6>
-                                                        <span class="small">Color: White</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>1</td>
-                                            <td class="text-end">$79.99</td>
-                                        </tr>
+                                        </c:forEach>
                                     </tbody>
                                     <tfoot>
                                         <tr>
@@ -110,13 +100,12 @@
                                         <p>Visa -1234 <br>
                                             Total: $169,98 <span class="badge bg-success rounded-pill">PAID</span></p>
                                     </div>
+                                    <c:set value="${requestScope.user}" var="u"></c:set>
                                     <div class="col-lg-6">
                                         <h3 class="h6">Billing address</h3>
                                         <address>
-                                            <strong>John Doe</strong><br>
-                                            1355 Market St, Suite 900<br>
-                                            San Francisco, CA 94103<br>
-                                            <abbr title="Phone">P:</abbr> (123) 456-7890
+                                            <strong> </strong><br>${u.address}<br>
+                                            <abbr title="Phone">P:</abbr> ${u.phone}
                                         </address>
                                     </div>
                                 </div>
@@ -140,10 +129,9 @@
                                 <hr>
                                 <h3 class="h6">Address</h3>
                                 <address>
-                                    <strong>John Doe</strong><br>
-                                    1355 Market St, Suite 900<br>
-                                    San Francisco, CA 94103<br>
-                                    <abbr title="Phone">P:</abbr> (123) 456-7890
+                                    <strong>${u.username}</strong><br>
+                                    ${u.address}<br>
+                                    <abbr title="Phone">P:</abbr> ${u.phone}
                                 </address>
                             </div>
                         </div>

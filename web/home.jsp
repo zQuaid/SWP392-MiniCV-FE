@@ -135,14 +135,19 @@
                                         <div class="product discount product_filter">
                                             <div class="product_image">
 <<<<<<< HEAD
+<<<<<<< HEAD
                                                 <img src="${pd.Image}"/>
 =======
                                                 <img src="${product.image}"/>
 >>>>>>> origin/Minh-Dat
+=======
+                                                <img src="${product.image}"/>
+>>>>>>> origin/Hieu-Huu
                                             </div>
                                             <div class="favorite favorite_left"></div>
                                             <div class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"><span>new</span></div>
                                             <div class="product_info">
+<<<<<<< HEAD
 <<<<<<< HEAD
                                                 <h6 class="product_name"><a href="products">${pd.ProductName}</a></h6>
                                                 <div class="product_price">₫ ${pd.Price}</div>
@@ -150,6 +155,11 @@
                                                 <h6 class="product_name"><a href="product">${product.productName}</a></h6>
                                                 <div class="product_price">₫ ${product.price}</div>
 >>>>>>> origin/Minh-Dat
+=======
+                                                <h6 class="product_name"><a href="product">${product.productName}</a></h6>
+                                                <div class="product_price">₫ ${product.price}</div>
+
+>>>>>>> origin/Hieu-Huu
                                             </div>
                                         </div>
                                     </div>

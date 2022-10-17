@@ -33,7 +33,6 @@ public class Product {
         this.warehouse = warehouse;
         this.category = category;
     }
-
     
 
     public int getProductID() {
@@ -52,6 +51,7 @@ public class Product {
         this.productName = productName;
     }
 
+
     public String getPrice() {
         return price;
     }
@@ -67,6 +67,7 @@ public class Product {
     public void setDiscount(int discount) {
         this.discount = discount;
     }
+
     public int getQuantity() {
         return quantity;
     }
@@ -108,3 +109,4 @@ public class Product {
     }
     
 }
+
