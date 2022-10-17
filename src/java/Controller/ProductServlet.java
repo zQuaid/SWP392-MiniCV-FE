@@ -73,8 +73,8 @@ public class ProductServlet extends HttpServlet {
         int categoryID;
         try {
             categoryID = (categoryID_raw == null) ? 0 : Integer.parseInt(categoryID_raw);
-            //List<Product> listProduct = producrDAO.getProductByCategoryID(categoryID);
-           // request.setAttribute("listProduct", listProduct);
+            List<Product> listProduct = producrDAO.getProductByCategoryID(categoryID);
+            request.setAttribute("listProduct", listProduct);
         } catch (Exception e) {
         }
 //        List<Product> list = producrDAO.getAllProduct();
