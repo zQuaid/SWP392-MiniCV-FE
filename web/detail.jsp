@@ -75,7 +75,7 @@
                                     </ul>
                                     <a style="color: #000" href="#">
                                         <i class="fa fa-user" aria-hidden="true"></i>
-                                        <span>${sessionScope.account.fullname}</span>
+                                        <span>${sessionScope.account.username}</span>
                                     </a>
                                 </nav>
                             </div>
@@ -122,13 +122,13 @@
                             <div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">
                                 <span>Quantity:</span>
                                 <div class="quantity_selector">
-                                    <span class="minus"><i class="fa fa-minus" aria-hidden="true"><a href="sub?id=${detail.productID}"></a></i></span>
+                                    <span class="minus"><i class="fa fa-minus" aria-hidden="true"><a href="quantityaddtocart"></a></i></span>
                                     <span id="quantity_value">1</span>
                                     <span class="plus"><i class="fa fa-plus" aria-hidden="true"><a href="cart?id=${detail.productID}"></a></i></span>
                                 </div>
                             </div>
                             <br/>
-                            <div class="red_button add_to_cart_button"><a href="cart?id=${detail.productID}">add to cart</a></div>
+                            <div class="red_button add_to_cart_button"><a href="cart?productID=${detail.productID}">add to cart</a></div>
                         </div>
                     </div>
                     <a href="products" class="fa fa-angle-double-left">&nbsp; Back</a>

@@ -90,19 +90,21 @@ public class Product {
     public void setImage(String image) {
         this.image = image;
     }
-    public Category getCategory() {
-        return category;
-    }
 
     public Warehouse getWarehouse() {
         return warehouse;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
     public void setWarehouse(Warehouse warehouse) {
         this.warehouse = warehouse;
     }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+    
 }
