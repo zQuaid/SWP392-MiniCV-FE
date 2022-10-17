@@ -4,7 +4,6 @@ package Controller;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
 import DAO.RevenueDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,7 +18,7 @@ import java.time.LocalDate;
  *
  * @author Admin
  */
-@WebServlet(name="Summary", urlPatterns = {"/summary"})
+@WebServlet(name = "Summary", urlPatterns = {"/summary"})
 public class SummaryServlet extends HttpServlet {
 
     /**
@@ -39,7 +38,7 @@ public class SummaryServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SummaryServlet</title>");            
+            out.println("<title>Servlet SummaryServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet SummaryServlet at " + request.getContextPath() + "</h1>");
@@ -67,18 +66,24 @@ public class SummaryServlet extends HttpServlet {
         int totalRevenue = rd.getTotalRevenue(month, year);
         boolean checkTargetRevenue = rd.checkTargetRevenue(month, year);
         int targetRevenue = rd.getTargetRevenue(month, year);
-        int percent = totalRevenue*100/targetRevenue;
-        int checkpercent;
-        if(percent>100){
-            checkpercent = 100;
-        }else
-            checkpercent = percent;
-        request.setAttribute("percent", percent);
-        request.setAttribute("checkpercent", checkpercent);
-        request.setAttribute("targetRevenue", targetRevenue);
-        request.setAttribute("checkTargetRevenue", checkTargetRevenue);
-        request.setAttribute("totalRevenue", totalRevenue);
-        request.getRequestDispatcher("/summarypage.jsp").forward(request, response);
+        if (targetRevenue != 0) {
+            int percent = totalRevenue * 100 / targetRevenue;
+            int checkpercent;
+            if (percent > 100) {
+                checkpercent = 100;
+            } else {
+                checkpercent = percent;
+            }
+            rd.setTargetRevenue(totalRevenue, month, year);
+            request.setAttribute("percent", percent);
+            request.setAttribute("checkpercent", checkpercent);
+            request.setAttribute("targetRevenue", targetRevenue);
+            request.setAttribute("checkTargetRevenue", checkTargetRevenue);
+            request.setAttribute("totalRevenue", totalRevenue);
+            request.getRequestDispatcher("/summarypage.jsp").forward(request, response);
+        } else {
+            request.getRequestDispatcher("/summarypage.jsp").forward(request, response);
+        }
     }
 
     /**

@@ -40,6 +40,7 @@
                                                 <c:choose>
                                                     <c:when test="${sessionScope.account != null}">
                                                         <li><a href="logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
+                                                        <li><a href="myorder?userid=${sessionScope.account.id}"><i class="fa fa-sign-out" aria-hidden="true"></i>My Order</a></li>
                                                         </c:when>
                                                         <c:otherwise>
                                                         <li><a href="login"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
@@ -84,14 +85,17 @@
                                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                             </a>
                                         </li>
+                                        
                                         <div class="hamburger_container">
                                             <i class="fa fa-bars" aria-hidden="true"></i>
                                         </div>
                                     </ul>&nbsp;&nbsp;&nbsp;
-                                    <a style="color: #000" class="nav-item" href="profile">
+                                    <c:if test="${sessionScope.account != null}">
+                                    <a style="color: #000" class="nav-item" href="profile?username=${sessionScope.account.username}">
                                         <i class="fa fa-user" aria-hidden="true"></i>
                                         <span>${sessionScope.account.username}</span>
                                     </a>
+                                    </c:if>
                                 </nav>
                             </div>
                         </div>
@@ -129,13 +133,22 @@
                                     <div class="product-item">
                                         <div class="product discount product_filter">
                                             <div class="product_image">
+<<<<<<< HEAD
+                                                <img src="${pd.Image}"/>
+=======
                                                 <img src="${product.image}"/>
+>>>>>>> origin/Minh-Dat
                                             </div>
                                             <div class="favorite favorite_left"></div>
                                             <div class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"><span>new</span></div>
                                             <div class="product_info">
+<<<<<<< HEAD
+                                                <h6 class="product_name"><a href="products">${pd.ProductName}</a></h6>
+                                                <div class="product_price">₫ ${pd.Price}</div>
+=======
                                                 <h6 class="product_name"><a href="product">${product.productName}</a></h6>
                                                 <div class="product_price">₫ ${product.price}</div>
+>>>>>>> origin/Minh-Dat
                                             </div>
                                         </div>
                                     </div>

@@ -3,50 +3,46 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Model;
-
 /**
  *
  * @author Admin
  */
 public class Bill {
-        private OrderInfo order;
+        private OrderInfo orderInfo;
         private Product product;
-        private int price;
+        private int quantity;
 
     public Bill() {
     }
 
-    public Bill(OrderInfo order, Product product, int price) {
-        this.order = order;
+    public Bill(OrderInfo orderInfo, Product product, int quantity) {
+        this.orderInfo = orderInfo;
         this.product = product;
-        this.price = price;
+        this.quantity = quantity;
     }
 
-    public OrderInfo getOrder() {
-        return order;
+    public OrderInfo getOrderInfo() {
+        return orderInfo;
     }
 
-    public int getPrice() {
-        return price;
+    public void setOrderInfo(OrderInfo orderInfo) {
+        this.orderInfo = orderInfo;
     }
 
     public Product getProduct() {
         return product;
     }
 
-    public void setOrder(OrderInfo order) {
-        this.order = order;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
     public void setProduct(Product product) {
         this.product = product;
     }
 
-    
-        
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
         
 }

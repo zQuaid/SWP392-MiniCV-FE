@@ -67,8 +67,6 @@ public class Product {
     public void setDiscount(int discount) {
         this.discount = discount;
     }
-    
-
     public int getQuantity() {
         return quantity;
     }
@@ -107,5 +105,4 @@ public class Product {
     public void setWarehouse(Warehouse warehouse) {
         this.warehouse = warehouse;
     }
-  
 }

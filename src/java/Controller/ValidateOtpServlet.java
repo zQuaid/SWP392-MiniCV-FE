@@ -34,7 +34,12 @@ public class ValidateOtpServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        int value = Integer.parseInt(request.getParameter("otp"));
+        
+    }
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+    int value = Integer.parseInt(request.getParameter("otp"));
         HttpSession session = request.getSession();
         int otp = (int) session.getAttribute("otp");
 
@@ -54,6 +59,7 @@ public class ValidateOtpServlet extends HttpServlet {
             dispatcher.forward(request, response);
 
         }
+    
     }
 
 }

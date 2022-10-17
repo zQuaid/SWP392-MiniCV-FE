@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class AccountDAO extends DBContext {
 
-public void newPassword(String newPassword, String email) {
+    public void newPassword(String newPassword, String email) {
         try {
 
             String sql = "update Account set password = ? where email = ? ";
@@ -154,7 +154,8 @@ public void newPassword(String newPassword, String email) {
         } catch (SQLException e) {
         }
         return list;
-            }
+    }
+
     public List<Account> getUserList(){
         List<Account> users = new ArrayList<>();
         String sql = "SELECT * FROM Account WHERE RoleID = 3";
@@ -180,7 +181,6 @@ public void newPassword(String newPassword, String email) {
                 users.add(a);
             }
         } catch (SQLException e) {
-            
         }
         return users;
     }

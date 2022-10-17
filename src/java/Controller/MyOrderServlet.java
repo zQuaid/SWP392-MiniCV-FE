@@ -4,25 +4,26 @@
  */
 package Controller;
 
-import DAO.AccountDAO;
-import jakarta.servlet.RequestDispatcher;
+import DAO.OrderDAO;
+
+import Model.Bill;
+
+import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+
 
 /**
  *
  * @author citih
  */
-@WebServlet(name = "NewPassWordServlet", urlPatterns = {"/newPassword"})
-public class NewPassWordServlet extends HttpServlet {
-
-    private static final long serialVersionUID = 1L;
+@WebServlet(name = "MyOrderServlet", urlPatterns = {"/myorder"})
+public class MyOrderServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,10 +42,10 @@ public class NewPassWordServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet NewPassWordServlet</title>");
+            out.println("<title>Servlet MyOrderServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet NewPassWordServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet MyOrderServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,21 +61,32 @@ public class NewPassWordServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        OrderDAO o = new OrderDAO();
+
+        String userid = request.getParameter("userid");
+        ArrayList<Bill> list  = o.getOrder(userid);
+        
+        request.setAttribute("listod", list);
+
+        request.getRequestDispatcher("myorder.jsp").forward(request, response);
+
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        String newPassword = request.getParameter("password");
-        String confPassword = request.getParameter("confPassword");
-        String email = (String)session.getAttribute("email");
-        AccountDAO a = new AccountDAO();
-        
-        
-        if (newPassword != null && confPassword != null && newPassword.equals(confPassword)) {
-            a.newPassword(newPassword, email);
-           response.sendRedirect("/SWP392-CoffeShop/login");
-
-          
-        }
+        response.sendRedirect("myorder.jsp");
     }
 
     /**

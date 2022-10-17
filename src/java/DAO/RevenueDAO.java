@@ -31,6 +31,18 @@ public class RevenueDAO extends DBContext{
         }return tRevenue;
     }
     
+    public void setTotalRevenue(int totalRevenue, int month,int year){
+        String sql = "Update Revenue Set TotalRevenue = ? WHERE month = ? and YEAR = ?";
+        try{
+            PreparedStatement st = connection.prepareCall(sql);
+            st.setInt(1, totalRevenue);
+            st.setInt(2, month);
+            st.setInt(3, year);
+            st.executeUpdate();
+        }catch(SQLException e){    
+        }
+    }
+    
     public boolean checkTargetRevenue(int month, int year){
         int count = 0;
         String sql = "Select * from Revenue WHERE month =? AND year=? ";
@@ -49,7 +61,7 @@ public class RevenueDAO extends DBContext{
     }
     
     public int getTargetRevenue(int month, int year){
-        int targetRevenue = 5;
+        int targetRevenue = 0;
         String sql = "Select * from Revenue WHERE month =? AND year=? ";
         try{
             PreparedStatement st = connection.prepareStatement(sql);

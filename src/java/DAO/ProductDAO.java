@@ -7,20 +7,42 @@ package DAO;
 import Context.DBContext;
 import Model.Category;
 import Model.Product;
-import java.sql.Connection;
 import Model.Warehouse;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author mihxdat
- */
+
 public class ProductDAO extends DBContext {
+
+//    public Product getProduct(int productid) {
+//
+//        String sql = "select * from Product where ProductID = ?";
+//        try {
+//            PreparedStatement st = connection.prepareStatement(sql);
+//            st.setInt(1, productid);
+//            ResultSet rs = st.executeQuery();
+//            if (rs.next()) {
+//                Product a = new Product();
+//                a.setProductID(rs.getInt(1));
+//                a.setProductName(rs.getString(2));
+//                a.setPrice(rs.getInt(3));
+//                a.setDiscount(rs.getInt(4));
+//                a.setQuantity(rs.getInt(5));
+//                a.setDescription(rs.getString(6));
+//                a.setImage(rs.getString(7));
+//                a.setCategoryID(rs.getInt(8));
+//                a.setWarehouseID(rs.getInt(9));
+//                return a;
+//            }
+//
+//        } catch (SQLException e) {
+//
+//        }
+//        return null;
+//    }
 
     public List<Category> getListCategory() {
         ArrayList<Category> list = new ArrayList<>();
@@ -43,185 +65,363 @@ public class ProductDAO extends DBContext {
 
     }
 
-    public ArrayList<Product> getTopProduct() {
-        ArrayList<Product> list = new ArrayList<>();
+//    public ArrayList<Product> getTopProduct() {
+//        ArrayList<Product> list = new ArrayList<>();
+//
+//        try {
+//            String sql = "select top(3) * from Product order by Price desc";
+//            PreparedStatement ps = connection.prepareStatement(sql);
+//            ResultSet rs = ps.executeQuery();
+//            while (rs.next()) {
+//                Product p = new Product(rs.getInt(1),
+//                        rs.getString(2),
+//                        rs.getInt(3),
+//                        rs.getInt(4),
+//                        rs.getInt(5),
+//                        rs.getString(6),
+//                        rs.getString(7),
+//                        rs.getInt(8),
+//                        rs.getInt(9));
+//                list.add(p);
+//            }
+//        } catch (Exception e) {
+//
+//        }
+//        return list;
+//
+//    }
 
-        try {
-            String sql = "select top(3) * from Product order by Price desc";
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Product p = new Product(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getInt(3),
-                        rs.getInt(4),
-                        rs.getInt(5),
-                        rs.getString(6),
-                        rs.getString(7),
-                        rs.getInt(8),
-                        rs.getInt(9));
-                list.add(p);
-            }
-        } catch (Exception e) {
+//    public ArrayList<Product> getAllProduct() {
+//        ArrayList<Product> list = new ArrayList<>();
+//
+//        try {
+//            String sql = "SELECT [ProductID]\n"
+//                    + "      ,[ProductName]\n"
+//                    + "      ,[Price]\n"
+//                    + "      ,[Discount]\n"
+//                    + "      ,[Quantity]\n"
+//                    + "      ,[Decription]\n"
+//                    + "      ,[Image]\n"
+//                    + "      ,[CategoryID]\n"
+//                    + "      ,[WarehouseID]\n"
+//                    + "  FROM [dbo].[Product]";
+//            PreparedStatement ps = connection.prepareStatement(sql);
+//            ResultSet rs = ps.executeQuery();
+//            while (rs.next()) {
+//                Product p = new Product(rs.getInt(1),
+//                        rs.getString(2),
+//                        rs.getInt(3),
+//                        rs.getInt(4),
+//                        rs.getInt(5),
+//                        rs.getString(6),
+//                        rs.getString(7),
+//                        rs.getInt(8),
+//                        rs.getInt(9));
+//                list.add(p);
+//
+//            }
+//        } catch (Exception e) {
+//        }
+//        return list;
+//
+//    }
 
-        }
-        return list;
+//    public List<Product> getProductByCategoryID(int categoryID) {
+//        ArrayList<Product> list = new ArrayList<>();
+//        String sql = "SELECT [ProductID]\n"
+//                + "      ,[ProductName]\n"
+//                + "      ,[Price]\n"
+//                + "      ,[Discount]\n"
+//                + "      ,[Quantity]\n"
+//                + "      ,[Decription]\n"
+//                + "      ,[Image]\n"
+//                + "      ,[CategoryID]\n"
+//                + "      ,[WarehouseID]\n"
+//                + "  FROM [dbo].[Product]"
+//                + "  WHERE 1=1 ";
+//
+//        if (categoryID != 0) {
+//            sql += " and CategoryID=" + categoryID;
+//        }
+//        try {
+//
+//            PreparedStatement st = connection.prepareStatement(sql);
+//            
+//            ResultSet rs = st.executeQuery();
+//            while (rs.next()) {
+//                Product p = new Product();
+//                p.setProductID(rs.getInt("ProductID"));
+//                p.setProductName(rs.getString("ProductName"));
+//                p.setPrice(rs.getInt("Price"));
+//                p.setDiscount(rs.getInt("Discount"));
+//                p.setQuantity(rs.getInt("Quantity"));
+//                p.setDescription(rs.getString("Decription"));
+//                p.setImage(rs.getString("Image"));
+//                p.setWarehouseID(rs.getInt("WarehouseID"));
+//                list.add(p);
+//            }
+//        } catch (Exception e) {
+//        }
+//        return list;
+//
+//    }
 
-    }
+//    public Product getProductsById(int productID) {
+//        ArrayList<Product> list = new ArrayList<>();
+//
+//        try {
+//            String sql = "select * from Product where ProductID = ?";
+//            PreparedStatement st = connection.prepareStatement(sql);
+//            st.setInt(1, productID);
+//            ResultSet rs = st.executeQuery();
+//            while (rs.next()) {
+//                Product p = new Product(rs.getInt(1),
+//                        rs.getString(2),
+//                        rs.getInt(3),
+//                        rs.getInt(4),
+//                        rs.getInt(5),
+//                        rs.getString(6),
+//                        rs.getString(7),
+//                        rs.getInt(8),
+//                        rs.getInt(9));
+//                return p;
+//            }
+//
+//        } catch (SQLException e) {
+//        }
+//        return null;
+//    }
 
-    public ArrayList<Product> getAllProduct() {
-        ArrayList<Product> list = new ArrayList<>();
+//    public Product getProductDetail(String txt) {
+//        ArrayList<Product> list = new ArrayList<>();
+//        String sql = "select * from Product where ProductID = ?";
+//        try {
+//            PreparedStatement st = connection.prepareStatement(sql);
+//            st.setString(1, txt);
+//            ResultSet rs = st.executeQuery();
+//            while (rs.next()) {
+//                Product p = new Product(rs.getInt(1),
+//                        rs.getString(2),
+//                        rs.getInt(3),
+//                        rs.getInt(4),
+//                        rs.getInt(5),
+//                        rs.getString(6),
+//                        rs.getString(7),
+//                        rs.getInt(8),
+//                        rs.getInt(9));
+//                return p;
+//            }
+//        } catch (SQLException e) {
+//        }
+//        return null;
+//    }
 
-        try {
-            String sql = "SELECT [ProductID]\n"
-                    + "      ,[ProductName]\n"
-                    + "      ,[Price]\n"
-                    + "      ,[Discount]\n"
-                    + "      ,[Quantity]\n"
-                    + "      ,[Decription]\n"
-                    + "      ,[Image]\n"
-                    + "      ,[CategoryID]\n"
-                    + "      ,[WarehouseID]\n"
-                    + "  FROM [dbo].[Product]";
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Product p = new Product(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getInt(3),
-                        rs.getInt(4),
-                        rs.getInt(5),
-                        rs.getString(6),
-                        rs.getString(7),
-                        rs.getInt(8),
-                        rs.getInt(9));
-                list.add(p);
+//    public List<Product> search(String txt, int index) throws SQLException {
+//        List<Product> list = new ArrayList<>();
+//        String sql = "select * from\n"
+//                + "(select ROW_NUMBER () over (order by ProductID asc) as r, * \n"
+//                + "from Product where [ProductName] like ?) as x\n"
+//                + "where r between ? * 3 - 2 and ? * 3";
+//        try {
+//            PreparedStatement st = connection.prepareStatement(sql);
+//            st.setString(1, "%" + txt + "%");
+//            st.setInt(2, index);
+//            st.setInt(3, index);
+//            ResultSet rs = st.executeQuery();
+//            while (rs.next()) {
+//                Product p = new Product(rs.getInt(2),
+//                        rs.getString(3),
+//                        rs.getString(4),
+//                        rs.getInt(5),
+//                        rs.getInt(6),
+//                        rs.getString(7),
+//                        rs.getString(8),
+//                        rs.getInt(9),
+//                        rs.getInt(10));
+//                list.add(p);
+//            }
+//        } catch (SQLException e) {
+//        }
+//        return list;
+//
+//    }
 
-            }
-        } catch (Exception e) {
-        }
-        return list;
+//    public ArrayList<Product> getTopProduct() {
+//        ArrayList<Product> list = new ArrayList<>();
+//
+//        try {
+//            String sql = "select top(3) * from Product order by Price desc";
+//            PreparedStatement ps = connection.prepareStatement(sql);
+//            ResultSet rs = ps.executeQuery();
+//            while (rs.next()) {
+//                Product p = new Product(rs.getInt(1),
+//                        rs.getString(2),
+//                        rs.getInt(3),
+//                        rs.getInt(4),
+//                        rs.getInt(5),
+//                        rs.getString(6),
+//                        rs.getString(7),
+//                        rs.getInt(8),
+//                        rs.getInt(9));
+//                list.add(p);
+//            }
+//        } catch (Exception e) {
+//
+//        }
+//        return list;
+//
+//    }
 
-    }
+//    public ArrayList<Product> getAllProduct() {
+//        ArrayList<Product> list = new ArrayList<>();
+//
+//        try {
+//            String sql = "SELECT [ProductID]\n"
+//                    + "      ,[ProductName]\n"
+//                    + "      ,[Price]\n"
+//                    + "      ,[Discount]\n"
+//                    + "      ,[Quantity]\n"
+//                    + "      ,[Decription]\n"
+//                    + "      ,[Image]\n"
+//                    + "      ,[CategoryID]\n"
+//                    + "      ,[WarehouseID]\n"
+//                    + "  FROM [dbo].[Product]";
+//            PreparedStatement ps = connection.prepareStatement(sql);
+//            ResultSet rs = ps.executeQuery();
+//            while (rs.next()) {
+//                Product p = new Product(rs.getInt(1),
+//                        rs.getString(2),
+//                        rs.getInt(3),
+//                        rs.getInt(4),
+//                        rs.getInt(5),
+//                        rs.getString(6),
+//                        rs.getString(7),
+//                        rs.getInt(8),
+//                        rs.getInt(9));
+//                list.add(p);
+//
+//            }
+//        } catch (SQLException e) {
+//        }
+//        return list;
+//
+//    }
 
-    public List<Product> getProductByCategoryID(int categoryID) {
-        ArrayList<Product> list = new ArrayList<>();
-        String sql = "SELECT [ProductID]\n"
-                + "      ,[ProductName]\n"
-                + "      ,[Price]\n"
-                + "      ,[Discount]\n"
-                + "      ,[Quantity]\n"
-                + "      ,[Decription]\n"
-                + "      ,[Image]\n"
-                + "      ,[CategoryID]\n"
-                + "      ,[WarehouseID]\n"
-                + "  FROM [dbo].[Product]"
-                + "  WHERE 1=1 ";
+//    public List<Product> getProductByCategoryID(int categoryID) {
+//        ArrayList<Product> list = new ArrayList<>();
+//        String sql = "SELECT [ProductID]\n"
+//                + "      ,[ProductName]\n"
+//                + "      ,[Price]\n"
+//                + "      ,[Discount]\n"
+//                + "      ,[Quantity]\n"
+//                + "      ,[Decription]\n"
+//                + "      ,[Image]\n"
+//                + "      ,[CategoryID]\n"
+//                + "      ,[WarehouseID]\n"
+//                + "  FROM [dbo].[Product]"
+//                + "  WHERE 1=1 ";
+//
+//        if (categoryID != 0) {
+//            sql += " and CategoryID=" + categoryID;
+//        }
+//        try {
+//
+//            PreparedStatement st = connection.prepareStatement(sql);
+//
+//            ResultSet rs = st.executeQuery();
+//            while (rs.next()) {
+//                Product p = new Product();
+//                p.setProductID(rs.getInt("ProductID"));
+//                p.setProductName(rs.getString("ProductName"));
+//                p.setPrice(rs.getInt("Price"));
+//                p.setDiscount(rs.getInt("Discount"));
+//                p.setQuantity(rs.getInt("Quantity"));
+//                p.setDescription(rs.getString("Decription"));
+//                p.setImage(rs.getString("Image"));
+//                p.setWarehouseID(rs.getInt("WarehouseID"));
+//                list.add(p);
+//            }
+//        } catch (SQLException e) {
+//        }
+//        return list;
+//
+//    }
 
-        if (categoryID != 0) {
-            sql += " and CategoryID=" + categoryID;
-        }
-        try {
+//    public Product getProductsById(int productID) {
+//        try {
+//            String sql = "select * from Product where ProductID = ?";
+//            PreparedStatement st = connection.prepareStatement(sql);
+//            st.setInt(1, productID);
+//            ResultSet rs = st.executeQuery();
+//            while (rs.next()) {
+//                Product p = new Product(rs.getInt(1),
+//                        rs.getString(2),
+//                        rs.getInt(3),
+//                        rs.getInt(4),
+//                        rs.getInt(5),
+//                        rs.getString(6),
+//                        rs.getString(7),
+//                        rs.getInt(8),
+//                        rs.getInt(9));
+//                return p;
+//            }
+//
+//        } catch (SQLException e) {
+//        }
+//        return null;
+//    }
 
-            PreparedStatement st = connection.prepareStatement(sql);
-            
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                Product p = new Product();
-                p.setProductID(rs.getInt("ProductID"));
-                p.setProductName(rs.getString("ProductName"));
-                p.setPrice(rs.getInt("Price"));
-                p.setDiscount(rs.getInt("Discount"));
-                p.setQuantity(rs.getInt("Quantity"));
-                p.setDescription(rs.getString("Decription"));
-                p.setImage(rs.getString("Image"));
-                p.setWarehouseID(rs.getInt("WarehouseID"));
-                list.add(p);
-            }
-        } catch (Exception e) {
-        }
-        return list;
+//    public Product getProductDetail(String txt) {
+//        String sql = "select * from Product where ProductID = ?";
+//        try {
+//            PreparedStatement st = connection.prepareStatement(sql);
+//            st.setString(1, txt);
+//            ResultSet rs = st.executeQuery();
+//            while (rs.next()) {
+//                Product p = new Product(rs.getInt(1),
+//                        rs.getString(2),
+//                        rs.getInt(3),
+//                        rs.getInt(4),
+//                        rs.getInt(5),
+//                        rs.getString(6),
+//                        rs.getString(7),
+//                        rs.getInt(8),
+//                        rs.getInt(9));
+//                return p;
+//            }
+//        } catch (SQLException e) {
+//        }
+//        return null;
+//    }
 
-    }
-
-    public Product getProductsById(int productID) {
-        ArrayList<Product> list = new ArrayList<>();
-
-        try {
-            String sql = "select * from Product where ProductID = ?";
-            PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, productID);
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                Product p = new Product(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getInt(3),
-                        rs.getInt(4),
-                        rs.getInt(5),
-                        rs.getString(6),
-                        rs.getString(7),
-                        rs.getInt(8),
-                        rs.getInt(9));
-                return p;
-            }
-
-        } catch (SQLException e) {
-        }
-        return null;
-    }
-
-    public Product getProductDetail(String txt) {
-        ArrayList<Product> list = new ArrayList<>();
-        String sql = "select * from Product where ProductID = ?";
-        try {
-            PreparedStatement st = connection.prepareStatement(sql);
-            st.setString(1, txt);
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                Product p = new Product(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getInt(3),
-                        rs.getInt(4),
-                        rs.getInt(5),
-                        rs.getString(6),
-                        rs.getString(7),
-                        rs.getInt(8),
-                        rs.getInt(9));
-                return p;
-            }
-        } catch (SQLException e) {
-        }
-        return null;
-    }
-
-    public List<Product> search(String txt, int index) throws SQLException {
-        List<Product> list = new ArrayList<>();
-        String sql = "select * from\n"
-                + "(select ROW_NUMBER () over (order by ProductID asc) as r, * \n"
-                + "from Product where [ProductName] like ?) as x\n"
-                + "where r between ? * 3 - 2 and ? * 3";
-        try {
-            PreparedStatement st = connection.prepareStatement(sql);
-            st.setString(1, "%" + txt + "%");
-            st.setInt(2, index);
-            st.setInt(3, index);
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                Product p = new Product(rs.getInt(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getInt(5),
-                        rs.getInt(6),
-                        rs.getString(7),
-                        rs.getString(8),
-                        rs.getInt(9),
-                        rs.getInt(10));
-                list.add(p);
-            }
-        } catch (SQLException e) {
-        }
-        return list;
-    }
+//    public List<Product> search(String txt, int index) throws SQLException {
+//        List<Product> list = new ArrayList<>();
+//        String sql = "select * from\n"
+//                + "(select ROW_NUMBER () over (order by ProductID asc) as r, * \n"
+//                + "from Product where [ProductName] like ?) as x\n"
+//                + "where r between ? * 3 - 2 and ? * 3";
+//        try {
+//            PreparedStatement st = connection.prepareStatement(sql);
+//            st.setString(1, "%" + txt + "%");
+//            st.setInt(2, index);
+//            st.setInt(3, index);
+//            ResultSet rs = st.executeQuery();
+//            while (rs.next()) {
+//                Product p = new Product(rs.getInt(2),
+//                        rs.getString(3),
+//                        rs.getInt(4),
+//                        rs.getInt(5),
+//                        rs.getInt(6),
+//                        rs.getString(7),
+//                        rs.getString(8),
+//                        rs.getInt(9),
+//                        rs.getInt(10));
+//                list.add(p);
+//            }
+//        } catch (SQLException e) {
+//        }
+//        return list;
+//    }
 
     public int count(String txt) throws SQLException {
         try {
@@ -284,3 +484,4 @@ public class ProductDAO extends DBContext {
         }
     }
 }
+        

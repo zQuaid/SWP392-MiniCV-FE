@@ -4,6 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <file>file:/C:/Users/mihxdat/Desktop/SWP391/web/home.jsp</file>
             <file>file:/C:/Users/mihxdat/Desktop/SWP391/src/java/Controller/ProductServlet.java</file>
             <file>file:/C:/Users/mihxdat/Desktop/SWP391/src/java/Controller/LoginServlet.java</file>
@@ -14,6 +15,27 @@
             <file>file:/C:/Users/mihxdat/Desktop/SWP391/web/products.jsp</file>
             <file>file:/C:/Users/mihxdat/Desktop/SWP391/web/detail.jsp</file>
             <file>file:/C:/Users/mihxdat/Desktop/SWP391/src/java/DAO/ProductDAO.java</file>
+=======
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Model/Account.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/DAO/AccountDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/web/styles/css/admindashboard.css</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/DAO/AdminDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/DAO/OrderDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/StaffpageServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Model/Bill.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Context/DBContext.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/AddstaffServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/AdLogoutServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Model/Product.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/DAO/RevenueDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/SearchServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/LoginServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/HomepageServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/UserlistServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/StafflistServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/CartServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/DAO/ProductDAO.java</file>
+>>>>>>> 63612d20237aa8a442c3693bad642aa5b095493f
 =======
             <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/DAO/PaymentDAO.java</file>
             <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Model/Category.java</file>
@@ -37,7 +59,11 @@
             <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/DAO/ProductDAO.java</file>
             <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/web/payment.jsp</file>
             <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/ProductlistServlet.java</file>
+<<<<<<< HEAD
 >>>>>>> HieuPT
+=======
+>>>>>>> hieuPT
+>>>>>>> 63612d20237aa8a442c3693bad642aa5b095493f
         </group>
     </open-files>
 </project-private>

@@ -4,6 +4,7 @@
  */
 package Controller;
 
+
 import DAO.ProductDAO;
 import Model.Product;
 import java.io.IOException;
@@ -13,7 +14,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,7 +40,7 @@ public class HomepageServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet HomepageServlet</title>");            
+            out.println("<title>Servlet HomepageServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet HomepageServlet at " + request.getContextPath() + "</h1>");
@@ -63,8 +63,8 @@ public class HomepageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             ProductDAO productDAO = new ProductDAO();
-            List<Product> topProduct = productDAO.getTopProduct();
-            request.setAttribute("topProduct", topProduct);
+            //List<Product> topProduct = productDAO.getTopProduct();
+            //request.setAttribute("topProduct", topProduct);
         request.getRequestDispatcher("home.jsp").forward(request, response);
        // request.getRequestDispatcher("/home.jsp").forward(request, response);
     }
