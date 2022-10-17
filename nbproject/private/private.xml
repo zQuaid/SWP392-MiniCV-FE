@@ -3,15 +3,27 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/AddstaffServlet.java</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/web/addproduct.jsp</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/DAO/AccountDAO.java</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/web/addstaff.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/DAO/PaymentDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Model/Category.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Model/PaymentByBanking.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/web/userpage.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/UpdateBankingServlet.java</file>
             <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/DAO/WarehouseDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/web/userlist.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/SummaryServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/web/warehouse.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/AddPaymentBankingServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Model/Warehouse.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/PaymentServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Model/Product.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/web/js/userpagejs.js</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/web/addstaff.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Model/Revenue.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/web/js/staffpage.js</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/web/updatebank.jsp</file>
             <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/DAO/CategoryDAO.java</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/StafflistServlet.java</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/AddProductServlet.java</file>
             <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/DAO/ProductDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/web/payment.jsp</file>
             <file>file:/C:/Users/Admin/Desktop/SWP392%20mini/SWP392-MiniCV-FE/src/java/Controller/ProductlistServlet.java</file>
         </group>
     </open-files>
